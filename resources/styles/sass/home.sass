@@ -1,0 +1,291 @@
+@import includes/reset
+@import includes/_vars
+//
+@import ../../views/blocks/btn/btn_style_home
+@import ../../views/includes/sections/header/header_top_bar
+@import ../../views/includes/sections/header/header_tempalate/home
+
+@import ../css/flickity.min.css
+@import includes/_gen
+
+@import ../../views/blocks/slider/slider_section
+@import ../../views/blocks/slider/items/slider_product_item
+@import ../../views/blocks/slider/items/_slider_pharmacy_item
+@import ../../views/blocks/btn/btn
+@import ../../views/blocks/modal_basket/modal_basket
+@import ../../views/blocks/slider/items/slider_sell_item
+@import ../../views/blocks/advantages/advantages
+@import ../../views/blocks/recommendations/recommendations
+@import includes/footer
+
+
+
+@import ./includes/form
+@import ./includes/form_checkbox
+
+@import ../../views/blocks/popup/popup
+
+
+.margin-top
+	margin-top: -65px
+
+.btn_all_product
+	max-width: 500px
+	margin: 0 auto
+	text-align: center
+	margin-top: 45px
+	color: #f66
+	background-color: transparent
+	transition: background-color.45s, color.45s
+
+	&:hover
+		background-color: #f66
+		color: white
+		transition: background-color.45s, color.45s
+
+
+
+.cards_list_product
+	.flickity-viewport
+		width: 90%
+		margin-right: auto
+		margin-left: auto
+//.pharmacy_btn_list
+//	display: flex
+//	padding-top: 20px
+//	padding-bottom: 27px
+//	justify-content: center
+//	flex-wrap: wrap
+.cards_list_cities
+	.tab_btn
+		color: #999999
+		padding: 10px 48px
+		border: 1px solid transparent
+		transition: all.45s
+		margin-right: 5px
+		&:last-child
+			margin-right: 0
+			
+		&.active
+			border: 1px solid #fff
+			color: #ff6666
+			transition: all.45s
+		&:hover
+			border: 1px solid #ff6666
+			color: #fff
+			transition: all.45s
+		
+
+.tab_list_product
+	margin-bottom: 40px
+	display: flex
+	
+.title_product_slider
+	font-size: 20px
+	margin-right: 23px
+	font-family: $rob, sans-serif
+	font-weight: bold
+	color: #cccccc
+	display: flex
+	position: relative
+	border: none
+	background-color: transparent
+	transition: color.45s
+	cursor: pointer
+	&:last-child
+		margin-right: 0
+	&:after
+		content: ""
+		background-color: #99cc33
+		width: 100%
+		height: 3px
+		position: absolute
+		left: 0
+		bottom: -4px
+		transition: all.45s
+		opacity: 0
+		visibility: hidden
+	&:before
+		content: ""
+		position: absolute
+		bottom: -7px
+		left: 25%
+		width: 9px
+		height: 9px
+		background-color: #fff
+		box-sizing: border-box
+		border-right: 3px solid #99cc33
+		border-bottom: 3px solid #99cc33
+		transform: rotate(45deg)
+		z-index: 2
+		opacity: 0
+		visibility: hidden
+		transition: all.45s
+	&:hover, &.active
+		color: #99cc33
+		transition: color.45s
+		&:before, &:after
+			opacity: 1
+			visibility: visible
+			transition: all.45s
+.slider-sell-prev
+	left: 0px
+	width: 16px
+.slider-sell-next
+	right: 0px
+	width: 16px
+.category-tab-slider
+	margin-top: 20px
+	margin-bottom: 30px
+
+.o_nas_logo
+	width: 300px
+	margin: 70px auto
+.o_nas
+	display: flex
+	flex-direction: column
+	.col-left
+		width: 100%
+	.col-right
+		width: 100%
+	&_content
+		display: flex
+		flex-direction: column
+	&_title
+		font-size: 30px
+		font-family: $rob, sans-serif
+		font-weight: bold
+		text-transform: uppercase
+		margin-bottom: 40px
+		color: #333333
+		text-align: center
+	&_sub_title
+		font-size: 15px
+		font-family: $rob, sans-serif
+		margin-bottom: 31px
+		color: #a3a3a3
+	&_text
+		font-size: 12px
+		font-family: $rob, sans-serif
+		margin-bottom: 31px
+		color: #4d4d4d
+		
+.stocks_category_list
+	display: flex
+	flex-direction: column
+	padding-top: 25px
+	
+.stocks_category_item
+	position: relative
+	width: 100%
+	height: 100vh
+	display: flex
+	flex-direction: column
+	justify-content: flex-end
+	//stocks_category_item_bg
+	&_bg
+		position: absolute
+		z-index: 1
+		background-repeat: no-repeat
+		background-size: cover
+		background-position: center
+		width: 100%
+		height: 100%
+//stocks_category_item_info
+.stocks_category_item_info
+	display: flex
+	flex-direction: column
+	position: relative
+	z-index: 1
+	padding-left: 20px
+	padding-right: 20px
+	padding-bottom: 30px
+	//stocks_category_item_info_name
+	&_name
+		text-transform: uppercase
+		color: white
+		font-size: 32px
+		font-family: $rob, sans-serif
+	//stocks_category_item_info_title
+	&_title
+		font-size: 62px
+		color: white
+		font-family: $mus, sans-serif
+		font-weight: 900
+		padding-bottom: 30px
+		line-height: 64px
+.stocks_btn
+	color: white
+	background: #f66
+	max-width: 500px
+	text-align: center
+	margin-right: auto
+	transition: color.45s, background.45s
+	&:hover
+		background: white
+		color: #f66
+		transition: color.45s, background.45s
+@media(min-width: 768px)
+	.stocks_category_list
+		flex-direction: row
+	.stocks_category_item
+		width: 50%
+		height: 70vh
+@media(min-width: 996px)
+	//
+	
+	
+	
+	
+
+
+ 
+@import ./includes/animation
+
+
+
+.cards_list_cities
+	width: 90%
+	margin: auto
+
+@media(min-width: 560px)
+	.o_nas
+		&_logo
+			width: 400px
+
+@media(min-width: 996px)
+	.cards_list_cities
+		width: 100%
+		margin: 0
+	.cards_list_cities
+		display: flex
+		justify-content: center
+	.o_nas
+		&_list
+			display: flex
+			flex-direction: row
+		.col-left
+			width: 50%
+			padding-right: 16px
+		.col-right
+			padding-left: 16px
+			width: 50%
+		&_title
+			text-align: left
+@media(min-width: 1150px)
+
+	.cards_list_product
+		.flickity-viewport
+			width: 100%
+			margin-right: 0
+			margin-left: 0
+	.title_product_slider
+		font-size: 28px
+		
+	.slider-sell-prev
+		left: 16px
+		width: 16px
+	.slider-sell-next
+		right: 16px
+		width: 16px
+	

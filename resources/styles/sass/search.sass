@@ -1,0 +1,233 @@
+@import includes/reset
+@import includes/_vars
+@import includes/_gen
+@import includes/pagination
+
+@import ../../views/blocks/btn/btn
+@import ../../views/blocks/menu/menu_gen
+@import ./includes/form
+@import ./includes/form_checkbox
+
+@import ../../views/blocks/slider/items/slider_product_item
+@import ../../views/blocks/sidebar/sidebar
+@import ../../views/includes/sections/header/header_tempalate/home
+@import ../../views/blocks/popup/popup
+@import ../../views/blocks/modal_basket/modal_basket
+@import includes/footer
+
+@import ../../views/blocks/popup/popup
+
+@import ../../views/includes/sections/header/header_top_bar
+@import ../../views/includes/sections/header/header_tempalate/transparent_gheader/header
+
+.product_container
+	padding-bottom: 35px
+	flex-direction: row
+	position: relative
+
+.section_sp
+	height: 3px
+	width: 100%
+	background-color: #9bce31
+.section_sidebar
+	//background-color: #fce8e9
+	width: 100vw
+	height: 100vh
+	position: fixed
+	z-index: 9999
+	left: 0
+	top: 0;
+	background-color: #fff
+	padding-left: 11px;
+	transform: translate(-100%, 0%)
+	transition: transform.45s
+	&.active
+		transform: translate(0px)
+		transition: transform.45s
+	&_mobileBtn
+		background-color: #9bce31;
+		color: #000;
+		font-size: 16px;
+		padding: 0 5px 5px 5px;
+		font-family: Roboto,sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		right: -49px;
+		transform: rotate(-90deg);
+		border-bottom-right-radius: 50%;
+		border-bottom-left-radius: 50%;
+		transition: transform.45s, right.45s
+		&.active
+			transform: rotate(90deg)
+			right: -25px
+			top: 69px
+			transition: transform.45s, right.45s
+	&_list
+		overflow: auto
+		display: flex
+		flex-direction: column
+.rezult-null
+	text-align: center;
+	font-weight: 600;
+	font-size: 12px;
+.section_product
+	width: 100%
+
+.product_title
+	padding-top: 36px!important
+	position: relative
+	font-size: 32px!important
+	text-align: center
+.product
+	&_list
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: center
+	&_filter
+		padding-top: 10px
+		display: flex
+		flex-direction: row
+		justify-content: flex-end
+		margin-bottom: 12px
+		align-items: center
+	&_totalProducts
+		color: #999999
+		font-size: 12px
+		font-family: $rob, sans-serif
+		margin-right: 16px
+	&_select
+		border: none
+		background-color: #e6e6e6
+		border-radius: 25px
+		color: #999999
+		font-size: 12px
+		font-family: $rob, sans-serif
+		outline: none
+		min-width: 143px
+		height: 26px
+		display: flex
+		align-items: center
+		padding-left: 15px
+	&_item
+		margin-left: 0
+	&_navigation
+		padding-top: 15px
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+
+
+	&_load_more_svg
+		cursor: pointer
+		width: 40px
+		height: 40px
+		path
+			fill: #cbcbcb
+		&:hover
+			animation: load_more 2s linear infinite
+
+.Load_More_Active
+	animation: 1s linear 0s normal none infinite running rot-vac
+	.Load_More_Svg_Path
+		fill: #7cb933
+		fill-rule: evenodd
+		transition: fill 300ms ease-in-out
+
+@keyframes load_more
+	from
+		transform: rotate(-360deg)
+
+@keyframes rot-vac
+	0%
+		transform: rotate(0deg) scale(0.8)
+	100%
+		transform: rotate(360deg) scale(0.8)
+
+@media( min-width: 320px) and (max-width: 600px)
+	.product_list
+		.product_item
+			margin-bottom: 8px;
+			margin-left: 5px;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			padding: 9px 8px 0 8px;
+			border-radius: 15px;
+			width: 46%;
+			margin-right: 5px;
+			min-height: 100%;
+			position: relative;
+		.product_item_name
+			font-size: 12px;
+		.product_item_description
+			font-size: 11px;
+			color: #666;
+		.product_item_price
+			color: #9c3;
+			font-size: 23px;
+			margin-bottom: 9px;
+		.product_item_btn_group .btn_product
+			width: 30px;
+
+
+@media(min-width: 600px)
+	.product
+		&_list
+			justify-content: flex-start
+@media(min-width: 768px)
+	.rezult-null
+		font-size: 20px;
+	.section_sidebar
+		width: 50vw
+		background-color: transparent
+	.product
+		&_list
+			justify-content: center
+@media(min-width: 996px)
+	.margin_left
+		margin-left: 16px
+	.section_sidebar
+		width: 24%
+		position: relative
+		height: auto
+		transform: translate(0%)
+		margin-right: 6px
+	.section_sidebar_mobileBtn
+		display: none
+	.product_title
+		text-align: left
+	.margin_bottom
+		margin-bottom: 38px
+	.product
+		&_list
+			justify-content: flex-start
+@media(min-width: 1150px)
+	.product
+		&_navigation
+			padding-top: 0
+
+// test fixed footer
+
+@media(min-width: 1440px)
+	body
+		height: 100vh
+	main
+		min-height: 100%
+	footer
+		margin-top: -402px; // размер футера (- margin)
+	.container_footer_padding
+		padding-bottom: 402px // размер футера (- margin)
+
+

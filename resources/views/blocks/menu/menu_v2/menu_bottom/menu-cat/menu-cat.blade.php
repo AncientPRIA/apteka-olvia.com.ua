@@ -1,0 +1,389 @@
+@php
+
+
+	$menu = [
+		[
+			"active" => true,
+			"title"=>"tile",
+			"link"=>"#",
+			"icon"=>"img/svg/user.svg",
+			"name"=>"32",
+			"submenu"=>[
+							[
+								"name"=>"31",
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+							],
+							[
+								"active" => true,
+								"name"=>"30",
+								"title"=>"tile-2",
+								"link"=>"#",
+							],
+							[
+								"active" => true,
+								"name"=>"29",
+								"title"=>"tile-2",
+								"link"=>"#",
+							],
+							[
+								"active" => true,
+								"name"=>"28",
+								"title"=>"tile-2",
+								"link"=>"#",
+								"submenu"=>[
+									[
+									"name"=>"27",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"26",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"25",
+									"title"=>"tile-3",
+									"link"=>"#",],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"24",
+								"submenu"=>[
+									[
+									"name"=>"23",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"22",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"21",
+									"title"=>"tile-3",
+									"link"=>"#",],
+								]
+							],
+							[
+								"name"=>"20",
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"submenu"=>[
+									[
+										"name"=>"19",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"18",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"17",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"16",
+								"submenu"=>[
+									[
+										"name"=>"15",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"14",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"13",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"12",
+								"submenu"=>[
+									[
+										"name"=>"11",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"10",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"9",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"8",
+								"submenu"=>[
+									[
+										"name"=>"7",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"6",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"5",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"4",
+								"submenu"=>[
+									[
+										"name"=>"3",
+										"title"=>"tile-3",
+										"link"=>"#",],
+									[
+										"name"=>"2",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"1",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+		]
+	],
+	[
+			"title"=>"tile",
+			"link"=>"#",
+			"icon"=>"img/svg/user.svg",
+			"name"=>"322",
+			"submenu"=>[
+							[
+								"name"=>"312",
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+							],
+							[
+								"active" => true,
+								"name"=>"302",
+								"title"=>"tile-2",
+								"link"=>"#",
+							],
+							[
+								"active" => true,
+								"name"=>"292",
+								"title"=>"tile-2",
+								"link"=>"#",
+							],
+							[
+								"active" => true,
+								"name"=>"228",
+								"title"=>"tile-2",
+								"link"=>"#",
+								"submenu"=>[
+									[
+									"name"=>"227",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"226",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"225",
+									"title"=>"tile-3",
+									"link"=>"#",],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"224",
+								"submenu"=>[
+									[
+									"name"=>"223",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"222",
+									"title"=>"tile-3",
+									"link"=>"#",],
+									[
+									"name"=>"221",
+									"title"=>"tile-3",
+									"link"=>"#",],
+								]
+							],
+							[
+								"name"=>"220",
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"submenu"=>[
+									[
+										"name"=>"192",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"18",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"127",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"162",
+								"submenu"=>[
+									[
+										"name"=>"125",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"124",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"123",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"122",
+								"submenu"=>[
+									[
+										"name"=>"121",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"120",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"92",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"228",
+								"submenu"=>[
+									[
+										"name"=>"72",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"62",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"52",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+							[
+								"active" => true,
+								"title"=>"tile-2",
+								"link"=>"#",
+								"name"=>"422",
+								"submenu"=>[
+									[
+										"name"=>"223",
+										"title"=>"tile-3",
+										"link"=>"#",],
+									[
+										"name"=>"222",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+									[
+										"name"=>"221",
+										"title"=>"tile-3",
+										"link"=>"#",
+									],
+								]
+							],
+		]
+	],
+];
+
+	if(isset($sidebar_menu)){
+		$menu = $sidebar_menu;
+		$menu[0]['active'] = true;
+		$active_full_sub = false;
+	}
+
+
+@endphp
+<div class="menu-cat-big menu-cat-big_hide">
+	<div class="menu-cat-big__left">
+		<ul class="menu-main">
+
+			@for($i=0;$i<count($menu);$i++)
+				@include("blocks.menu.menu_bottom.menu-cat.menu-big-list",[
+					"menu" => $menu[$i],
+					"index_lvl"=>1,
+					"index"=>$i,
+				])
+			@endfor
+		</ul>
+	</div>
+</div>

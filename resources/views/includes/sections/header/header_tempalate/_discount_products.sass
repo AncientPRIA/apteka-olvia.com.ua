@@ -1,0 +1,65 @@
+header
+	height: 100%
+	position: relative
+	//overflow: hidden
+.header
+	&_bg_white
+		display: none
+	&_bg
+		margin-bottom: 20px
+		position: relative
+		background: #fff
+		//min-height: 617px
+		padding-bottom: 15%
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: center;
+	&-content
+		//width: 60%;
+		display: flex;
+		min-height: 320px;
+		flex-direction: column;
+		padding-top: 120px
+	&-title
+		color: #fff
+		font-family: $rob,sans-serif
+		font-size: 18px
+	//&-subtitle
+	//	font-size: 38px
+	//	color: #fff
+	//	font-family: $rob,sans-serif
+	//	font-weight: bold
+	&-desc
+		font-size: 38px
+		color: #fff
+		font-family: $rob,sans-serif
+		font-weight: bold
+		max-width: 600px
+
+//font-size: 18px
+//font-family: $mus,sans-serif
+//font-weight: bold
+//color: #fff
+@media (min-width: 768px)
+	.header
+		&-content
+			width: 60%
+@media screen and (min-width: 996px)
+	.header
+		&_bg_white
+			display: block
+			position: absolute
+			background-size: cover
+			background-position: center bottom
+			background-repeat: no-repeat
+			bottom: -2px
+			left: 0
+			right: 0
+			padding-bottom: 8%
+		&_bg
+			margin-bottom: 0
+			background-position: right
+
+@import ../../../../blocks/menu/menu_gen
+@import ../../../../blocks/breadcrumbs/breadcrumbs
+

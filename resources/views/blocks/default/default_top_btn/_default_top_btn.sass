@@ -1,0 +1,42 @@
+.Btn_Scroll_Top
+	-webkit-tap-highlight-color: transparent
+	bottom: 113px
+	width: 35px
+	height: 35px
+	position: fixed
+	z-index: 99999
+	right: 4px
+	background-color: #99cc2f
+	border: 1px solid #99cc2f
+	border-radius: 100%
+	cursor: pointer
+	display: flex
+	align-items: center
+	justify-content: center
+	opacity: 0
+	visibility: hidden
+	
+.Btn_Scroll_Top, .Btn_Scroll_Top svg, .Btn_Scroll_Top:hover, .Btn_Scroll_Top:hover svg, .scroll-to-top_active
+	transition: all 300ms ease-in-out
+	
+.scroll-to-top_active
+	opacity: 1
+	visibility: visible
+
+.Btn_Scroll_Top
+	&:hover
+		background-color: white
+		svg
+			fill: #99cc2f
+	
+.Btn_Scroll_Top
+	svg
+		fill: #fff
+		width: 14px
+		height: 12px
+
+@media (min-width: 996px)
+	.Btn_Scroll_Top
+		bottom: 49px
+		width: 50px
+		height: 50px

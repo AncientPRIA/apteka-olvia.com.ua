@@ -1,0 +1,61 @@
+.advantages
+	
+	&_list
+		padding-top: 15px
+		padding-bottom: 15px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		align-items: center
+		
+	&_item
+		background-color: #f8f8f8
+		font-family: $rob,sans-serif
+		color: #666666
+		padding-top: 22px
+		padding-bottom: 17px
+		padding-left: 20px
+		margin-bottom: 16px
+		&:last-child
+			margin-bottom: 0
+			
+	&_item_title
+		font-weight: bold
+		color: #99cc33
+		margin-bottom: 12px
+		text-align: center
+		
+@media(min-width: 768px)
+	.advantages
+		&_list
+			flex-direction: row
+			flex-wrap: wrap
+		&_item
+			&:nth-child(1)
+				width: calc(50% - 8px)
+				margin-right: 16px
+			&:nth-child(2)
+				width: calc(50% - 8px)
+			&:nth-child(3)
+				width: 100%
+				
+@media(min-width: 1150px)
+	.advantages
+		&_list
+			flex-wrap: nowrap!important
+		&_item
+			margin-bottom: 0
+			margin-right: 16px
+			&:last-child
+				margin-right: 0
+			
+			&:nth-child(1)
+				width: auto!important
+				margin-right: 16px
+			&:nth-child(2)
+				width: auto!important
+			&:nth-child(3)
+				width: auto!important
+		&_item_title
+			text-align: left
+			

@@ -1,0 +1,51 @@
+.blog_item
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	padding-bottom: 50%
+	position: relative
+	margin: 12px
+	&:nth-child(1)
+		width: calc(30% - 12px)
+	&:nth-child(2)
+		width: calc(70% - 12px)
+		padding-bottom: 25%
+	&:nth-child(3)
+		width: calc(35% - 12px)
+		padding-bottom: 25%
+	&:nth-child(4)
+		width: calc(35% - 12px)
+		padding-bottom: 25%
+	
+	&_info
+		padding: 15px
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+	&_top
+		display: flex
+	&_date
+		font-family: $rob, sans-serif
+		color: #fff
+		font-size: 12px
+		margin-right: 25px
+	&_category
+		font-family: $rob, sans-serif
+		color: #fff
+		font-size: 12px
+		
+	&_footer
+		position: absolute
+		left: 10px
+		bottom: 10px
+	&_title
+		color: #fff
+		font-family: $rob, sans-serif
+		font-size: 16px
+		font-weight: bold
+	&_excerpt
+		color: #fff
+		font-family: $rob, sans-serif
+		font-size: 14px
+		
+		

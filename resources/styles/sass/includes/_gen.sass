@@ -1,0 +1,294 @@
++font_include(Pusia-Regular,Pusia-Regular,Pusia-Regular)
++font_include(Pusia-Medium,Pusia-Medium,Pusia-Medium)
++font_include(Pusia-Bold,Pusia-Bold,Pusia-Bold)
+
++font_include(Roboto,roboto,Roboto)
++font_include(MuseoSansCyrl,MuseoSansCyrl,MuseoSansCyrl)
+
+.fade-anim-enter
+	opacity: 0;
+	transform: scale(0.9);
+*
+	-webkit-tap-highlight-color: transparent
+body
+	font-family: $rob,sans-serif
+	width: 100%
+	//position: relative
+//header
+//	overflow: hidden
+	
+button, a
+	outline: none
+	-webkit-tap-highlight-color: transparent;
+.fade-anim-enter-active
+	opacity: 1;
+	transform: translateX(0);
+	transition: opacity 300ms, transform 300ms;
+.border_bottom
+	border-bottom: 1px solid #dddddd
+
+.fade-anim-exit
+	opacity: 1;
+
+.fade-anim-exit-active
+	 opacity: 0;
+	 transform: scale(0.9);
+	 transition: opacity 300ms, transform 300ms;
+.req
+	color: #E54461
+.dn
+	display: none
+
+.upload-container
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 25px;
+.btn-red_full
+	width: 100%
+	
+//.flickity-slider
+//	height: 100%
+
+.container-margin_15
+	padding-left: 15px
+	padding-right: 15px
+	
+.container
+	max-width: 1150px
+	width: calc(100% - 20px)
+	margin-right: auto
+	margin-left: auto
+	flex-direction: column
+	display: -webkit-box
+	display: flex
+
+
+.row_space-between
+	display: flex
+	width: 100%
+	justify-content: space-between;
+	border-bottom: 1px solid #7A6569;
+	margin-bottom: 20px;
+	flex-direction: column
+
+#Register-form .form-group
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 25px;
+.column-4
+	width: 100%
+.pos-rel_z-index_2
+	position: relative
+	z-index: 2
+.title-gen
+	font-family: $rob,sans-serif
+	font-weight: bold
+	font-style: normal
+	font-size: 30px
+	line-height: 1.2
+	//padding-top: 20px
+	padding-top: 76px
+	
+	h1
+		text-align: center
+		
+	&_7A6569
+		color: #7A6569
+	
+.sub-title-gen
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 36px;
+	font-family: $rob, sans-serif
+	&_7A6569
+		color: #7A6569
+.title-gen_flex
+	display: flex;
+	align-items: center;
+	justify-content: center;
+.title-desc-gen
+	font-family: $rob, sans-serif
+	font-style: normal
+	font-weight: normal
+	font-size: 16px
+	line-height: 21px
+	text-align: center
+	color: #FFFFFF
+.title-gen_mgt
+	margin-top: 20px
+.title-desc-gen_mgb
+	margin-bottom: 38px
+.tile-gen_svg
+	width: 156px
+	height: 52px
+	margin-left: 7px
+.container-block
+	max-width: 1130px
+	//width: calc(100% - 20px)
+	margin-right: auto
+	margin-left: auto
+.text_center
+	text-align: center
+.btn-love
+	position: relative
+	width: 88vw
+	height: 45px
+	background-color: #fff
+	color: #E54360
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+
+.btn_999-f66
+	color: #999
+	border-bottom: 1px dotted #999
+	font-weight: bold
+	font-size: 12px
+	cursor: pointer
+	transition: color 300ms ease, border-bottom 300ms ease
+	backface-visibility: hidden
+// column
+.row
+	display: flex
+	align-items: center
+	justify-content: space-between
+.col-6
+	width: 100%
+	//&:nth-child(2)
+	//	display: none
+.Call_Back .col-6:nth-child(2)
+	display: none
+// END column
+.Active_Favorit
+	background-color: #f66!important
+	svg path
+		fill: #fff
+.f-nav
+	transform: translateY(0px)!important
+	background-color: #7cb933
+	transition: all 300ms ease-in-out!important
+	will-change: auto;
+
+
+// TODO: AFTER SYNC
+.modal_basket_item_price, .modal_basket_totalPrice
+	opacity: 0 !important
+
+@media screen and (min-width: 768px)
+	.col-6
+		width: 50%
+	.row_space-between
+		flex-direction: row
+	.column-4
+		width: 33.3%
+	.title-gen
+		font-size: 28px;
+	.sub-title-gen
+		font-size: 20px;
+@media screen and (min-width: 996px)
+	::-webkit-scrollbar-track:hover
+	border-left: solid 1px #fff;
+	background-color: #fff
+
+	::-webkit-scrollbar-track
+		border-width: 0;
+		background-color: #fff
+
+	::-webkit-scrollbar-thumb
+		background-color: #7cb933
+
+	::-webkit-scrollbar
+		width: 8px
+
+	.btn_999-f66:hover
+		color: #f66
+		border-bottom: 1px dotted #f66
+		transition: color 300ms ease, border-bottom 300ms ease
+	.title-gen
+		font-size: 40px;
+	.sub-title-gen
+		font-size: 30px;
+		
+
+@media(min-width: 1150px)
+	.title-gen
+		//padding-top: 111px
+		padding-top: 76px
+	.container
+		width: calc(100% - 120px)
+
+.pswp
+	z-index: 999999
+
+// slider mobail card
+@media( min-width: 320px) and (max-width: 600px)
+	.product_item_too_mobail
+		.product_item
+			margin-left: 10px;
+			display: flex;
+			flex-direction: column;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			padding: 9px 8px 0 8px;
+			border-radius: 15px;
+			width: 46%;
+			min-width: 140px
+			margin-right: 10px;
+			min-height: 100%;
+			position: relative;
+		.product_item_name
+			font-size: 12px;
+		.product_item_description
+			font-size: 11px;
+			color: #666;
+		.product_item_price
+			color: #9c3;
+			font-size: 23px;
+			margin-bottom: 9px;
+		.product_item_btn_group .btn_product
+			width: 30px;
+			height: 30px;
+
+.slider-list
+	display: flex
+	flex-flow: row nowrap
+	overflow: hidden
+	& > div
+		flex-grow: 0;
+		flex-shrink: 0;
+.flickity-viewport
+	width: 100%
+
+.o_nas_text,.o_nas_sub_title
+	font-family: MuseoSansCyrl,sans-serif!important
+	line-height: calc(100% + 10px)
+.o_nas_sub_title
+	font-weight: 900
+.single_page_body
+	font-weight: 900
+	font-family: MuseoSansCyrl,sans-serif!important
+
+@media screen and (min-width: 1100px)
+	.o_nas_sub_title
+		font-size: 15px
+		color: #a3a3a3
+	.o_nas_text
+		font-size: 16px
+		color: #4d4d4d
+
+@media screen and (min-width: 2000px)
+	#form-subscribe
+		.input_error
+			bottom: -10px!important;
+			font-size: 13px!important;
+			//color: #fff!important;
+	.footer .subscription .btn_white
+		margin-top: 28px!important;
+	#form-call-back,#form-call-back-pharm,#product_item_review
+		.label_active
+			transform: translateY(-170%);
+	.Call_Back .input_error, .Call_Back_Pharma .input_error
+		font-size: 14px;
+

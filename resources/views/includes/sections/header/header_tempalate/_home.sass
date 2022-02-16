@@ -1,0 +1,146 @@
+header
+	height: 100%
+	position: relative
+	//overflow: hidden
+	.container_relative
+		z-index: 3
+
+ 
+.header
+	&_bg
+		background: #fff
+		//min-height: 617px
+		padding-bottom: 15%
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: center
+		&>picture>img
+			position: absolute
+			height: 100%
+	&-content
+		position: relative
+		padding-top: 70px
+		width: 74%;
+		display: flex;
+		margin-left: 25%;
+		min-height: 320px;
+		flex-direction: column;
+		justify-content: center;
+	&-title
+		font-size: 38px
+		color: #fff
+		font-family: $rob,sans-serif
+		font-weight: bold
+	&-subtitle
+		color: #fff
+		font-family: $rob,sans-serif
+		font-weight: bold
+		font-size: 28px
+		position: absolute
+		bottom: 0
+	&-desc
+		font-size: 18px
+		bottom: -6px;
+		position: absolute
+		font-family: monospace;
+		font-weight: bold
+		color: #fff
+		max-width: 600px
+		width: 100%
+.txt
+	position: absolute;
+	left: 0px;
+	top: 0;
+	font-family: monospace;
+	font-weight: 100
+	color: #fff
+	font-size: 12px
+.logo_home
+	width: 100px
+	height: 100px
+	position: absolute;
+	left: 6%;
+	bottom: 30%;
+	transform:  rotate3d(1, 1, 1,0deg);
+	transition: transform 3s ease-in-out
+	will-change: auto
+	&.active_rot
+		transform:  rotate3d(1, 1, 1,-360deg);
+		transition: transform 3s ease-in-out
+		will-change: auto
+
+.video_container
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	-webkit-background-size: cover!important;
+	-moz-background-size: cover!important;
+	background-size: cover!important;
+	background-position: 50% 50%!important;
+	z-index: 0;
+	overflow: hidden;
+	&::before
+		content: ""
+		position: absolute
+		width: 100%
+		height: 100%;
+		top: 0px
+		left: 0px
+		background-color: rgba(28, 116, 48, 0.4);
+		z-index: 1
+.video
+	min-width: 100%;
+	min-height: -webkit-calc(100% + 2px);
+	min-height: -moz-calc(100% + 2px);
+	min-height: calc(100% + 2px);
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+.header_bg_white
+	display: block;
+	position: absolute;
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	bottom: -2px;
+	left: 0;
+	right: 0;
+	padding-bottom: 8%;
+	z-index: 2
+@media screen and (min-width: 460px)
+	.txt
+		font-size: 14px
+@media screen and (min-width: 768px)
+	.txt
+		position: absolute;
+		left: 0px;
+		top: 0;
+		font-size: 18px
+	.logo_home
+		left: -22%;
+		bottom: -32px;
+@media screen and (min-width: 996px)
+	.header
+		&_bg
+			background-position: right
+		&-content
+			justify-content: flex-end;
+			padding-top: 0px
+		&-subtitle
+			position: relative
+			bottom: 0
+	.logo_home
+		left: -17%;
+		bottom: -26px;
+		
+@import ../../../../blocks/menu/menu_gen
+

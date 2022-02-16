@@ -1,0 +1,19 @@
+$rob: Roboto
+$mus: MuseoSansCyrl
+
+$full_path: '/fonts/'
+$title_color: #333
+
+=font_include($name,$folder,$name_url)
+
+	@font-face
+		font-family: quote($name)
+		font-display: swap
+		src: url(#{$full_path}#{$folder}/#{$name_url}.eot)
+		src: url(#{$full_path}#{$folder}/#{$name_url}.eot?#iefix) format('embedded-opentype')
+		src: url(#{$full_path}#{$folder}/#{$name_url}.ttf ) format('truetype')
+		src: url(#{$full_path}#{$folder}/#{$name_url}.ttf ) format('truetype')
+		src: url(#{$full_path}#{$folder}/#{$name_url}.woff) format('woff1')
+		src: url(#{$full_path}#{$folder}/#{$name_url}.woff2) format('woff2')
+		src: url(#{$full_path}#{$folder}/#{$name_url}.otf) format("opentype")
+

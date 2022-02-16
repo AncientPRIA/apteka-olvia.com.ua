@@ -1,0 +1,98 @@
+@import includes/reset
+@import includes/_vars
+
+@import ../../views/includes/sections/header/header_tempalate/home
+@import includes/_gen
+
+@import ../../views/includes/sections/header/header_top_bar
+@import ../../views/blocks/btn/btn
+@import ../../views/blocks/slider/items/_slider_pharmacy_item
+@import ../../views/blocks/slider/slider_section
+@import ../../views/blocks/menu/menu_gen
+@import ./includes/form
+
+@import ../../views/blocks/popup/popup
+@import ./includes/form_checkbox
+@import ../../views/blocks/modal_basket/modal_basket
+@import includes/footer
+@import ../../views/blocks/btn/btn_style_home
+@import ../../views/includes/sections/header/header_tempalate/transparent_gheader/header
+@import includes/animation
+
+.map-wrapper
+	position: relative;
+	z-index: 1;
+	visibility: hidden
+
+#map_hider
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.5);
+	z-index: 8000;
+.title_gen
+	padding-top: 32px!important
+.title_our_pharmacies
+	border-bottom: 3px solid #99cc2f
+	//width: 34%
+	padding-bottom: 9px
+	margin-bottom: 8px
+	visibility: hidden
+.section-header
+	text-align: left
+
+
+.cards_list_cities
+	.tab_btn
+		color: #999999
+		padding: 10px 48px
+		border: 1px solid transparent
+		transition: all.45s
+		margin-right: 5px
+		&:last-child
+			margin-right: 0pharmacy_item_phone_container
+			
+		&.active
+			border: 1px solid #ff6666
+			color: #ff6666
+			transition: all.45s
+		&:hover
+			border: 1px solid #ff6666
+			color: #fff
+			transition: all.45s
+		
+
+.category-tab-slider
+	margin-top: 20px
+	margin-bottom: 30px
+	visibility: hidden
+
+.slider-sell-prev
+	left: 0
+	width: 16px
+.slider-sell-next
+	right: 0
+	width: 16px
+	
+.map
+	width: 100%
+	height: 400px
+	margin-bottom: 30px
+
+
+
+
+@media(min-width: 1025px)
+	//#map_hider
+	//	display: none
+
+@media(min-width: 1150px)
+	.slider-sell-prev
+		left: 16px
+		width: 16px
+	.slider-sell-next
+		right: 16px
+		width: 16px

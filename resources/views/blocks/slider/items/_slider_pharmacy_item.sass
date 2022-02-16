@@ -1,0 +1,189 @@
+.pharmacy_item
+	margin-right: 25px
+	min-height: 100%
+	width: 100%
+	display: flex
+	flex-direction: column
+	font-family: $rob, sans-serif
+	
+	&_phone_container
+		display: flex
+		flex-direction: row
+		padding-bottom: 8px
+	
+	&_info_footer
+		margin-top: 44px
+		display: flex
+		flex-direction: row
+		position: absolute
+		bottom: 0
+		width: 100%
+	
+	&_info_top
+		flex-grow: 1
+		height: 100%
+	
+	&_top, &_img, &_info_top
+		display: flex
+		flex-direction: row
+		position: relative
+	
+	&_info
+		display: flex
+		flex-direction: column
+		position: relative
+		padding-bottom: 20px
+		flex-grow: 1
+		padding-top: 15px
+	
+	&_time
+		display: flex
+		align-items: center
+		background-color: rgba(255, 102, 102, 0.5)
+		padding: 5px
+		border-bottom-right-radius: 24px
+		
+	& .text_link
+		transition: all .25s linear
+		&:hover
+			color: #f66
+			
+		
+		.pharmacy_item_text
+			font-size: 13px
+			margin-top: 0px
+			color: #fff
+			font-family: $mus, sans-serif
+
+	
+	&_phone_link_text_breaker
+	
+	
+	&_address, &_phone
+		//, &_time
+			   &:before
+				   content: ""
+				   position: absolute
+				   bottom: -24px
+				   width: 48%
+				   height: 1px
+				   background-color: #e1e1e1
+	
+	
+	.margin-left
+		margin-left: 18px
+	
+	&_col_left
+		width: 49.9%
+		display: flex
+		flex-direction: column
+	
+	&_col_right
+		width: 49.9%
+		display: flex
+		flex-direction: column
+	
+	&_top
+		margin-bottom: 15px
+		
+		.pharmacy_item_title
+			color: #808080
+	
+	&_svg
+		margin-bottom: 20px
+	
+	.svg_name
+		width: 27px
+		height: 27px
+	
+	.pharm_map
+		width: 27px
+		height: 27px
+	
+	.svg_address
+		width: 20px
+		height: 25px
+	
+	.svg_phone
+		width: 12px
+		height: 24px
+	
+	.svg_time
+		width: 19px
+		height: 19px
+		margin-right: 6px
+	
+	&_title
+		font-size: 16px
+		color: #4d4d4d
+		text-transform: uppercase
+		font-weight: bold
+	
+	&_img_photo, &_img_map
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		padding-bottom: 45%
+		background-color: #79848a
+	
+	&_text
+		font-size: 13px
+		color: #79848a
+		margin-top: 18px
+		display: flex
+		
+		a
+			color: #79848a
+			&:hover
+				color: #f66
+		
+		&-column
+			flex-direction: column
+	
+	.btn_print
+		cursor: pointer
+		//display: flex
+		flex-direction: row
+		margin-top: auto
+		display: none
+		
+		&_svg
+			margin-right: 8px
+			width: 19px
+			height: 19px
+		
+		&_text
+			font-size: 12px
+			color: #79848a
+			font-family: $mus, sans-serif
+			text-decoration: underline dashed #79848a
+
+.Contact_Info_Phone_Icon
+	//position: relative
+	//margin-left: 12px
+	//margin-top: -15px
+	//padding-bottom: 6px
+	margin-left: 2px
+	margin-top: -12px
+
+.Contact_Info_Icon_Slider_Item
+	position: absolute
+	width: 18px
+	transition: all 300ms ease-in-out
+
+@media(min-width: 768px)
+	.pharmacy_item
+		width: 50%
+
+@media(min-width: 996px)
+	.pharmacy_item
+		width: 560px
+//&_text
+//	font-size: 17px
+//@media(min-width: 1150px)
+//	.pharmacy_item
+	
+	
+	
+	
+	

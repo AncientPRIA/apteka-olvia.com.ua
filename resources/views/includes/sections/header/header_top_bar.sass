@@ -1,0 +1,153 @@
+
+.header-top-bar
+	background-color: #fff
+	display: flex
+	align-items: center
+	justify-content: space-between
+	height: 52px
+.time-work
+	display: flex;
+	align-items: center;
+	&__text
+		color: #999999
+		font-family: $rob, sans-serif
+		font-size: 13px
+		font-weight: 400
+		line-height: 12.97px
+.watch-svg
+	width: 17px
+	height: 17px
+	fill: #48845c
+	margin-right: 6px
+.phone-svg
+	width: 14px
+	height: 14px
+	fill: #156330
+	margin-right: 7px
+.phone-list
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 57px;
+	visibility: hidden
+	opacity: 0
+	transform: translateX(-50%)
+	transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out, transform 300ms ease-in-out
+	will-change: opacity, transform
+	color: #fff
+	&__item svg
+		display: none
+	&__link
+		color: #fff
+		font-family: $rob, sans-serif
+		font-size: 20px
+		font-weight: 400
+		line-height: 12.97px
+		text-decoration: none
+		cursor: pointer
+.phone-list-active
+	padding: 12px;
+	top: 51px
+	position: fixed;
+	height: calc(100vh - 52px);
+	left: 0
+	width: 100%
+	align-items: center;
+	justify-content: center;
+	z-index: 9;
+	//background-color: #fff;
+	background-color: #FF5454
+	//border-radius: 7px;
+	transform: translateX(0px)
+	opacity: 1
+	visibility: visible
+	transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out, transform 300ms ease-in-out
+	.phone-list__item
+		padding-bottom: 15px
+		padding-top: 15px
+.header-top-bar-phone
+	//display: block
+	//width: 18px
+	//height: 18px
+	display: flex
+	align-items: center
+	justify-content: center
+	width: 52px
+	height: 100%
+	background-color: transparent
+	transition: background-color.45s
+	margin-left: -10px
+	svg
+		width: 18px
+		height: 18px
+		fill: #f66
+	&.active
+		background-color: #FF5454
+		transition: background-color.45s
+		
+		svg
+			fill: #fff
+@import ../../../blocks/social/link-group/social_list
+
+@media screen and (min-width: 769px)
+	.header-top-bar-phone
+		display: none
+	.phone-list
+		display: flex;
+		list-style: none;
+		padding: 0;
+		flex-direction: row;
+		position: relative;
+		top: 0;
+		margin-left: 0
+		visibility: visible;
+		opacity: 1;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(0%);
+		&__item
+			padding-left: 27px
+			font-size: 9px
+			display: flex;
+			align-items: center;
+		&__link
+			color: #999999
+			font-family: $rob, sans-serif
+			font-size: 9px
+			font-weight: 400
+			line-height: 12.97px
+			text-decoration: none
+			cursor: pointer
+			transition: color 300ms ease
+			&:hover
+				transition: color 300ms ease
+				color: #ff6666
+		&__call
+			color: #ff6666
+			font-family: Roboto
+			font-size: 9px
+			font-weight: 700
+			line-height: 13.99px
+			border-bottom: 1px dotted #ff6666
+			transition: color 300ms ease, border-bottom 300ms ease
+			cursor: pointer
+			&:hover
+				transition: color 300ms ease, border-bottom 300ms ease
+				border-bottom: 1px dotted #999999
+				color: #999999
+@media screen and (min-width: 996px)
+	.phone-list
+		&__item
+			font-size: 13px
+			svg
+				display: block
+		&__link
+			font-size: 13px!important
+		&__call
+			font-size: 14px!important
+			
+@media screen and (min-width: 2000px)
+	.container-fixed4k
+		position: fixed
+		z-index: 999999
+		width: 100%
+		background-color: #fff

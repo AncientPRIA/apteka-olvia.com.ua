@@ -1,0 +1,56 @@
+.checkbox-container // input container for checkbox, please, add both classes (!)
+	display: flex
+	align-items: center
+	justify-content: center
+
+.checkbox  // Check box. Used in js
+	width: 12px
+	height: 12px
+	background-color: #E6E6E6
+	border-radius: 3px
+	margin-right: 0.83vw
+	cursor: pointer
+	display: flex;
+	align-items: center;
+	justify-content: center
+
+.checkbox-mark // Check mark.
+	width: 9px
+	height: 9px
+	display: flex
+	align-items: center
+	justify-content: center
+	opacity: 0
+	transition: opacity 300ms ease-in-out
+.checkbox.active .checkbox-mark // Check mark, when checkbox active
+	opacity: 1
+	transition: opacity 300ms ease-in-out
+
+.svg-check // svg inside check mark
+	width: 100%
+	height: 100%
+	fill: #b3b34e
+
+.checkbox-text // checkbox label
+	font-family: $rob,sans-serif
+	font-size: 13px
+	color: #808080
+	cursor: pointer
+
+
+@media screen and (min-width: 996px)
+	.checkbox-container // input container for checkbox, please, add both classes (!)
+		//justify-content: flex-start;
+	.checkbox // Check box. Used in js
+		//width: 1vw
+		//height: 1vw
+	.checkbox-text // checkbox label
+		//font-size: 1.08vw
+
+
+@media screen and (min-width: 2000px)
+	.checkbox
+		width: 15px
+		height: 15px
+	.checkbox-text
+		font-size: 17px

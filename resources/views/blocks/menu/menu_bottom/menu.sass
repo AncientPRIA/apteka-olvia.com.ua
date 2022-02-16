@@ -1,0 +1,26 @@
+.menu-bottom
+	display: flex
+	align-items: center
+.menu-bottom .menu-column-right
+	display: flex
+	align-items: center
+	justify-content: space-between
+.mobail_btn
+	display: flex
+	align-items: center
+	justify-content: space-between
+	.btn-cart
+		margin-left: 12px
+		margin-right: 12px
+.menu-column-right
+	.btn-favorit,.btn-cart,.btn-autf
+		display: none
+@media (min-width: 992px)
+	.mobail_btn
+		display: none
+	.menu-column-right
+		.btn-favorit,.btn-cart,.btn-autf
+			display: flex
+			-webkit-tap-highlight-color: transparent
+@import ./menu-cat/menu-cat
+@import ./search/search

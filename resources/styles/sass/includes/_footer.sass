@@ -1,0 +1,354 @@
+@import ../../../views/blocks/default/default
+@import animation
+@import ./modal_politica
+
+footer
+	margin-top: 30px
+	background-size: cover
+	background-position: center
+	background-repeat: no-repeat
+	background-color: #a2a346
+.bdbefc4a-7431-48d6-b5bf-07dc5ddf74a3
+	stroke: #50723f!important
+.footer
+	padding-bottom: 20px
+	&_bg
+		background-position: 68%
+		background-repeat: no-repeat
+		background-size: cover
+	&_logo
+		width: 150px
+		height: 150px
+		margin-bottom: 15px
+		svg
+			width: 100%
+			height: 100%
+	&_first_list
+		display: flex
+		flex-direction: column
+		padding-top: 38px
+		padding-bottom: 30px
+		justify-content: space-between
+		align-items: center
+		
+	&_title
+		text-transform: uppercase
+		color: #fff
+		font-family: $rob,sans-serif
+		font-weight: bold
+		margin-bottom: 27px
+		text-align: center
+		padding-left: 19px;
+		display: block
+	&_menu_list
+		display: flex
+		flex-direction: column
+		.menu_list_right
+			margin-top: 40px
+			list-style: disc
+			display: flex
+			flex-direction: column
+			padding-bottom: 10px
+			.menu_item
+				padding-left: 19px
+	.menu_item
+		margin-bottom: 25px
+		display: flex
+		&:last-child
+			margin-bottom: 0
+		.menu_item_svg
+			width: 14px
+			height: 14px
+			margin-right: 5px
+			svg
+				width: 100%
+				height: 100%
+				path, polygon
+					fill: #50723f
+	.menu_link
+		color: #fff
+		text-transform: uppercase
+		font-family: $rob,sans-serif
+		font-weight: bold
+		position: relative
+		&:before
+			content: ""
+			position: absolute
+			bottom: -2px
+			background-color: #fff
+			height: 1px
+			width: 0%
+			transition: width.45s
+			
+	.menu_link-footer
+		width: fit-content
+		&:before
+			background-color: black
+			
+		&:hover
+			&:before
+				width: 100%
+				transition: width.45s
+				
+	.subscription
+		//background-color: #778841
+		border-radius: 25px
+		padding: 40px 38px
+		//margin-left: 94px
+		display: flex
+		flex-direction: column
+		max-width: 287px
+		background-color: rgba(119, 136, 65, 0.3)
+		
+		.btn_white
+			border-color: #fff
+			color: #fff
+			margin-top: 13px
+			width: 100%
+			background-color: transparent
+			transition: background-color.45s, color.45s
+
+			&:hover
+				background-color: #f66
+				color: white
+				transition: background-color.45s, color.45s
+		
+		&_title
+			color: #fff
+			text-transform: uppercase
+			margin-bottom: 30px
+			font-family: $rob,sans-serif
+			font-weight: bold
+			
+		&_sub_title
+			color: #fff
+			font-family: $rob,sans-serif
+			margin-bottom: 14px
+				
+		.form-group
+			margin-bottom: 14px
+			
+	&_info
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		flex-wrap: wrap
+		align-items: center
+		
+	&_info_time
+		display: flex
+		align-items: center
+		color: #fff
+		font-family: $rob,sans-serif
+		order: 2
+	&_info_svg
+		margin-right: 9px
+		width: 17px
+		height: 17px
+		display: none
+	
+	&_info_phone
+		display: flex
+		order: 1
+		width: 100%
+		margin-bottom: 10px
+		
+	&_info_phone_list
+		display: flex
+		padding-bottom: 6px
+		flex-wrap: wrap
+		width: 100%
+		justify-content: space-between
+		a
+			position: relative
+			color: #fff
+			margin: 10px auto
+			&:before
+				content: ""
+				position: absolute
+				bottom: -2px
+				background-color: black
+				height: 1px
+				width: 0%
+				transition: width.45s
+			&:hover
+				&:before
+					width: 100%
+					transition: width.45s
+
+				
+	&_info_social
+		display: flex
+		justify-self: flex-end
+		align-items: center
+		order: 3
+	&_info_social_item
+		margin-right: 13px
+		width: 15px
+		height: 15px
+		svg
+			path
+				fill: #fff
+		&:last-child
+			margin-right: 0
+		
+	&_bottomLine
+		background-color: #063c24
+		padding-top: 12px
+		padding-bottom: 19px
+		position: relative
+	&_link_list
+		display: flex
+		justify-content: space-between
+		width: 50%
+		margin-top: 8px
+	&_bottomList
+		flex-direction: row
+		justify-content: space-between
+		padding-bottom: 0
+		flex-wrap: wrap;
+		align-items: center
+	&_copyright
+		color: #fff
+		font-family: $rob,sans-serif
+		width: 100%;
+		text-align: center;
+	&_link_item
+		&:before
+			content: ""
+			position: absolute
+			bottom: -2px
+			background-color: #fff
+			height: 1px
+			width: 0%
+			transition: width.45s
+		&:hover
+			&:before
+				width: 100%
+				transition: width.45s
+
+	&_link_item, &_copyright
+		position: relative
+		color: #fff
+		font-family: $rob,sans-serif
+		font-size: 11px
+
+
+@media(min-width: 768px)
+	.footer
+		.menu_link
+			color: #333
+		&_title, &_info_time
+			color: #333
+		&_info_phone_list
+			a
+				color: #333
+		&_info_social_item
+			svg
+				path
+					fill: #333
+		&_logo
+			svg
+				path
+					fill: #333
+		
+		&_bg
+			background-position: center
+		&_link_item, &_copyright
+			font-size: 12px
+		&_copyright
+			width: unset
+		&_title
+			text-align: left
+		&_logo
+			margin-bottom: 0
+		&_first_list
+			flex-direction: row
+		&_menu_list
+			.menu_list_right
+				margin-top: 25px
+		&_info_phone
+			width: 100%
+		&_info_phone_list
+			width: 100%
+			
+		&_bottomList
+			align-items: center
+			flex-direction: row
+		&_link_list
+			margin-top: 0
+			justify-content: flex-start
+			width: auto
+		
+		&_link_item
+			margin-right: 55px
+			&:last-child
+				margin-right: 0px
+@media(min-width: 800px)
+	.footer
+		&_logo
+			width: 200px
+			height: 200px
+@media(min-width: 1024px)
+	.footer
+		&_info_phone
+			width: auto
+		&_info_phone_list
+			a
+				margin: 0px 13px
+@media(min-width: 1150px)
+	.footer
+		padding-bottom: 0
+		&_info
+			justify-content: center
+		&_logo
+			margin-right: 60px
+		&_menu_list
+			display: flex
+			//flex-direction: row
+			.menu_list_left
+				//margin-right: 60px
+			.menu_list_right
+				//margin-top: 0!important
+				//display: flex
+				//flex-direction: column
+		&_info
+			flex-direction: row
+			justify-content: space-between
+			flex-wrap: nowrap
+		&_info_phone_list
+			flex-wrap: nowrap
+			width: auto!important
+			a
+				margin-right: 28px
+				margin-bottom: 0
+				&:last-child
+					margin-right: 0
+		&_info_phone
+			flex-wrap: nowrap
+			width: auto!important
+			order: 2
+			margin-bottom: 0
+		&_info_time
+			margin-right: 65px
+			order: 1
+		&_info_social
+			margin-bottom: 15px
+			order: 3
+		
+		//.subscription
+		//	margin-left: 94px
+@media(min-width: 2000px)
+	.footer
+		.subscription
+			.btn_white
+				margin-top: 28px
+			
+		
+			
+		
+		
+		
+		
+	
+		

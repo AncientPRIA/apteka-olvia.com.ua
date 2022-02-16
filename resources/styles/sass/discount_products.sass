@@ -1,0 +1,76 @@
+@import includes/reset
+@import includes/_vars
+
+@import ../../views/includes/sections/header/header_top_bar
+//@import ../../views/includes/sections/header/header_tempalate/home
+@import ../../views/includes/sections/header/header_tempalate/blog
+
+@import includes/_gen
+
+@import ../../views/blocks/slider/items/slider_product_item
+@import ../../views/blocks/btn/btn
+@import includes/footer
+@import ./includes/form
+@import ../../views/blocks/btn/btn_style_home
+
+@import ../../views/blocks/popup/popup
+@import ./includes/form_checkbox
+@import ../../views/blocks/modal_basket/modal_basket
+
+
+
+.discount_products
+	&_title
+		margin-bottom: 22px
+		text-align: center
+		span
+			border-bottom: 3px solid #99cc2f
+			padding-bottom: 3px
+			
+	&_list
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		
+.product_item
+	margin-right: 8px
+	margin-left: 8px
+
+@media( min-width: 320px) and (max-width: 600px)
+	.discount_products_list
+		.product_item
+			margin-bottom: 8px;
+			margin-left: 5px;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			padding: 9px 8px 0 8px;
+			border-radius: 15px;
+			width: 46%;
+			margin-right: 5px;
+			min-height: 100%;
+			position: relative;
+		.product_item_name
+			font-size: 12px;
+		.product_item_description
+			font-size: 11px;
+			color: #666;
+		.product_item_price
+			color: #9c3;
+			font-size: 23px;
+			margin-bottom: 9px;
+		.product_item_btn_group .btn_product
+			width: 30px;
+	
+@media(min-width: 626px)
+	.discount_products
+		&_title
+			text-align: left

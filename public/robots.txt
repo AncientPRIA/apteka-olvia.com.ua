@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: *?*
+Disallow: /admin
+Disallow: /cart
+
+User-agent: GoogleBot
+Disallow: *?*
+Disallow: /admin
+Disallow: /cart
+
+User-agent: Yandex
+Disallow: *?*
+Disallow: /admin
+Disallow: /cart
+
+Host: https://apteka-olvia.com.ua/
+Sitemap: https://apteka-olvia.com.ua/sitemap.xml

@@ -1,0 +1,13 @@
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "MuseoSansCyrl-100";
+  src: url("./fonts/MuseoSansCyrl.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/MuseoSansCyrl.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/MuseoSansCyrl.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/MuseoSansCyrl.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/MuseoSansCyrl.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/MuseoSansCyrl.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/MuseoSansCyrl.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}

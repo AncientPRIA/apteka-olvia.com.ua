@@ -1,0 +1,136 @@
+.menu-column
+	&-left
+		height: auto
+		width: 50%;
+		max-width: 50%; //276
+		margin-right: 12px
+	&-right
+		width: 50%;
+		max-width: 50%; //851
+		margin-left: 12px
+
+		.btn-autf
+			transition: color .45s
+			&:hover
+				color: #f66
+				transition: color .45s
+
+.menu-bottom
+	flex-direction: column
+	.menu-column
+		&-left
+			width: 100%;
+			max-width: 100%; //276
+			margin-right: 0px
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding-bottom: 12px
+		&-right
+			width: 100%;
+			max-width: 100%; //851
+			margin-left: 0px
+.desktop
+	display: none!important
+.mobail
+	display: flex!important
+.menu-bottom
+	flex-direction: column
+.menu-mobail
+	padding-top: 10px
+	.menu-column
+		&-left
+			width: 70px;
+			max-width: 70px; //276
+			min-height: 60px
+			img
+				width: 100%
+				height: 100%
+		&-right
+			width: 100%;
+			max-width: 100%; //851
+			margin-left: 0px
+			display: flex
+			align-items: center
+			justify-content: space-between
+
+	.menu-column-right .btn-autf, .menu-column-right .btn-cart, .menu-column-right .btn-favorit
+		display: flex
+
+.menu-mobail-container
+	flex-direction: column
+	//transition: all .3s ease-in-out;
+	width: 100%;
+	position: absolute;
+	transform: translateY(60px)
+	transition: all 200ms ease-in-out
+	top: 0px;
+	z-index: 8;
+	left: 0px
+	padding:
+		left: 10px
+		right: 10px
+	.form-search
+		width: 100%;
+		height: 45px;
+		margin-top: 8px;
+	.search-btn-menu
+		border-radius: 100%
+		width: 20px
+		height: 20px
+		fill: #fff;
+	.header_transparent .btn-autf svg path
+		fill: #fff!important
+	.mobail_form_container
+		display: none
+
+
+@media (min-width: 992px)
+	.desktop
+		display: flex!important
+	.mobail
+		display: none!important
+	.menu-bottom
+		flex-direction: row
+	.menu-column
+		&-left
+			height: 46px
+			width: 24%;
+			max-width: 254px; //276
+			padding-bottom: 0px
+		&-right
+			width: 74%;
+			max-width: 839px;
+	.menu-bottom
+		flex-direction: row
+		.menu-column
+			&-left
+				width: 24%;
+				max-width: 254px;
+				margin-left: 12px
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				padding-bottom: 0px
+			&-right
+				width: 74%;
+				max-width: 839px;
+				margin-left: 12px
+				align-items: unset;
+	.menu-top
+		.menu-column-left
+			height: 58px
+		.menu-column-right
+			max-height: 58px
+
+@import ./menu_top/menu
+@import ./menu_bottom/menu
+@import ./menu_top/btn/menu-btn
+
+.search-btn-menu
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	fill: #fff;
+.header_transparent .btn-autf svg path
+	fill: #fff;

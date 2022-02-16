@@ -1,0 +1,87 @@
+.menu-aside
+	&-sub-item-level-1
+		padding-bottom: 5px
+		padding-top: 5px
+		padding-right: 2px
+		padding-left: 2px
+		border-bottom: 2px solid #666666;
+		&>div a, &>a
+			color: #666666
+			font-family: $rob,sans-serif
+			font-weight: bold
+			font-size: 16px
+			display: block
+			width: 90%
+	&-sub-item-level-2
+		padding-bottom: 5px
+		padding-top: 5px
+		padding-left: 8px
+		width: 100%
+		margin-right: 20px;
+		&>div a, &>a
+			color: #666666
+			font-family: $rob,sans-serif
+			font-weight: bold
+			font-size: 16px
+			display: block
+			width: 90%;
+	&-sub-item-level-3
+		padding-left: 10px
+		&>div a, &>a
+			color: #666666
+	&-sub-item
+		font-size: 16px
+		padding-top: 10px
+		padding-bottom: 10px
+		&__nav
+			display: flex
+			align-items: center
+			margin-right: 5px
+			&-wrap
+				width: 90%;
+				display: flex;
+				align-items: center;
+		&__icon
+			width: 14px;
+			height: 14px;
+			margin-right: 6px
+	&-sub
+		&-level-2
+			display: none
+			&.show_lvl
+				display: block
+		&-level-1
+			width: 100%;
+			overflow-x: hidden;
+			height: 100%;
+			padding: 0px 20px
+			display: none;
+			&.show_lvl
+				display: block
+.toggle-menu-aside
+	width: 10%
+	display: block
+	padding: 4px;
+	cursor: pointer
+	transition: transform 300ms ease-in-out
+	transform: rotate(0deg)
+		z-index: 9999;
+	&_open
+		transition: transform 300ms ease-in-out
+		transform: rotate(90deg)
+		
+.current
+	background-color: #FCE8E9
+
+.menu-aside-sub-item-level-1
+	.menu-aside-sub-item__nav
+		-webkit-tap-highlight-color: transparent
+		a
+			color: #ff6665
+	&>a
+		color: #ff6665
+.menu-aside-sub-item-level-2
+	.menu-aside-sub-item__nav
+		a
+			color: #666666
+		

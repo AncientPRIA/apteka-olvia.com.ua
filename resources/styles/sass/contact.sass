@@ -1,0 +1,522 @@
+@import includes/reset
+@import includes/_vars
+@import includes/_gen
+
+@import includes/animation
+
+@import ../../views/blocks/btn/btn
+@import ../../views/includes/sections/header/header_tempalate/transparent_gheader/header
+@import includes/footer
+@import ../../views/blocks/menu/menu_gen
+@import ../../views/blocks/btn/btn_style_home
+@import ./includes/form
+@import ./includes/form_checkbox
+@import ../../views/blocks/forms/contact_form/contact_form
+@import ../../views/includes/sections/header/header_top_bar
+@import ../../views/blocks/popup/popup
+@import ../../views/blocks/btn/btn_style_home
+@import ../../views/blocks/modal_basket/modal_basket
+
+
+.contact
+	padding-bottom: 30px
+	
+	&_list
+		display: flex
+		flex-direction: column
+	
+	&_col_left
+		width: 100%
+	
+	&_col_right
+		width: 100%
+		margin-top: 100px
+		visibility: hidden
+	
+	&_title
+		margin-bottom: 30px
+		padding-top: 34px !important
+		visibility: hidden
+		
+		h1
+			text-align: left
+		
+		span
+			position: relative
+			
+			&:after
+				content: ""
+				position: absolute
+				bottom: -9px
+				height: 2px
+				width: 100%
+				left: 0
+				background-color: #9bce31
+	
+	.textarea_label
+		top: 17px
+	
+	.textarea_input
+		padding: 10px
+
+
+.pharmacy_item
+	margin-right: 25px
+	min-height: 100%
+	width: 100%
+	
+	display: flex
+	flex-direction: column
+	
+	font-family: $rob, sans-serif
+	
+	&_phone_container
+		height: 22px
+		display: flex
+		flex-direction: row
+	
+	&_col_title
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: center
+		margin-top: 8px
+		margin-bottom: 8px
+	
+	&_info_footer
+		margin-top: 44px
+		display: flex
+		flex-direction: column
+		position: absolute
+		bottom: -20px
+		width: 100%
+	
+	&_info_top
+		flex-grow: 1
+		height: 100%
+	
+	&_top, &_img, &_info_top
+		display: flex
+		flex-direction: column
+		position: relative
+	
+	&_info
+		display: flex
+		flex-direction: column
+		position: relative
+		padding-bottom: 140px
+		flex-grow: 1
+		padding-top: 15px
+	
+	
+	&_address, &_phone, &_time, &_email
+		&:before
+			display: none
+	
+	&_col_left, &_col_right
+		width: 100%
+		display: flex
+		flex-direction: column
+		visibility: hidden
+	
+	
+	&_top
+		margin-bottom: 15px
+		
+		.pharmacy_item_title
+			color: #808080
+	
+	&_svg
+		margin-right: 20px
+	
+	.svg_name
+		width: 27px
+		height: 27px
+	
+	.pharm_map
+		width: 27px
+		height: 27px
+	
+	.svg_address
+		width: 20px
+		height: 25px
+	
+	.svg_phone
+		width: 12px
+		height: 24px
+	
+	.svg_time
+		width: 25px
+		height: 21px
+	
+	&_title
+		font-size: 16px
+		color: #4d4d4d
+		text-transform: uppercase
+		font-weight: bold
+	
+	&_img_photo, &_img_map
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		padding-bottom: 45%
+		background-color: #79848a
+	
+	&_text
+		font-size: 17px
+		color: #79848a
+		margin-top: 18px
+		display: flex
+		justify-content: center
+		transition: all 0.25s linear
+		
+		&.text_link
+			&:hover
+				color: #f66
+	
+	.btn_print
+		cursor: pointer
+		display: flex
+		flex-direction: row
+		margin-top: auto
+		position: absolute
+		bottom: -75px
+		align-items: center
+		
+		&_svg
+			margin-right: 8px
+			width: 19px
+			height: 19px
+		
+		&_text
+			font-size: 12px
+			color: #79848a
+			font-family: $mus, sans-serif
+			text-decoration: underline dashed #79848a
+
+.Contact_Info_Phone_Icon
+	//position: relative
+	//margin-left: 12px
+	//margin-top: -15px
+	display: flex
+	margin-left: 2px
+	margin-top: -12px
+
+.Contact_Info_Phone_Container
+	display: flex
+	padding-bottom: 12px
+	justify-content: center
+	
+	a
+		color: #79848a
+		font-size: 13px
+		transition: all 0.25s linear
+		
+		&:hover
+			color: #f66
+
+.pharmacy_item_text-column
+	flex-direction: column
+
+
+.Contact_Info_Icon_Slider_Item
+	position: relative
+	width: 18px
+	transition: all 300ms ease-in-out
+	margin-right: 2px
+	
+	&:last-child
+		margin-right: 0
+
+@media(min-width: 768px)
+	.Contact_Info_Phone_Container
+		justify-content: flex-start
+	.pharmacy_item
+		//width: 560px
+		&_address, &_phone, &_time, &_email
+			&:before
+				content: ""
+				display: block
+				position: absolute
+				bottom: -24px
+				width: 100%
+				height: 2px
+				background-color: #e1e1e1
+		
+		.margin-left
+			margin-left: 18px
+		
+		&_info_top
+			flex-direction: row
+		
+		&_top
+			flex-direction: row
+		
+		&_col_title
+			flex-direction: column
+			justify-content: flex-start
+			align-items: flex-start
+			margin-top: 0
+			margin-bottom: 15px
+		
+		&_text
+			justify-content: flex-start
+		
+		&_svg
+			margin-bottom: 20px
+			margin-right: 0
+		
+		&_info_footer
+			flex-direction: row
+			bottom: 0
+		
+		&_col_left
+			width: 50%
+		
+		&_col_right
+			width: 50%
+			margin-top: 0
+		
+		&_address, &_phone, &_time, &_email
+			&:before
+				width: 48%
+		
+		.btn_print
+			bottom: -55px
+
+@media(min-width: 1150px)
+	.contact
+		padding-bottom: 152px
+		
+		&_list
+			flex-direction: row
+		
+		&_col_left
+			width: calc(50% - 6px)
+			margin-right: 6px
+		
+		&_col_right
+			width: calc(50% - 6px)
+			margin-left: 6px
+			margin-top: 0
+
+
+// jobs (page)
+.about-olvia-jobs
+	margin-bottom: 25px
+	font-family: MuseoSansCyrl,sans-serif
+	
+	p
+		&:first-child
+			margin-bottom: 10px
+			font-weight: 600
+			font-size: 24px
+			
+		a
+			color: #7cb933
+			transition: all .25s linear
+			font-weight: 600
+			text-decoration: none
+			position: relative
+				
+			&:hover
+				color: #f66
+				text-shadow: 0 0 30px #99cc2f
+				
+			&:before
+				content: ""
+				position: absolute
+				bottom: -4px
+				background-color: #f66
+				height: 2px
+				width: 0
+				transition: width .45s
+			
+			&:hover
+				&:before
+					width: 100%
+					transition: width .45s
+			
+	.about-text
+		margin-bottom: 20px
+	
+	.about-title
+		font-weight: 600
+		font-size: 24px
+		//&:first-child
+		//	margin-top: 25px
+	
+	ul
+		margin: 30px
+		list-style: none
+		padding-left: 40px
+		
+		li
+			position: relative
+			&:before
+				position: absolute
+				left: -35px
+				top: 5px
+				content: ""
+				display: block
+				background-color: #7cb933
+				width: 10px
+				height: 10px
+				border-radius: 50%
+			
+h1
+	text-align: center
+
+.jobs-list
+	font-family: MuseoSansCyrl, sans-serif
+	
+	
+	table
+		border-spacing: 0
+		border-bottom: 4px solid #7cb933
+		margin-bottom: 12px
+		margin-top: 12px
+		
+		td
+			padding-bottom: 12px
+			
+		h2
+			font-weight: 600
+			font-size: 30px
+			margin-bottom: 30px
+			padding-top: 20px
+		ul
+			margin: 30px
+			list-style: none
+			padding-left: 40px
+			
+			li
+				position: relative
+				margin-bottom: 10px
+				
+				&:before
+					position: absolute
+					left: -35px
+					top: 5px
+					content: ""
+					display: block
+					background-color: #7cb933
+					width: 10px
+					height: 10px
+					border-radius: 50%
+		
+		td p:nth-child(1)
+			margin-bottom: 40px
+			font-size: 20px
+			font-weight: bold
+			text-align: center
+		
+		//td p:nth-last-child(2), td p:last-child
+		td p:nth-last-child(-n+5)
+			text-align: end
+			margin-bottom: 10px
+		
+		a
+			color: #7cb933
+			transition: all .25s linear
+			font-weight: 600
+			text-decoration: none
+			position: relative
+			
+			&:hover
+				color: #f66
+			
+			&:before
+				content: ""
+				position: absolute
+				bottom: -4px
+				background-color: #f66
+				height: 2px
+				width: 0
+				transition: width .45s
+			
+			&:hover
+				&:before
+					width: 100%
+					transition: width .45s
+				
+
+.jobs-img
+	//height: 180px
+	width: 100%
+	padding-bottom: 35%
+	background-repeat: no-repeat
+	background-size: cover
+
+.jobs-excerpt
+	margin-bottom: 18px
+	margin-top: 18px
+	font-weight: 100
+	font-style: italic
+	font-size: 16px
+
+// partners
+.partners-list
+	ul
+		display: flex
+		align-items: center
+		flex-direction: column
+		justify-content: space-between
+		
+		&.order
+			flex-direction: column-reverse
+		
+		li
+			width: 100%
+			
+			img
+				width: 100%
+				height: 100%
+				border-radius: 12px
+
+
+@media screen and (max-width: 768px)
+	.jobs-list
+		table
+			td p:nth-last-child(-n+5)
+				text-align: center
+			
+			td p:nth-child(2), td p:nth-child(3)
+				padding-left: 50px
+
+@media screen and (min-width: 996px)
+	.partners-list
+		ul
+			display: flex
+			align-items: center
+			flex-direction: row
+			justify-content: space-between
+			
+			&.order
+				flex-direction: row
+			
+			li
+				width: 48%
+				
+				&:nth-child(1)
+					margin-right: 10px
+				
+				&:nth-child(2)
+					margin-left: 10px
+					
+					img
+						animation-duration: 8s
+						animation-name: rot3d
+						animation-delay: 2s
+						animation-iteration-count: infinite
+//transform: rotate3d(1,1,1,-54deg)
+
+@keyframes rot3d
+	0%
+		transform: rotate3d(1, 1, 1, 0deg)
+	50%
+		transform: rotate3d(1, 1, 1, -54deg)
+	100%
+		transform: rotate3d(1, 1, 1, 0deg)
+	
+	

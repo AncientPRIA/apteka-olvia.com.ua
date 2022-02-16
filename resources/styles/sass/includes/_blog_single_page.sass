@@ -1,0 +1,35 @@
+
+@import ../../../views/blocks/social/share/social_share
+.social-share__tg
+	padding: 0
+.single_page
+	&_container
+		padding-top: 25px
+	&_social_share
+		display: flex
+		
+	&_body
+		display: flex
+		flex-direction: column
+		width: 100%
+		& img
+			max-width: 100%
+			height: 100%
+	&_sidebar
+		display: flex
+		flex-direction: column
+		width: 100%
+.sidebar_container
+	.sidebar_title
+		margin-top: 0!important
+		
+@media(min-width: 1150px)
+	.single_page_container
+		flex-direction: row
+		display: flex
+	.single_page_body
+		width: 70%
+		margin-right: 12px
+	.single_page_sidebar
+		width: 30%
+		margin-left: 12px

@@ -1,0 +1,77 @@
+.pagination
+	display: flex
+	align-items: center
+	margin-top: 25px
+	svg
+		width: 100%
+		height: 100%
+	&_prev_arrow
+		margin-right: 10px!important
+	&_next_arrow
+		margin-left: 10px!important
+	&_prev_arrow, &_next_arrow
+		//width: 12px
+		line
+			stroke: #4d4d4d
+		
+		&.disabled
+			width: 34px
+			height: 34px
+			display: flex
+			align-items: center
+			justify-content: center
+			svg
+				width: 50%
+				height: 50%
+			line
+				stroke: #E6E6E6
+	.active
+		span
+			background: #e6e6e6
+			color: #4D4D4D
+	li
+		margin: 0 3px
+		a, span
+			font-size: 12px
+			color: #4D4D4D
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 34px
+			height: 34px
+			border-radius: 4px
+			border: 1px solid transparent
+			text-align: center
+			text-decoration: none
+			transition: background.45s, color.45s
+			svg
+				width: 50%
+				height: 50%
+		
+		&:hover
+			a
+				transition: background.45s, color.45s
+				background: #4D4D4D
+				color: #fff
+			a[rel="next"], a[rel="prev"]
+				background: none
+.navigation
+	padding-top: 15px
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+				
+.load_more_svg
+	cursor: pointer
+	width: 40px
+	height: 40px
+	-webkit-tap-highlight-color: transparent
+	path
+		fill: #cbcbcb
+	&:hover
+		animation: load_more 2s linear infinite
+		
+@keyframes load_more
+	from
+		transform: rotate(-360deg)

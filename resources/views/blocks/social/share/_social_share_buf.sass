@@ -1,0 +1,56 @@
+.share
+	&-preview
+		display: flex
+	&-link
+		display: flex
+		color: white
+		font-size: 14px
+		margin-right: 5px
+		&:last-child
+			margin-right: 0
+	&-block-left
+		padding: 6px 16px 6px 10px
+		display: flex
+		justify-content: space-between
+		align-items: center
+	&-icon-svg
+		svg
+			fill: #fff
+			margin-right: 11px
+	&-block-right
+		background: #fff
+		color: black
+		display: flex
+		justify-content: center
+		align-items: center
+		padding: 5px
+		position: relative
+		min-width: 25px
+		max-width: 25px
+		z-index: 1
+		&:before
+			content: ""
+			position: absolute
+			width: 14px
+			height: 14px
+			left: -7px
+			top: 9px
+			z-index: -1
+			background-color: #fff
+			transform: rotate(45deg)
+			
+	&-link_vk
+		.share-block-left
+			background: #2a5885
+	&-link_sh
+		.share-block-left
+			background: #39579A
+	&-link_tv
+		.share-block-left
+			background: #00ABF0
+	&-link_pt
+		.share-block-left
+			background: #CD1D1F
+	&-link_ok
+		.share-block-left
+			background: #eb3a1e

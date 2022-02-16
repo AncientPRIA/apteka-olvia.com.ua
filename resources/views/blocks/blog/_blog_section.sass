@@ -1,0 +1,131 @@
+
+.blog_section
+	display: flex
+	flex-direction: column
+	overflow: hidden
+
+	&_top
+		width: 100%
+		display: flex
+		flex-direction: column
+		visibility: hidden
+	
+	&_col_left
+		width: 100%
+		display: flex
+		visibility: hidden
+		
+	&_col_right
+		width: 100%
+		display: flex
+		flex-direction: column
+		visibility: hidden
+	
+	&_col_right_footer
+		display: flex
+		flex-direction: column
+		
+	&_footer
+		width: 100%
+		display: flex
+		flex-direction: column
+	&_column
+		display: flex
+		flex-direction: column
+		width: 100%
+
+	.padding-30
+		padding-bottom: 30%
+		
+	.w-100
+		width: calc(100% - 24px)
+		
+	&_item
+		position: relative
+		background-size: cover
+		background-position: center
+		border-radius: 15px
+		background-repeat: no-repeat
+		margin: 12px
+		display: flex
+		overflow: hidden
+		&:before
+			content: ""
+			background-color: rgba(0,0,0,.22)
+			width: 100%
+			height: 100%
+			position: absolute
+			z-index: 1
+		
+
+	&_item_top
+		position: absolute
+		top: 10px
+		left: 10px
+		right: 10px
+		display: flex
+		z-index: 2
+	&_item_date
+		font-family: $rob, sans-serif
+		color: #fff
+		font-size: 12px
+		margin-right: 25px
+	&_item_category
+		font-family: $rob, sans-serif
+		color: #fff
+		font-size: 12px
+		
+	&_item_footer
+		position: absolute
+		bottom: 10px
+		left: 4px
+		display: flex
+		flex-direction: column
+		z-index: 2
+	&_item_title
+		color: #fff
+		font-family: $rob, sans-serif
+		font-size: 16px
+		font-weight: bold
+	&_item_excerpt
+		color: #fff
+		font-family: $rob, sans-serif
+		font-size: 14px
+		
+@media(min-width: 768px)
+	.blog_section
+		flex-direction: row
+		flex-wrap: wrap
+		&_top
+			flex-direction: row
+		&_footer
+			flex-direction: row
+@media(min-width: 1150px)
+	.blog_section
+		flex-direction: column!important
+		.padding-60
+			padding-bottom: 60%
+			min-height: 336px
+		.w-50
+			width: 50%
+		.w-70
+			width: calc(70% - 24px)
+		&_top
+			flex-direction: row
+			
+		&_col_left
+			width: 33%
+		&_col_right
+			width: 66%
+		&_col_right_footer
+			flex-direction: row
+		&_footer
+			flex-direction: row
+		&_column
+			width: 30%
+		
+
+			
+	
+		
+	

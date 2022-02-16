@@ -1,0 +1,190 @@
+@import includes/reset
+@import includes/_vars
+
+@import ../../views/includes/sections/header/header_tempalate/home
+
+@import includes/_gen
+
+@import ../../views/includes/sections/header/header_top_bar
+@import ../../views/blocks/btn/btn
+@import ../../views/blocks/slider/items/_slider_pharmacy_item
+@import ../../views/blocks/slider/slider_section
+@import ../../views/blocks/menu/menu_gen
+@import ./includes/form
+
+@import ../../views/blocks/popup/popup
+@import ./includes/form_checkbox
+@import ../../views/blocks/modal_basket/modal_basket
+@import includes/footer
+@import ../../views/blocks/btn/btn_style_home
+@import ../../views/includes/sections/header/header_tempalate/transparent_gheader/header
+
+.comment_input
+	padding-top: 15px
+	padding-bottom: 10px
+	resize: none
+
+.title-gen
+	padding-top: 20px!important
+ 
+.title_cart
+	margin-bottom: 30px
+	text-align: center
+	span
+		padding-bottom: 3px
+		border-bottom: 3px solid #99ca3a
+
+.cart
+	&_section_list
+		display: flex
+		flex-direction: column
+		
+	&_col_left
+		display: flex
+		flex-direction: column
+		width: 100%
+		
+		.modal_basket_totalPrice
+			font-size: 40px
+			display: flex
+			align-items: center
+			svg
+				height: 30px
+				fill: #9cc646
+		
+	&_col_right
+		display: flex
+		flex-direction: column
+		width: 100%
+		
+	&_items_list
+		display: flex
+		flex-direction: column
+		overflow: auto
+		//height: 330px
+		max-height: 330px
+		overflow-y: auto;
+		overflow-x: hidden;
+		
+	&_form_group
+		display: flex
+		flex-direction: column
+		
+.form
+	&-group
+		margin-bottom: 15px
+		
+	&-comment
+		width: 100%
+		margin-bottom: 25px
+		height: 85px
+		.input-container, .input
+			height: 100%
+			.label
+				top: 20px
+
+
+@media(min-width: 996px)
+	.title_cart
+		text-align: left
+	.cart
+		&_section_list
+			flex-direction: row
+			
+		&_col_left
+			width: 38%
+			margin-right: 25px
+			
+		&_col_right
+			width: 62%
+			margin-left: 50px
+			
+		&_form_group
+			padding-right: 100px
+			flex-direction: row
+			flex-wrap: wrap
+			
+	.form
+		&-name, &-surname, &-phone, &-email
+			width: calc(50% - 13px)
+			
+		&-name, &-phone
+			margin-right: 13px
+			
+		&-surname, &-email
+			margin-left: 13px
+
+
+.select-wrapper
+	position: relative
+	width: 100%
+	margin-bottom: 22px;
+.select-value
+	height: 40px;
+	border-radius: 30px;
+	border: 1px solid #999;
+	color: #999;
+	font-size: 12px;
+	font-family: Roboto,sans-serif;
+	font-weight: 300;
+	padding-left: 10px;
+	padding-right: 10px;
+	outline: none;
+	-webkit-transition: border .3s;
+	transition: border .3s;
+	display: flex;
+	align-items: center;
+.select-list
+	display: none
+	margin-top: 4px;
+	height: 232px;
+	overflow: hidden;
+	overflow-y: auto;
+	border-radius: 10px 0px 0px 10px;
+	border: 1px solid #999;
+	color: #999;
+	font-size: 12px;
+	font-family: Roboto,sans-serif;
+	font-weight: 300;
+	padding-left: 10px;
+	padding-right: 10px;
+	outline: none;
+	-webkit-transition: border .3s;
+	transition: border .3s;
+	background-color: #fff;
+	z-index: 10;
+	width: 100%;
+.container-select
+	width: 100%
+.select-list-item
+	padding: 10px
+	font-size: 14px
+.select-item__city
+	color: #9cc646
+	border-bottom: 1px solid #9cc646
+.select-item__street
+	cursor: pointer
+	&:hover
+		color: #f66
+		transition: color 300ms ease-in-out
+.select-error
+	border-color: red;
+	-webkit-transition: border .3s;
+	transition: border .3s;
+
+@media(min-width: 1800px)
+	main
+		min-height: calc(100vh - 388px)
+	.general-error, .input_error
+		font-size: 14px;
+@media(min-width: 2000px)
+	.input_error
+		bottom: -15px!important;
+	.general-error, .input_error
+		font-size: 14px!important;
+
+
+			
+		
+			
+		

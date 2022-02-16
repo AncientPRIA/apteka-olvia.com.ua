@@ -1,0 +1,193 @@
+.container_relative
+	position: relative
+.menu-cat-btn
+	width: 100%
+	border-radius: 10px
+	background-color: #7CB933
+	font-weight: bold
+	font-size: 10px
+	color: #fff
+	padding: 10px
+	display: flex
+	align-items: center
+	font-family: $rob,sans-serif
+	cursor: pointer
+	z-index: 610
+	svg
+		fill: #fff
+		width: 16px
+		height: 14px
+		margin-right: 6px
+.menu-sub-item
+	font-size: 16px
+	padding-top: 10px
+	padding-bottom: 10px
+.menu-cat-big
+	//width: 100%;
+	width: 100%
+	max-width: 1150px
+	top: 174px
+	//padding: 20px
+	overflow-x: auto
+	border-radius: 10px
+	min-height: 330px
+	max-height: 100%
+	background-color: #7CB933
+	position: absolute
+	z-index: 9999999
+	left: 50%;
+	transform: scale(1) translate(-50%, 18px);
+	-webkit-box-shadow: 0px 7px 27px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 7px 27px 2px rgba(0,0,0,0.75);
+	box-shadow: 0px 7px 27px 2px rgba(0,0,0,0.75);
+	visibility: visible
+	opacity: 1
+	will-change: opacity, transform
+	transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out, transform 300ms ease-in-out
+	&::before
+		position: absolute
+		background-color: #7CB933
+		transform: rotate(45deg)
+		width: 25px;
+		height: 25px
+		content: ""
+		top: -8px;
+		left: 11px;
+		z-index: -1;
+.menu-cat-big__left
+	width: 100%
+	height: 100%;
+	overflow-x: auto;
+	border-right: 1px solid #fff
+.menu-sub-item__nav
+	display: flex
+	align-items: center
+	margin-right: 5px
+	&-wrap
+		width: 90%;
+		display: flex;
+		align-items: center;
+.menu-sub-item__icon
+	width: 14px;
+	height: 14px;
+	margin-right: 6px
+.menu-cat-big__right
+	display: none
+.menu-sub-item
+	a
+		color: #fff
+.menu-sub-item-level-1,.menu-sub-item-level-2
+	padding-bottom: 5px
+	padding-top: 5px
+	&>div a, &>a
+		color: #fff
+		font-family: $rob,sans-serif
+		font-weight: bold
+		font-size: 16px
+		padding-top: 10px
+		padding-bottom: 10px
+		display: block
+		width: 90%;
+.menu-sub-level-2
+	display: none
+	&.show_lvl_1
+		display: flex
+		flex-flow: column nowrap!important
+.toggle-menu-big
+	width: 10%
+	display: block
+	padding: 4px;
+	cursor: pointer
+	transition: transform 300ms ease-in-out
+	transform: rotate(0deg)
+    z-index: 9999;
+	&_open
+		transition: transform 300ms ease-in-out
+		transform: rotate(90deg)
+.menu-sub-item-level-2
+	width: 100%
+	margin-right: 20px;
+	margin-bottom: 12px
+	border-bottom: 1px solid #fff
+.menu-sub-level-1
+	width: 100%;
+	overflow-x: hidden;
+	height: 100%;
+	padding: 20px;
+.menu-sub-item-level-1
+	padding: 10px;
+	border-bottom: 1px solid #fff;
+	&:nth-last-child(1)
+		border: none
+.menu-sub-level-1
+	display: none;
+.menu-cat-big_hide
+	visibility: hidden
+	opacity: 0
+	will-change: opacity, transform
+	z-index: -1
+	transform: scale(0.8) translateY(-40px)
+	transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out, transform 300ms ease-in-out
+.menu-sub-item-level-3
+	padding-left: 10px
+
+@media screen and (min-width: 600px)
+	.menu-cat-big
+		top: 187px;
+@media screen and (min-width: 768px)
+	.menu-cat-btn
+		font-size: 10px
+	.menu-cat-big
+		top: 217px;
+	.menu-cat-wrap
+		width: 23%;
+	.menu-cat-big
+		max-height: 330px
+		overflow-x: unset
+	.menu-cat-big__left
+		width: 25%
+		height: 330px;
+	.menu-cat-big__right
+		width: 75%
+		height: 100%
+	.menu-sub-level-1
+		display: flex
+		flex-flow: column wrap
+		position: absolute
+		left: 25%
+		width: 75%
+		overflow-x: auto;
+		height: 330px;
+		padding: 20px;
+		top: 0;
+		visibility: hidden
+		opacity: 0
+		transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out
+	.menu-sub-level-2
+		display: none
+	.show_lvl_1
+		visibility: visible
+		opacity: 1
+		transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out
+	.menu-sub-item-level-2
+		width: 29%
+		z-index: 2;
+		max-height: 100%;
+		transition: max-height 600ms ease;
+		will-change: max-height
+	.menu-sub-item-level-3
+		padding-left: 0px
+	.menu-sub-level-2
+		display: block
+		&.show_lvl_1
+			z-index: 1
+			display: flex
+			flex-flow: column nowrap!important
+@media screen and (min-width: 996px)
+	.menu-cat-wrap
+		width: 91%
+	.menu-cat-big
+		top: 174px
+	.transparent_header .menu-cat-big
+		top: 160px
+

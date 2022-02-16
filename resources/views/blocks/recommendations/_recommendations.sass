@@ -1,0 +1,142 @@
+.recommendations
+	
+	&_list
+		display: flex
+		flex-direction: column
+		margin-top: 20px
+	
+	&_col_left
+		display: flex
+		width: 100%
+		flex-direction: column
+	
+	&_col_right
+		display: flex
+		width: 100%
+		flex-direction: column
+		
+	&_item
+		display: flex
+		flex-direction: column
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		align-items: flex-end
+		margin: 6px
+		border-radius: 15px
+		padding-bottom: 30%
+		position: relative
+		overflow: hidden
+		&::before
+			content: ""
+			opacity: 0
+			background-color: rgba(0,0,0,.42)
+			position: absolute
+			width: 100%
+			height: 100%
+			top: 0px
+			left: 0px
+			transition: opacity 300ms ease-in-out
+		&:hover
+			&::before
+				content: ""
+				opacity: 1
+				transition: opacity 300ms ease-in-out
+			//.recommendations_title::before
+			//	content: ""
+			//	width: 100%
+			//	transition: width 600ms ease-in-out
+		
+	&_item_info
+		position: absolute
+		bottom: 0
+		margin: 10px 18px 26px 18px
+		left: 0
+		
+	&_countProduct
+		color: #fff
+		font-family: $mus, sans-serif
+		font-size: 13px
+	
+	&_title
+		color: #fff
+		font-family: $mus, sans-serif
+		font-size: 25px
+		margin-top: 10px
+		font-weight: bold
+		position: relative
+		//&::before
+		//	content: ""
+		//	position: absolute;
+		//	height: 2px
+		//	width: 0%;
+		//	position:
+		//	background-color: #fff
+		//	left: 0px
+		//	bottom: 0px
+		//	transition: width 300ms ease-in-out
+		
+	&_basis_column
+		width: auto
+		
+	&_sm_column
+		padding-bottom: 30%
+	
+	&_basis_row
+		width: calc(100% - 12px)
+		padding-bottom: 30%
+	
+	&_sm_row
+		width: auto
+		padding-bottom: 30%
+		
+	&_item_group_row
+		display: flex
+		flex-direction: column
+		width: 100%
+		
+	&_item_group_column
+		display: flex
+		flex-direction: column
+		width: 100%
+@media (min-width: 768px)
+	.recommendations
+		&_list
+			flex-direction: row
+		&_col_left, &_col_right
+			width: 50%
+			
+@media (min-width: 1150px)
+	.recommendations
+		&_item
+			padding-bottom: 60%
+
+		
+		
+		&_col_left
+			margin-left: -6px
+			flex-direction: row
+		
+		&_col_right
+			margin-right: -6px
+		
+		&_item_group_column
+			width: 50%
+		
+		&_basis_column
+			width: 50%
+		
+		&_sm_column
+			padding-bottom: 61%
+		
+		&_basis_row
+			width: calc(100% - 12px)
+			padding-bottom: 30%
+		
+		&_sm_row
+			width: 50%
+			padding-bottom: 30%
+		
+		&_item_group_row
+			flex-direction: row
+	

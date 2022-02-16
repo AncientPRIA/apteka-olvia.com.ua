@@ -1,0 +1,106 @@
+@import includes/reset
+@import includes/_vars
+@import ../../views/blocks/btn/btn_style_home
+@import ../../views/includes/sections/header/header_top_bar
+@import ../../views/includes/sections/header/header_tempalate/transparent_gheader/header
+@import includes/_gen
+
+@import ../../views/blocks/btn/btn
+@import ../../views/blocks/modal_basket/modal_basket
+@import includes/footer
+@import ./includes/form
+//@import ./includes/form_checkbox
+
+
+
+// profile def
+.row_ai_fs
+	align-items: flex-start
+.Profile
+	.col-6
+		padding: 0 10px 0 10px;
+		width: 100%
+	&.row
+		flex-direction: column
+.profile-title
+	display: flex
+	align-items: center
+	padding-bottom: 5px
+	margin-bottom: 10px
+	margin-top: 10px
+	justify-content: space-between
+	&__group
+		display: flex
+		align-items: center
+	span
+		font-size: 18px
+		font-weight: bold
+		border-bottom: 3px solid #7cb933
+		transition: all 200ms linear
+	svg
+		width: 30px
+		height: 30px
+		margin-right: 6px
+.profile-tab
+	cursor: pointer
+	font-weight: 500;
+	border-bottom: 1px solid #7cb933;
+	color: #999
+.profile-tab.active
+	font-weight: bold
+	color: black
+	border-bottom: 3px solid #7cb933
+	transition: all 200ms linear
+.exit
+	display: block
+	cursor: pointer
+	svg
+		fill: #b3b34e
+// favorite
+.prof-favorite
+	display: none
+// form
+
+.form-profile
+	display: flex;
+	justify-content: space-between;
+	flex-flow: column wrap
+	.form-group
+		width: 100%
+
+// profile history item
+@import ../../views/blocks/modal_basket/items/profile
+@import ../../views/blocks/modal_basket/items/favorit
+@import ../../views/blocks/popup/popup
+// history style
+.history
+	&-item
+		width: 100%
+	&-header
+		width: 100%
+		color: #f66
+		text-align: left
+	&-footer
+		font-size: 20px;
+		color: #7cb933
+		border-bottom: 1px solid #999999;
+		padding-bottom: 6px
+		margin-bottom: 16px
+		margin-top: 10px
+.prof-scroll
+	height: 560px;
+	overflow: auto;
+	padding-right: 10px;
+
+//@import ../../views/blocks/popup/popup
+@media screen and (min-width: 560px)
+	.form-profile
+		flex-flow: row wrap
+		.form-group
+			width: 49%
+@media screen and (min-width: 996px)
+	.Profile
+		.col-6
+			width: 49%
+		&.row
+			flex-direction: row

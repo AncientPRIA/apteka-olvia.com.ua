@@ -1,0 +1,142 @@
+php_value memory_limit 512M
+php_value upload_max_filesize 128M
+php_value post_max_size 128M
+php_value max_execution_time 10000
+php_value max_input_time 300
+php_value max_input_vars 5000
+
+<IfModule mod_rewrite.c>
+
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    ##
+    ## You may need to uncomment the following line for some hosting environments,
+    ## if you have installed to a subdirectory, enter the name here also.
+    ##
+     RewriteBase /
+
+     RewriteCond %{HTTP_HOST} ^45.67.59.68$ [NC]
+     RewriteRule ^(.*)$ https://apteka-olvia.com.ua/$1 [R=301,L]
+
+	##
+	## remove trailing slash
+	##
+     RewriteCond %{HTTP_HOST} (.*)
+     RewriteCond %{REQUEST_URI} /$ [NC]
+     RewriteRule ^(.*)(/)$ $1 [L,R=301]
+
+
+    ##
+    ## Remove multiple slashes
+    ##
+    # rule 1: removes multiple leading slashes directly after the domain name / TLD
+    RewriteCond %{THE_REQUEST} \s/{2,}
+    RewriteRule (.*) $1 [R=301,L]
+    # rule 2: remove multiple slashes anywhere in the rest of the path
+    RewriteCond %{REQUEST_URI} ^(.*)/{2,}(.*)$
+    RewriteRule (.*) %1/%2 [R=301,L]
+
+    ##
+    ## Uncomment following lines to force HTTPS.
+    ##
+#    RewriteCond %{HTTPS} off
+#    RewriteRule (.*) https://%{SERVER_NAME}/$1 [R=301,L]
+
+#	RewriteCond %{SERVER_PORT} 80
+#	RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
+    ##
+    ## Redirect index.php
+    ##
+#    RewriteRule ^(.*)index\.php$ $1 [R=301,L]
+
+    ##
+    ## Redirect from www to non-www
+    ##
+    RewriteCond %{REQUEST_URI} !robots.txt
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+    RewriteCond %{REQUEST_URI} /{2,}$
+    RewriteRule ^(.*)$ https://apteka-olvia.com.ua/$1 [R=301,L]
+
+    ##
+    ## Black listed folders
+    ##
+    RewriteRule ^bootstrap/.* index.php [L,NC]
+    RewriteRule ^config/.* index.php [L,NC]
+    RewriteRule ^vendor/.* index.php [L,NC]
+    RewriteRule ^storage/cms/.* index.php [L,NC]
+    RewriteRule ^storage/logs/.* index.php [L,NC]
+    RewriteRule ^storage/framework/.* index.php [L,NC]
+    RewriteRule ^storage/temp/protected/.* index.php [L,NC]
+    RewriteRule ^storage/app/uploads/protected/.* index.php [L,NC]
+
+    ##
+    ## White listed folders
+    ##
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_FILENAME} !/.well-known/*
+    RewriteCond %{REQUEST_FILENAME} !/storage/app/uploads/.*
+    RewriteCond %{REQUEST_FILENAME} !/storage/app/media/.*
+    RewriteCond %{REQUEST_FILENAME} !/storage/temp/public/.*
+    RewriteCond %{REQUEST_FILENAME} !/themes/.*/(assets|resources)/.*
+    RewriteCond %{REQUEST_FILENAME} !/plugins/.*/(assets|resources)/.*
+    RewriteCond %{REQUEST_FILENAME} !/modules/.*/(assets|resources)/.*
+    RewriteCond %{REQUEST_FILENAME} !/.*
+    RewriteRule !^index.php index.php [L,NC]
+
+    ##
+    ## Block all PHP files, except index
+    ##
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_FILENAME} \.php$
+    RewriteRule !^index.php index.php [L,NC]
+
+    ##
+    ## Standard routes
+    ##
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    ##
+    ## Static files cache
+    ##
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+    <FilesMatch \.(gif|png|jpg|jpeg|webp|ogg|mp4|mkv|webm|flv|swf|wmv|asf|asx|wma|wax|wmx|wm)$>
+        #ExpiresDefault "access plus 2591000 seconds"
+    	Header set Cache-Control "max-age=31536000"
+    </FilesMatch>
+    # Cache Images
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    # Cache other content types (Flash, CSS, JS, HTML, XML)
+    ExpiresByType application/x-shockwave-flash "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+    ExpiresByType text/html "access plus 3600 seconds"
+    ExpiresByType application/xhtml+xml "access plus 600 seconds"
+    ExpiresByType video/ogg "access plus 1 year"
+    #ExpiresByType video/mp4 "access plus 2591000 seconds"
+    ExpiresByType video/webm "access plus 1 year"
+    ExpiresByType video/x-msvideo "access plus 1 year"
+    ExpiresByType video/mpeg "access plus 1 year"
+    ExpiresByType video/quicktime "access plus 1 year"
+    ExpiresByType video/x-la-asf "access plus 1 year"
+    ExpiresByType video/x-ms-asf "access plus 1 year"
+    ExpiresByType x-world/x-vrml "access plus 1 year"
+
+</IfModule>

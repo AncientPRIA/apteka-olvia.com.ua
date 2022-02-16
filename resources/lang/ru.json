@@ -1,0 +1,14 @@
+{
+  "Hello!": "Привет!",
+  "Whoops!": "Упс!",
+  "Verify Email Address": "Подтвердите Email",
+  "Please click the button below to verify your email address.": "Пожалуйста, нажмите на кнопку, чтобы подтвердить",
+  "If you did not create an account, no further action is required.": "Если вы не создавали аккаунт, никаких действий не требуется.",
+  "Regards": "С уважением",
+  "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser: [:actionURL](:actionURL)": "Если у вас возникли проблемы с кнопкой \":actionText\", копируйте эту ссылку в адресную строку в браузере: [:actionURL](:actionURL)",
+  "Reset Password Notification": "Сброс пароля",
+  "You are receiving this email because we received a password reset request for your account.": "ВЫ получили это сообщение потому, что был запрошен сброс пароля для вашего аккаунта.",
+  "Reset Password": "Сбросить пароль",
+  "This password reset link will expire in :count minutes.": "Ссылка для извенения пароля истечёт через :count минут.",
+  "If you did not request a password reset, no further action is required.": "Если вы не запрашивали сброс пароля, никаких действий не требуется."
+}

@@ -1,0 +1,163 @@
+.product_item
+	display: flex
+	flex-direction: column
+	box-sizing: border-box
+	border: 1px solid #cccccc
+	padding: 9px 16px 0 19px
+	border-radius: 15px
+	//margin-bottom: 7px
+	width: 100%
+	margin-left: 14px
+	margin-right: 14px
+	min-height: 100%
+	position: relative
+	
+	font-family: $rob, sans-serif
+	
+	
+	&_img
+		background-size: contain
+		background-position: center
+		background-repeat: no-repeat
+		padding-bottom: 100%
+		
+	&_discount
+		position: absolute
+		top: 9px
+		right: 16px
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 52px
+		height: 40px
+		span
+			position: relative
+			//top: 50%;
+			//left: 50%;
+			//transform: translate(-50%,-50%);
+			color: #fff
+			font-weight: bold
+			font-family: $rob, sans-serif
+			font-size: 24px
+			z-index: 2
+			width: 100%;
+			text-align: center;
+		.discount_svg
+			position: absolute
+			width: 100%
+			height: 100%
+			z-index: 1
+		
+	&_info
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		padding-bottom: 50px
+		position: relative
+		height: 100%
+		
+	&_price
+		color: #99cc33
+		font-size: 18px  //font-size: 34px TODO: UNCOMMENT AFTER SYNC
+		margin-bottom: 9px
+		display: flex
+		align-items: center
+		svg
+			height: 25px
+			fill: #99cc33
+
+	&_old_price
+		font-size: 16px
+		color: #b8b8b8
+		position: absolute
+		top: -14px
+		display: flex
+		align-items: center
+		&:after
+			content: ""
+			position: absolute
+			top: 50%
+			left: 0
+			width: 100%
+			height: 1px
+			background-color: #b8b8b8
+		svg
+			height: 13px
+			fill: #b8b8b8
+
+	&_name
+		font-size: 20px
+		color: #4d4d4d
+		font-family: $mus, sans-serif
+		font-weight: bold
+		margin-bottom: 8px
+		
+	&_description
+		display: none
+		font-size: 15px
+		color: #666666
+		
+	&_btn_left
+		display: flex
+		
+	&_btn_group
+		position: absolute
+		bottom: 10px
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		width: 100%
+		
+		.btn_product
+			border-radius: 50%
+			width: 42px
+			height: 42px
+			display: flex
+			justify-content: center
+			align-items: center
+			cursor: pointer
+		.btn_like
+			-webkit-tap-highlight-color: transparent
+			background-color: white
+			margin-right: 9px
+			box-shadow: 0px 8px 5px 0px rgba(0,0,0,0.08)
+			svg
+				width: 13px
+				height: 11px
+		.btn_product_link
+			background-color: #99cc33
+			-webkit-tap-highlight-color: transparent
+			svg
+				width: 14px
+				height: 6px
+		.btn_add_product
+			-webkit-tap-highlight-color: transparent
+			background-color: #ff6666
+			svg
+				width: 22px
+				height: 14px
+.product_item_ios-10
+	flex: 1 1 auto;
+	min-height: 300px!important
+	max-height: 366px!important
+@media(min-width: 400px)
+	.product_item
+		width: 270px
+		min-width: 270px
+@media (min-width: 1150px)
+	.product_item
+		border: 1px solid transparent
+		&:hover
+			border: 1px solid #cccccc
+			.product_item_btn_group
+				overflow: visible
+				opacity: 1
+				transition: overflow.45s, opacity.45s
+		
+		&_btn_group
+			overflow: hidden
+			opacity: 0
+			transition: overflow.45s, opacity.45s
+		
+			
+	

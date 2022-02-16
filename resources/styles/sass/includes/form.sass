@@ -1,0 +1,231 @@
+/* ======================================================================================
+   =						Styles for standart form									=
+   ======================================================================================
+   = If you want to change form design, copy this sass, change styles 					=
+   = (do not change classnames) and include new sass on page with form					=
+   ====================================================================================== */
+
+.form_margin-top
+	margin-top: 38px
+
+.form-group // parent of input container
+	position: relative
+	&.hidden
+		display: none
+
+.form-group-btn // parent of submit button
+	position: relative
+	margin-top: 37px
+	//padding-top: 11px
+	display: flex
+	justify-content: space-between
+	flex-direction: column
+
+.input-container // child of form group and parent of input and label
+	position: relative
+
+.label // input label
+	position: absolute
+	padding: 0 5px
+	font-family: $rob,sans-serif
+	font-weight: 500
+	color: #808080
+	font-size: 12px
+	top: 50%
+	left: 16px
+	transform: translate(0, -50%)
+	transition: transform 300ms ease-in, font-size 300ms ease-in
+	background-color: #FFFFFF
+	border-radius: 5px
+	
+	//z-index: 600
+	&_active
+		color: #1A1A1A
+		font-size: 9px
+		transform: translate(0px,-150%)
+		transition: transform 300ms ease-in, font-size 300ms ease-in
+
+//input size
+
+
+.input_error // error text
+	position: absolute
+	right: 0
+	bottom: -4px
+	font-size: 10px
+	color: red
+	opacity: 0
+	visibility: hidden
+	will-change: opacity
+	background-color: #fff
+	border-radius: 5px
+	padding: 0 5px
+	transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out
+.error_active .input_error // error text, when input group have error class
+	opacity: 1
+	visibility: visible
+	will-change: opacity
+	transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out
+
+.general-error // Error for whole form. Can be anywhere in form. Shows server validation error
+	position: absolute
+	right: 0
+	left: 0
+	bottom: -10px
+	font-size: 12px
+	color: red
+	opacity: 0
+	visibility: hidden
+	will-change: opacity
+	transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out
+	&.active
+		opacity: 1
+		visibility: visible
+		will-change: opacity
+		transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out
+
+
+
+.btn // default button
+	padding: 10px 10px
+	min-width: 100%
+	text-align: center
+	font-weight: bold
+	font-family: $rob,sans-serif
+	font-size: 12px
+	color: #f66
+	background-color: #fff
+	border-radius: 50px
+	border: 1px solid #f66
+	cursor: pointer
+	transition: background-color 400ms ease-in-out, color 400ms ease-in-out
+	&:hover
+		color: #fff
+		background-color: #f66
+		transition: background-color 400ms ease-in-out, color 400ms ease-in-out
+.btn-reg,.btn-login
+	width: 100%;
+// -------------------------
+
+.input // standart input
+	width: 100%
+	height: 40px
+	border-radius: 30px
+	border: 1px solid #999
+	color: #999
+	font-size: 12px
+	font-family: $rob,sans-serif;
+	font-weight: 300
+	padding-left: 10px
+	padding-right: 10px
+	outline: none
+	transition: border 0.3s
+.input_transparent
+	border: 1px solid #fff
+	background-color: transparent
+	width: 88vw
+	height: 45px
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	color: #fff
+.input_standart
+	border: 1px solid #B3B3B3
+	background-color: #fff
+	height: 45px
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	color: #4D4D4D
+.input_mgb
+	margin-bottom: 12px
+.label_color
+	color: #fff
+.label_color_4D4D4D
+	color: #4D4D4D
+//&::placeholder
+.error_active .input // input, when input group have error class
+	border-color: red
+	transition: border 0.3s
+
+.form_flex_center
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+.form_flex_column
+	display: flex
+	flex-direction: column
+.input_transparent-margin
+	margin-left: 0
+	margin-right: 0
+	margin-top: 14px
+	margin-bottom: 14px
+
+@media screen and (min-width: 547px)
+	.input // standart input
+		height: 40px
+@media screen and (min-width: 996px)
+	.input_transparent
+		width: 260px
+	.input_transparent-margin
+		margin-left: 14px
+		margin-right: 14px
+		margin-top: 0
+		margin-bottom: 0
+	.form_flex_center
+		flex-direction: row
+	.form-group-btn // parent of submit button
+		flex-direction: row
+		padding-top: 0
+
+	//.input_error // error text
+	//	font-size: 0.8vw
+
+	.general-error // Error for whole form. Can be anywhere in form. Shows server validation error
+		font-size: 0.8vw
+
+	.btn // default button
+		//padding:
+		//	left: 1.08vw
+		//	right: 1.08vw
+		//	top: 0.83vw
+		//	bottom: 0.83vw
+		min-width: 123px
+		font-family: $rob,sans-serif
+		font-size: 16px
+		background-color: #fff
+		cursor: pointer
+		transition: background-color 400ms ease-in-out, border-color 400ms ease-in-out
+
+	.label // input label
+		font-size: 11px
+		left: 17px;
+
+		&_active
+			font-size: 0.7vw
+			top: 30%
+	//.input // standart input
+	//	height: 3.16vw
+	//	font-size: 1.16vw
+@media screen and (min-width: 2000px)
+	// input label
+	.label
+		&_active
+			font-size: 10px
+			transform: translate(0px,-140%)
+	.label
+		font-size: 17px
+	.input_error // error text
+		bottom: -7px
+		font-size: 12px;
+	.input_mgb
+		margin-bottom: 48px
+		&:last-child
+			margin-bottom: 24px
+	.input
+		font-size: 16px
+		height: 48px
+

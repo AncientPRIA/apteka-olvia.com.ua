@@ -1,0 +1,40 @@
+.form-search
+	width: 565px
+	height: 45px
+.input-search
+	outline: none
+	width: 100%
+	border: none
+	border-radius: 20px
+	background-color: #fff
+	color: #868686
+	padding-left: 10px
+	padding-right: 10px
+	height: 35px;
+.form-group-search
+	position: relative
+.search-btn
+	width: 26px;
+	height: 16px
+	position: absolute
+	top: 9px;
+	right: 13px;
+	z-index: 5
+	cursor: pointer
+	border: none;
+	background: transparent;
+	display: block;
+	svg
+		width: 100%
+		height: 100%
+		fill: #B3B34E
+@media screen and (min-width: 996px)
+	.search-btn
+		transform: scale(1)
+		transition: transform 300ms ease-in-out
+		&:hover
+			transition: transform 300ms ease-in-out
+			transform: scale(1.2)
+@media screen and (min-width: 1200px)
+	.form-search
+		flex-shrink: 0;

@@ -1,0 +1,14 @@
+@import "items/blog_sidebar_item"
+
+@media(min-width: 460px)
+	.blog_sidebar, .single_page_sidebar
+		flex-direction: row
+	.sidebar_container
+		width: 50%
+		&:first-child
+			margin-right: 8px
+@media(min-width: 1150px)
+	.blog_sidebar, .single_page_sidebar
+		flex-direction: column!important
+	.sidebar_container
+		width: 100% !important

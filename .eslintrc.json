@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "globals": {
+    "$": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    //"quotes": ["error", "double"]
+    "no-unused-vars": "warn"
+  }
+}

@@ -1,0 +1,93 @@
+@import includes/reset
+@import includes/_vars
+@import includes/_gen
+//
+//@import includes/modal_politica
+//@import includes/animation
+//
+//@import ../../views/blocks/btn/btn
+//@import ../../views/blocks/menu/menu_gen
+//@import ./includes/form
+//@import ../../views/includes/sections/header/header_top_bar
+//@import ../../views/includes/sections/header/header_tempalate/transparent_gheader/header
+//
+//@import ./includes/form_checkbox
+//@import ../../views/blocks/popup/popup
+//@import ../../views/blocks/modal_basket/modal_basket
+//@import ../../views/blocks/btn/btn_style_home
+
+main
+	overflow: hidden;
+	position: relative;
+.header_transparent, .bg_404
+	background-color: #FEF7F7
+.bg_404
+	min-height: 66vh;
+	height: 100%;
+.breadcrumbs-link, .breadcrumbs-no-link,.breadcrumbs-sp
+	color: #BFBCBC;
+.menu-link__icon,.menu-link
+	color: #000
+	svg
+		fill: #97C230
+		path
+			fill: #97C230
+.header_transparent .btn-autf
+	color: #000
+footer
+	margin-top: 0px
+.title-404
+	color: #333333
+	font-size: 28px
+	position: relative
+	padding-bottom: 16px
+	&::before
+		content: ""
+		height: 3px
+		background-color: #9c3;
+		width: 159px
+		position: absolute
+		left: 0px
+		bottom: 12px
+.info-404
+	font-size: 39px
+	color: #99CC33
+	font-weight: bold
+.bg_404 .row
+	flex-direction: column;
+.cmn-toggle-switch span,.cmn-toggle-switch span:after, .cmn-toggle-switch span:before
+	background: #99CC33
+.cmn-toggle-switch__htx
+	border-color: #99CC33
+.col-6
+	position: relative
+.home_btn
+	position: absolute
+	left: 0
+	top: 10%
+	box-sizing: border-box
+	font-size: 22px
+	border: 2px solid #99cc33
+	border-radius: 30px
+	padding: 5px 15px
+	color: #99cc33
+	background-color: transparent
+	transition: color.45s, background-color.45s
+	&:hover
+		background-color: #99cc33
+		color: #fff
+		transition: color.45s, background-color.45s
+	
+@import includes/footer
+@media(min-width: 770px)
+	.home_btn
+		font-size: 30px
+@media screen and (min-width: 768px)
+	.row
+		flex-direction: row;
+
+@media screen and (min-width: 1800px)
+	.bg_404
+		min-height: 100vh;
+		display: flex
+		align-items: center

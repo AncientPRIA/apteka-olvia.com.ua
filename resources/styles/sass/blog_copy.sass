@@ -1,0 +1,107 @@
+@import includes/reset
+@import includes/_vars
+@import includes/_gen
+
+@import includes/modal_politica
+@import includes/animation
+@import includes/blog_single_page
+
+@import ../../views/blocks/btn/btn
+@import ../../views/blocks/menu/menu_gen
+@import ./includes/form
+@import ../../views/blocks/slider/slider_section
+@import ../../views/blocks/slider/items/slider_tab_item_with_href
+@import ../../views/includes/sections/header/header_top_bar
+@import ../../views/includes/sections/header/header_tempalate/blog
+@import ../../views/blocks/blog/main_blog_item/main_blog_item
+@import ../../views/blocks/blog/blog_section
+@import ../../views/blocks/blog/sidebar/blog_sidebar
+@import ./includes/form_checkbox
+@import ../../views/blocks/popup/popup
+@import ../../views/blocks/modal_basket/modal_basket
+@import ../../views/blocks/btn/btn_style_home
+@import ../../views/blocks/default/default_pagination_&_loadMore/default_pagination_&_loadMore
+@import includes/footer
+.section-header
+	text-align: left
+.blog_container
+	display: flex
+	flex-direction: column
+	width: 100%
+	padding-top: 25px
+.title-gen
+	padding-top: 0!important
+	margin-top: -30px
+	position: relative
+	z-index: 1
+	margin-bottom: 23px
+	span
+		position: relative
+		&:after
+			content: ""
+			position: absolute
+			bottom: -9px
+			width: 100%
+			height: 2px
+			background-color: #97cd2f
+			left: 0
+	
+.category_list
+	display: flex
+	flex-direction: row
+	align-items: center
+	justify-content: flex-start
+	flex-wrap: wrap
+.tab_blog_category
+	border: 1px solid transparent
+	transition: border.45s
+	color: #999999
+	&:hover
+		border: 1px solid #f66
+		color: #f66
+		transition: border.45s, color.45s
+	&.active
+		border: 1px solid #f66
+		color: #f66
+		transition: border.45s, color.45s
+	&:first-child
+		margin-right: 47px
+		
+.blog_body
+	display: flex
+	flex-direction: column
+	width: 100%
+	
+	
+.blog_sidebar
+	display: flex
+	flex-direction: column
+	width: 100%
+	
+.sidebar_container
+	.sidebar_title
+		margin-top: 12px
+		border-bottom: 3px solid #99cc2f
+		padding-bottom: 4px
+		box-sizing: border-box
+		
+.cards_list_category
+	width: 90%
+	margin: auto
+	
+@media(min-width: 996px)
+	.cards_list_category
+		width: 100%
+		margin: 0
+
+@media(min-width: 1150px)
+	.blog_container
+		flex-direction: row
+	.blog_body
+		width: 70%
+		margin-right: 12px
+	.blog_sidebar
+		width: 30%
+		margin-left: 12px
+	
+	

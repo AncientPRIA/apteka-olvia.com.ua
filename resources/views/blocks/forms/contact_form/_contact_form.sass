@@ -1,0 +1,57 @@
+.contact_form
+	display: flex
+	flex-direction: column
+	
+	&_title
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: center
+		margin-bottom: 17px
+	&_title_svg
+		width: 26px
+		height: 26px
+		margin-right: 17px
+	&_title_text
+		color: #808080
+		font-family: $rob, sans-serif
+		font-weight: bold
+		font-size: 16px
+		text-transform: uppercase
+		
+	.form-group
+		margin-bottom: 12px
+		.review_input
+			height: 155px
+			resize: none
+	.tab_btn
+		width: 100%
+		transition: 0.25s all linear
+		
+		&:hover
+			color: #FFFFFF
+			background-color: #f66
+
+@media(min-width: 768px)
+	.contact_form
+		&_title
+			flex-direction: column
+			align-items: flex-start
+		&_title_svg
+			margin-bottom: 17px
+			margin-right: 0
+			justify-content: flex-start
+		&_group
+			display: flex
+			flex-wrap: wrap
+		.tab_btn
+			width: auto
+		.form-group
+			&:nth-child(1)
+				width: calc(50% - 6px)
+				margin-right: 6px
+			&:nth-child(2)
+				width: calc(50% - 6px)
+				margin-left: 6px
+			&:nth-child(3)
+				width: 100%
