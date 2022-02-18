@@ -12,7 +12,6 @@
 )
 
 <div class="container">
-	<div class="block"></div>
 	{{--excerpt--}}
 	{{--image--}}
 	{{--<div class="jobs-excerpt">--}}
