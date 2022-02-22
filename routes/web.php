@@ -276,8 +276,12 @@ Route::group(['prefix' => 'api'], function() {
 
     Route::get('products_sync', 'Api\SynchronizerController@products_sync');
     Route::get('availability_sync', 'Api\SynchronizerController@availability_sync');
+    Route::get('get_sync_file', 'Api\SynchronizerController@get_sync_file');
+    Route::get('test_ftp_connection', 'Api\SynchronizerController@test_ftp_connection');
     Route::get('test_products_list', 'Api\SynchronizerController@test_products_list');
     Route::get('test_availability', 'Api\SynchronizerController@test_availability');
+
+
 
     // ### Sync END ###
 

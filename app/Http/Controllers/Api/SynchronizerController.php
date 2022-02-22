@@ -4,7 +4,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Imports\UniImport;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SynchronizerController
@@ -47,6 +49,21 @@ class SynchronizerController
     // =    FUNCTIONAL
     // =====================================================
 
+    public static function create_products_sync_job(){
+
+    }
+
+    // Download availability file from FTP
+    public static function get_sync_file_availability(){
+        $connection = Storage::disk('ftp');
+        $fileslist = $connection->allFiles();
+        $filename = $fileslist[0];
+
+        $content = $connection->get($filename);
+        $result = Storage::disk('root')->put("data/import/_availability.xls", $content);
+        return $result;
+    }
+
     public function products_sync(){
         echo "<pre>";
 
@@ -72,14 +89,53 @@ class SynchronizerController
                 }
             }
 
-            //
+            // Normalize
+            $row[1] = trim(preg_replace("/\s{2,}/", " ", $row[1]));
+            $row[5] = trim(preg_replace("/\s{2,}/", " ", $row[5]));
+
+            // Create or Update
+            $sku = $row[0];
+            $object = Product::query()
+                ->where("sku", "=", $sku)
+                ->first()
+            ;
+
+            /*
+            0 => sku
+            1 => title
+            2 => release_form
+            3 => count_in_package
+            4 => brand
+            5 => trade_title
+            */
+
+            // Update
+            if($object !== null) {
+//                $object->title = $row[1];
+//                $object->release_form = $row[2];
+//                $object->count_in_package = $row[3];
+//                $object->brand = $row[4];
+//                $object->trade_title = $row[5];
+//                $object->save();
+            }
+            // Create
+            else{
+                $object = new Product();
+                $object->sku = $sku;
+                $object->title = $row[1];
+                $object->release_form = $row[2];
+                $object->count_in_package = $row[3];
+                $object->brand = $row[4];
+                $object->trade_title = $row[5];
+                $object->save();
+            }
         }
 
         echo "</pre>";
 
     }
 
-    public function availability_sync(){
+    public static function availability_sync(){
         echo "<pre>";
 
         // Define paths and other vars
@@ -165,6 +221,15 @@ class SynchronizerController
     // =    TESTS
     // =====================================================
 
+    public function test_ftp_connection(){
+        $connection = Storage::disk('ftp');
+        $fileslist = $connection->allFiles();
+        $filename = $fileslist[0];
+
+        $content = $connection->get($filename);
+        //$result = Storage::disk('root')->put("data/import/_availability.xls", $content);
+        dd($fileslist);
+    }
 
     public function test_products_list(){
         echo "<pre>";

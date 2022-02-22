@@ -43,6 +43,11 @@ return [
 
     'disks' => [
 
+        'root' => [
+            'driver' => 'local',
+            'root' => base_path(),
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -69,6 +74,19 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+        ],
+
+        'ftp' => [
+            'driver' => 'ftp',
+            'host' => env('SYNC_FTP_HOST'),
+            'username' => env('SYNC_FTP_USERNAME'),
+            'password' => env('SYNC_FTP_PASSWORD'),
+            // Optional FTP Settings...
+            // 'port' => 21,
+            'root' => env('SYNC_FTP_ROOT'),
+            // 'passive' => true,
+            // 'ssl' => true,
+            // 'timeout' => 30,
         ],
 
     ],
