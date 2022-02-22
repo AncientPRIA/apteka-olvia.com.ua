@@ -9,6 +9,7 @@
 @endphp
 
 @if(isset($menu["submenu"]))
+
 	<li class="menu-sub-item menu-sub-item-{{$lvl}}">
 		<div class="menu-sub-item__nav">
 			@if(isset($menu["icon"]))

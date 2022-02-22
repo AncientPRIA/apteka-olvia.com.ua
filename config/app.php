@@ -170,7 +170,6 @@ return [
         /* Custom */
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,
-        Josh\Component\PhantomJs\PhantomJsServiceProvider::class,
 
 
         /*

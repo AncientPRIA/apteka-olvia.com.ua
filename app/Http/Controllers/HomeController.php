@@ -165,7 +165,7 @@ class HomeController extends Controller
         }
 
         $html = view('page/home')->with([
-            'sidebar_menu' => $sidebar_menu,
+            //'sidebar_menu' => $sidebar_menu,
             'products_featured' => $products_featured,
             'products_top_sells' => $products_top_sells,
             'user' => $user ,

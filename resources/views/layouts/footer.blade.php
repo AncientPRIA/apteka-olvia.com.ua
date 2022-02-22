@@ -16,10 +16,6 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-<script src="{{asset("js/_inventarization.js")}}"></script>
-<script src="{{asset("runtime~js/_inventarization.js")}}"></script>
-<link rel="stylesheet" href="{{asset("css/_inventarization.css")}}">
-
 {{-- indlude page scripts --}}
 @for($i=0;$i<count( $scripts);$i++)
     @if($scripts[$i][1] === true)

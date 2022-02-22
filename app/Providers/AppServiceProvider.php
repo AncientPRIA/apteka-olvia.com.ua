@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
 use TCG\Voyager\Facades\Voyager;
-use App\FormFields\SelectMultipleCustomFormField;
+use App\Formfields\SelectMultipleCustomFormField;
 use App\Models\TranslatableString;
 use Illuminate\Support\Facades\View;
 
