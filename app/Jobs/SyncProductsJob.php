@@ -26,7 +26,7 @@ class SyncProductsJob implements ShouldQueue
      */
     public $tries = 1;
 
-    public function __construct($filePath)
+    public function __construct()
     {
         //$this->filePath = $filePath;
     }
@@ -38,13 +38,7 @@ class SyncProductsJob implements ShouldQueue
      */
     public function handle()
     {
-        //Log::channel("jobs")->info("[ProcessSyncLogJob] START " . $this->id);
-        $result = SynchronizerController::get_sync_file_availability();
-        if(!$result){
-            error_telegram("get_sync_file_availability failed");
-        }
-
-        $reault = SynchronizerController::sy();
+        SynchronizerController::products_sync();
 
         //Log::channel("jobs")->info("[ProcessSyncLogJob] FINISH " . $this->id);
     }

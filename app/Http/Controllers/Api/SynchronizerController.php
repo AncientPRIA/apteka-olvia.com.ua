@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Imports\UniImport;
+use App\Jobs\SyncProductsJob;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -50,22 +51,11 @@ class SynchronizerController
     // =====================================================
 
     public static function create_products_sync_job(){
-
+        dispatch(new SyncProductsJob());
     }
 
-    // Download availability file from FTP
-    public static function get_sync_file_availability(){
-        $connection = Storage::disk('ftp');
-        $fileslist = $connection->allFiles();
-        $filename = $fileslist[0];
-
-        $content = $connection->get($filename);
-        $result = Storage::disk('root')->put("data/import/_availability.xls", $content);
-        return $result;
-    }
-
-    public function products_sync(){
-        echo "<pre>";
+    public static function products_sync(){
+        //echo "<pre>";
 
         // Define paths and other vars
         $product_list["filename"] = "product_list.xls";
@@ -131,8 +121,19 @@ class SynchronizerController
             }
         }
 
-        echo "</pre>";
+        //echo "</pre>";
 
+    }
+
+    // Download availability file from FTP
+    public static function get_sync_file_availability(){
+        $connection = Storage::disk('ftp');
+        $fileslist = $connection->allFiles();
+        $filename = $fileslist[0];
+
+        $content = $connection->get($filename);
+        $result = Storage::disk('root')->put("data/import/_availability.xls", $content);
+        return $result;
     }
 
     public static function availability_sync(){
@@ -143,7 +144,7 @@ class SynchronizerController
         $product_list["filepath"] = base_path('data/import').'/'.$product_list["filename"];
 
 
-        $this->get_shops_site();
+        //self::get_shops_site();
 
         // Get lists
         $lists = Excel::toArray(new UniImport(), $product_list["filepath"]);
@@ -163,22 +164,34 @@ class SynchronizerController
                 }
             }
 
-            //
+            /*
+            8 => ?? Аптека №18 (Шахтостроителей)
+            10 => 1
+            12 => 14
+            14 => 11
+            16 => 13 ? Аптека №13 (Енакиево) у нас есть  Енакиево пр-т. Ленина 93
+            18 => 6
+            20 => 10
+            22 => 8
+            24 => 3
+            26 => ?? Аптека №16 (Ленинский 47г)
+            28 => 4
+            30 => ?? Аптека №14 (пл.Победы, 31)
+            32 => ?? Аптека №17 (к-л,Железнодорожный,37)
+            34 => ?? Аптека №21 (Щетинина) (точный адрес)
+            36 => 12 ? Аптека №11 (Горловка) у нас есть Горловка пр-т. Ленина 23
+            38 => 9
+            40 => 5
+            42 => ?? Аптека №19 (ОсвобождениеДонбасса)
+            44 => 2
+            46 => 7
+            48 => 15
+            50 => ?? Подразд.ФЛП Тимченко А.Г. Пушкина,7б
+            */
+
         }
 
         echo "</pre>";
-
-    }
-
-    public function process_product_row($row){
-        $product = [];
-        $product["sku"] = $row[0];
-        $product["title"] = $row[1];
-        $product["release_form"] = $row[2];
-        $product["amount_in_package"] = $row[3];
-        $product["brand"] = $row[4];
-        $product["nomenclature"] = $row[5];
-
 
     }
 
@@ -262,7 +275,7 @@ class SynchronizerController
         echo "<pre>";
 
         // Define paths and other vars
-        $product_list["filename"] = "availability.xls";
+        $product_list["filename"] = "_availability.xls";
         $product_list["filepath"] = base_path('data/import').'/'.$product_list["filename"];
 
         // Get lists

@@ -281,6 +281,9 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('test_products_list', 'Api\SynchronizerController@test_products_list');
     Route::get('test_availability', 'Api\SynchronizerController@test_availability');
 
+    Route::get('create_products_sync_job', 'Api\SynchronizerController@create_products_sync_job');
+
+
 
 
     // ### Sync END ###

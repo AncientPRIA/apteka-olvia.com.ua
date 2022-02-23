@@ -44,8 +44,6 @@ class SyncAvailabilityJob implements ShouldQueue
             error_telegram("get_sync_file_availability failed");
         }
 
-        $reault = SynchronizerController::availability_sync();
-
         //Log::channel("jobs")->info("[ProcessSyncLogJob] FINISH " . $this->id);
     }
 
