@@ -1,3 +1,4 @@
+@include('blocks.popup.search.search')
 
 <div class="Popup Autf">
     <div class="Popup_Header">

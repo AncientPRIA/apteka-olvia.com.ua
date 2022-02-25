@@ -1,18 +1,21 @@
 @php
     $sizes = array(
                     '1' => ['width' => 1925, 'relative_path' => 'uploads/design/bg_footer_olvia.png', 'q'=> 60],
-                    '2' => ['width' => 320, 'relative_path' => 'uploads/design/bg_footer_olvia.png', 'q'=> 60],
+                    '2' => ['width' => 767, 'relative_path' => 'uploads/design/bg_footer_olvia_tab.png', 'q'=> 60],
+                    '3' => ['width' => 575, 'relative_path' => 'uploads/design/bg_footer_olvia_mob.png', 'q'=> 80],
                     'id' => 'olvia_footer',
                   );
     $mappings = array(
                     '>992' => '1',
-                    '>320' => '2',
+                    '>768' => '2',
+                    '>320' => '3',
                     'default' => '1'
                   );
     $sizes = Img::img($sizes);
     $picture = Img::picture_compose($sizes, $mappings, true, '', 'bg_footer_olvia.png', true);
 
 @endphp
+
 
 <footer style="overflow: hidden">
     <div class="footer_bg Background_Is_Picture">

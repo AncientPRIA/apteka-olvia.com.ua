@@ -5,7 +5,7 @@ const Flickity = require("flickity");
 const Picture = require("./includes/picture_functions");
 require("../views/blocks/popup/popup")
 require("./libs/jq_input_mas")
-require("./includes/form.js")
+require("./includes/popup.js")
 const { detect } = require('detect-browser');
 const browser = detect();
 const WOW = require("./libs/wow/wow.min.js")

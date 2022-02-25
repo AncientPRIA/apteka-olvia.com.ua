@@ -1,0 +1,402 @@
+@import "~flickity"
+.flickity-viewport
+	width: 100%
+	
+.Popup
+	&.Search
+		display: block
+		visibility: hidden
+		opacity: 0
+		overflow: visible
+		background-color: white
+		width: 100%
+		height: 100vh
+		height: calc(var(--vh,1vh)*100)
+		top: 0
+		left: 0
+		transform: none
+		border-radius: 0
+		z-index: 1000000
+		.Popup_content
+			background-color: white
+			border-radius: 0
+		&.Visible
+			visibility: visible
+			opacity: 1
+			transition: visibility .45s ease-in-out, opacity.45s ease-in-out
+		
+			
+.search
+	&__container
+		position: relative
+		z-index: 10
+		padding: 7px 0 0
+		width: 100%
+		max-width: 1800px
+		margin: auto
+		overflow: hidden
+		overflow-y: auto
+		@media (min-width: 768px)
+			padding: 7px 7.5% 0
+			&::-webkit-scrollbar-track
+				border-width: 0
+				background-color: transparent
+			&::-webkit-scrollbar
+				width: 7px
+				height: 10px
+			&::-webkit-scrollbar-track
+				border-width: 0
+				background-color: #c8c7c745
+				border-radius: 10px
+			&::-webkit-scrollbar-thumb
+				background-color: $light-green
+				border-radius: 10px
+		@media(max-width: 767px)
+			height: 100%
+	&__content
+		display: flex
+		flex-direction: column
+		&-wrapper
+			width: 100%
+			
+	&__form-search
+		margin-bottom: 15px
+		@media(max-width: 767px)
+			padding: 0 15px
+	&__search
+		&-input
+			width: 100%
+			position: relative
+			background: #FFFFFF
+			border: 1px solid rgba(0, 0, 0, 0.11)
+			box-sizing: border-box
+			box-shadow: 0px 10.4222px 17.8667px rgba(5, 5, 5, 0.05)
+			border-radius: 37.2222px
+			height: 44px
+			font-family: $rob
+			font-size: 22px
+			line-height: 26px
+			color: #868686
+			padding: 0 38px 0 48px
+			@media(min-width: 768px)
+				height: 67px
+				padding: 0 57.7px
+			&:focus-visible
+				outline: none
+		&-icon
+			position: absolute
+			left: 19px
+			top: 50%
+			transform: translateY(-50%)
+			z-index: 2
+			cursor: pointer
+			transition: transform .25s ease-in-out
+			@media(max-width: 767px)
+				width: 20px
+				height: 20px
+				left: 16px
+			&:hover
+				transform: translateY(-50%) scale(1.1)
+		&-btn
+			position: absolute
+			right: 22px
+			top: 50%
+			transform: translateY(-50%)
+			z-index: 2
+			cursor: pointer
+			transition: transform .25s ease-in-out
+			@media(max-width: 767px)
+				width: 17px
+				height: 17px
+				right: 14px
+			&:hover
+				transform: translateY(-50%) scale(1.1)
+	
+	&__form-group-search
+		width: 100%
+		position: relative
+	&__catalog
+		display: flex
+		flex-direction: column
+		margin-top: -12px
+		&-item
+			display: flex
+			justify-content: space-between
+			align-items: center
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+			padding: 0 5px 1px
+			height: 45px
+			cursor: pointer
+			transition: color .25s ease-in-out
+			color: #4D4D4D
+			&:hover
+				.search__catalog-item-counter
+					color: white
+					background-color: rgba(170, 199, 112, 0.7)
+			&_active
+				.search__catalog-item-counter
+					color: white
+					background-color: $light-green
+				&:hover
+					.search__catalog-item-counter
+						background-color: $light-green
+			&-title
+				font-family: $rob
+				font-size: 14px
+				line-height: 22px
+			&-counter
+				display: flex
+				justify-content: center
+				align-items: center
+				background: rgba(134, 134, 134, 0.1)
+				border-radius: 100%
+				height: 19px
+				width: 19px
+				font-family: $rob_bold
+				font-size: 11.6268px
+				line-height: 14px
+				color: rgba(134, 134, 134, 0.7)
+				transition: color .25s ease-in-out, background .25s ease-in-out
+	&__col
+		width: 100%
+		margin-bottom: 23px
+		padding: 0 15px
+		flex: 0 0 100%
+		@media(min-width: 992px) and (max-width: 1260px)
+			flex: 0 0 50%
+		@media(min-width: 1261px)
+			flex: 0 0 33.3%
+	&__col-catalog
+		width: 100%
+		margin-bottom: 23px
+		flex-shrink: 0
+		padding: 0 15px
+		@media(min-width: 768px)
+			width: 295px
+	&__content-wrapper, &__container
+		height: 100%
+	&__row-main
+		align-items: initial
+		flex-wrap: nowrap
+		@media(max-width: 767px)
+			margin: 0
+			flex-direction: column
+			padding-bottom: 30px
+	&__search-result-category-row
+		margin: 0
+		width: 100%
+		flex-wrap: wrap
+		align-items: initial
+
+	&__btns
+		display: flex
+		align-items: center
+		margin: auto
+		@Media(min-width: 768px)
+			margin-right: 0
+			margin-top: 10px
+	&__btn
+		&-prev, &-next
+			display: flex
+			position: relative
+			align-items: center
+			justify-content: center
+			width: 62.11px
+			height: 62.11px
+			background: #FFFFFF
+			border: 1.08967px solid #99CC33
+			box-sizing: border-box
+			box-shadow: 0px 5.44834px 13.076px rgba(153, 204, 51, 0.35)
+			border-radius: 100%
+			transition: transform .25s ease-in-out
+			cursor: pointer
+			@media(min-width: 768px)
+				width: 43px
+				height: 43px
+				border: 0.754386px solid #99CC33
+				box-shadow: 0px 3.77193px 9.05263px rgba(153, 204, 51, 0.35)
+			&:hover
+				transform: scale(1.1)
+		&-prev
+			margin-right: 11.56px
+			&_hidden
+				display: none
+			&-icon
+				transform: scaleX(-1)
+				@media(min-width: 768px)
+					width: 15.34px
+					height: 6.37px
+		&-next
+			&-icon
+				@media(min-width: 768px)
+					width: 15.34px
+					height: 6.37px
+			&-count
+				font-family: $rob_bold
+				font-size: 16.7943px
+				line-height: 20px
+				color: #FFFFFF
+				@media (min-width: 768px)
+					font-size: 11.6268px
+					line-height: 14px
+				&-wrap
+					position: absolute
+					right: -11.56px
+					top: -1.44px
+					width: 27.44px
+					height: 27.44px
+					border-radius: 100%
+					display: flex
+					justify-content: center
+					align-items: center
+					background: #C8C8C8
+					@media (min-width: 768px)
+						right: -8px
+						top: -1px
+						width: 19px
+						height: 19px
+
+
+.search-result-category
+	&__head
+		display: flex
+		justify-content: space-between
+		margin-bottom: 4px
+		cursor: pointer
+		height: 48px
+		@media(max-width: 767px) and (min-width: 381px)
+			width: fit-content
+		&:hover
+			.search-result-category__head-title
+				text-decoration: underline
+		&-title
+			height: 48px
+			font-family: $rob_medium
+			font-size: 20px
+			line-height: 24px
+			color: $light-green
+		&-icon
+			margin-left: 10px
+			margin-top: 5px
+			transition: transform .25s ease-in-out
+	&__body
+		display: flex
+		flex-direction: column
+	&__more
+		width: fit-content
+		margin: auto
+		@media(min-width: 768px)
+			margin-left: 6px
+			margin-top: -10px
+		&-content
+			font-family: $rob_bold
+			font-size: 14px
+			line-height: 16px
+			color: #9B9B9B
+			cursor: pointer
+			transition: color .25s ease-in-out, border-bottom .25s ease-in-out
+			border-bottom: 1px dashed #9B9B9B
+			width: fit-content
+			&:hover
+				border-bottom: 1px dashed $light-green
+				color: $light-green
+			@Media(max-width: 767px)
+				display: none
+		&-btn
+			display: flex
+			position: relative
+			align-items: center
+			justify-content: center
+			width: 62.11px
+			height: 62.11px
+			background: #FFFFFF
+			border: 1.08967px solid #99CC33
+			box-sizing: border-box
+			box-shadow: 0px 5.44834px 13.076px rgba(153, 204, 51, 0.35)
+			border-radius: 100%
+			transition: transform .25s ease-in-out
+			cursor: pointer
+			//margin: auto
+			&:hover
+				transform: scale(1.1)
+			@media (min-width: 768px)
+				display: none
+	
+	&__item
+		position: relative
+		display: flex
+		height: 70px
+		margin-bottom: 20px
+		@Media(max-width: 767px) and (min-width: 481px)
+			margin-right: 15px
+		&-button-buy
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 32px
+			height: 32px
+			background: #FF6666
+			box-shadow: 0px 8px 12px rgba(255, 102, 102, 0.35);
+			border-radius: 100%
+			position: absolute
+			right: 0
+			bottom: -5px
+			z-index: 5
+			cursor: pointer
+			transition: background .25s ease-in-out
+			&:hover
+				background: #d55555
+		&-img
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: auto
+			&-watermark
+				position: absolute
+				right: 1.61px
+				bottom: 1.61px
+				width: 18.39px
+				height: 18.39px
+			&-wrap
+				width: 59px
+				flex-shrink: 0
+				margin-right: 5px
+			&-container
+				position: relative
+				padding-top: calc(58 / 59 * 100%)
+		&-info
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+		&-title
+			font-family: $rob
+			font-size: 15px
+			line-height: 20px
+			color: #4D4D4D
+			display: -webkit-box
+			-webkit-line-clamp: 2
+			-webkit-box-orient: vertical
+			overflow: hidden
+			transition: color .25s ease-in-out
+			cursor: pointer
+			&:hover
+				color: $light-green
+		&-price-wrap
+			display: flex
+		&-old-price
+			font-family: $rob_medium
+			font-size: 15px;
+			line-height: 18px;
+			color: #C8C7C7;
+			margin-right: 8px
+			text-decoration: line-through
+		&-price
+			font-family: $rob_medium
+			font-size: 15px;
+			line-height: 18px;
+			color: rgba(1, 81, 56, 0.7)
+	
+.d-none
+	display: none!important
+			

@@ -5,7 +5,7 @@ const body = $("body");
 window.popup_show = popup_show;
 window.popup_close = popup_close;
 window.popup_set_type = popup_set_type;
-
+require('./search/search')
 // Show Popup
 // cls - class of popup. (Like .Popup.Type)
 // optional_title - some popups can change title

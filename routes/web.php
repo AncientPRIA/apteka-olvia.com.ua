@@ -271,7 +271,6 @@ Route::group(['prefix' => 'api'], function() {
     Route::middleware('api_token')->get('generate_sitemap', 'Api\ToolsController@generate_sitemap');
 
     // ### Sync ###
-
     Route::get('xls_sync', 'Api\SynchronizerController@xls_sync');
 
     Route::get('products_sync', 'Api\SynchronizerController@products_sync');
@@ -286,9 +285,12 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('create_products_sync_job', 'Api\SynchronizerController@create_products_sync_job');
     Route::get('create_availability_sync_job', 'Api\SynchronizerController@create_availability_sync_job');
     Route::get('create_products_accordance_job', 'Api\SynchronizerController@create_products_accordance_job');
-
-
     // ### Sync END ###
+
+    // ### Search END ###
+    Route::get('test_multi_search', 'SearchController@test_multi_search');
+    // ### Search END ###
+
 
 });
 /* API END */

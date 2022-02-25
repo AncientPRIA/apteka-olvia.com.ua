@@ -1,4 +1,5 @@
 require("../../views/blocks/menu/menu_bottom/search/search");
+require("../../views/blocks/popup/popup")
 const Cart = require("./cart");
 const { detect } = require("detect-browser");
 const browser = detect();
@@ -20,6 +21,7 @@ Cart.closeCart(".Hider_Modal_Def, .Cart_Close", true, { position: true });
 Cart.plusCart();
 Cart.minusCard();
 Cart.delItemCart();
+
 Cart.cartCustom(function() {
     if (browser && browser.name == "ios") {
         let version = browser.version.split(".");
@@ -168,3 +170,18 @@ function scroll_on(element) {
         //enableBodyScroll(element[0]);
     }
 }
+
+(function init100vh(){
+    function setHeight() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setHeight();
+    window.addEventListener('resize', setHeight);
+})();
+
+$('.navbar__form-group-search').on('click', function(){
+    setTimeout(function(){
+        $("#search-input").focus()
+    }, 200)
+})

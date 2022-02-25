@@ -30,7 +30,6 @@ $(document).ready(function(){
 
 	/* END profile tab */
 
-
 	Picture.lazy_load_launch();
 	Picture.background_is_picture_launch();
 
