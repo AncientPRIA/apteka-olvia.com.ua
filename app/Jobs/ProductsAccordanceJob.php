@@ -12,7 +12,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
 
 
-class SyncAvailabilityJob implements ShouldQueue
+class ProductsAccordanceJob implements ShouldQueue
 {
 
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -39,13 +39,8 @@ class SyncAvailabilityJob implements ShouldQueue
     public function handle()
     {
         //Log::channel("jobs")->info("[ProcessSyncLogJob] START " . $this->id);
-        $result = SynchronizerController::get_sync_file_availability();
-        if(!$result){
-            error_telegram("get_sync_file_availability failed");
-            return;
-        }
 
-        SynchronizerController::availability_sync();
+        SynchronizerController::products_accordance();
 
         //Log::channel("jobs")->info("[ProcessSyncLogJob] FINISH " . $this->id);
     }

@@ -148,6 +148,11 @@ class Product extends Model
         return $this->belongsToMany(ActiveSubstance::class, 'products_active_substances_pivot');
     }
 
+    public function availability()
+    {
+        return $this->hasOne(ProductAvailability::class, 'product_id', 'id');
+    }
+
     // Get products related to product in order
     public function related_by_order(){
 

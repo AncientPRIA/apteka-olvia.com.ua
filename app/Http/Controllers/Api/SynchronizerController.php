@@ -4,9 +4,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Imports\UniImport;
+use App\Jobs\ProductsAccordanceJob;
+use App\Jobs\SyncAvailabilityJob;
 use App\Jobs\SyncProductsJob;
 use App\Models\Product;
+use App\Models\ProductAvailability;
+use App\Models\ShopLocation;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -52,6 +57,14 @@ class SynchronizerController
 
     public static function create_products_sync_job(){
         dispatch(new SyncProductsJob());
+    }
+
+    public static function create_availability_sync_job(){
+        dispatch(new SyncAvailabilityJob());
+    }
+
+    public static function create_products_accordance_job(){
+        dispatch(new ProductsAccordanceJob());
     }
 
     public static function products_sync(){
@@ -137,11 +150,55 @@ class SynchronizerController
     }
 
     public static function availability_sync(){
-        echo "<pre>";
+        //echo "<pre>";
+
+        $debug = true;
+        if($debug){
+            $info = [];
+            $info["row_index"] = 0;
+            $info["product_sku_found"] = 0;
+            $info["product_sku_not_found"] = 0;
+            $info["sku_null_count"] = 0;
+            $info["product_null_count"] = 0;
+            $info["product_found_count"] = 0;
+            $info["availability_created_count"] = 0;
+            $info["availability_updated_count"] = 0;
+            $info["availability_same_count"] = 0;
+        }
 
         // Define paths and other vars
-        $product_list["filename"] = "availability.xls";
+        $product_list["filename"] = "_availability.xls";
         $product_list["filepath"] = base_path('data/import').'/'.$product_list["filename"];
+
+        // Get shops
+        $shops = ShopLocation::query()
+            ->get()
+        ;
+
+        $shop_row_indexes = [
+            1 => 10,
+            2 => 44,
+            3 => 24,
+            4 => 28,
+            5 => 40,
+            6 => 18,
+            7 => 46,
+            8 => 22,
+            9 => 38,
+            10 => 20,
+            11 => 14,
+            12 => 36,
+            13 => 16,
+            14 => 12,
+            15 => 48,
+            16 => 8,
+            17 => 26,
+            18 => 30,
+            19 => 32,
+            20 => 34,
+            21 => 42,
+            22 => 50,
+        ];
 
 
         //self::get_shops_site();
@@ -164,70 +221,186 @@ class SynchronizerController
                 }
             }
 
+            if($row_index % 100 === 0){
+                print_r($info);
+            }
+
+            if($debug){
+                $info["last_row_index"] = $row_index;
+                $info["last_row"] = $row;
+            }
+
+
+
             /*
-            8 => ?? Аптека №18 (Шахтостроителей)
+            1 => sku
+            7 => price
+            8 => 16 Аптека №18 (Шахтостроителей)
             10 => 1
             12 => 14
             14 => 11
-            16 => 13 ? Аптека №13 (Енакиево) у нас есть  Енакиево пр-т. Ленина 93
+            16 => 13
             18 => 6
             20 => 10
             22 => 8
             24 => 3
-            26 => ?? Аптека №16 (Ленинский 47г)
+            26 => 17 Аптека №16 (Ленинский 47г)
             28 => 4
-            30 => ?? Аптека №14 (пл.Победы, 31)
-            32 => ?? Аптека №17 (к-л,Железнодорожный,37)
-            34 => ?? Аптека №21 (Щетинина) (точный адрес)
-            36 => 12 ? Аптека №11 (Горловка) у нас есть Горловка пр-т. Ленина 23
+            30 => 18 Аптека №14 (пл.Победы, 31)
+            32 => 19 Аптека №17 (к-л,Железнодорожный,37)
+            34 => 20 Аптека №21 (Щетинина) (точный адрес)
+            36 => 12
             38 => 9
             40 => 5
-            42 => ?? Аптека №19 (ОсвобождениеДонбасса)
+            42 => 21 Аптека №19 (ОсвобождениеДонбасса)
             44 => 2
             46 => 7
             48 => 15
-            50 => ?? Подразд.ФЛП Тимченко А.Г. Пушкина,7б
+            50 => 22 Подразд.ФЛП Тимченко А.Г. Пушкина,7б
             */
 
+            $sku = $row[1];
+            if($sku === null){
+                if($debug){
+                    $info["sku_null_count"]++;
+                }
+                continue;
+            }
+
+
+            // Get product
+            $product = Product::query()
+                ->where("sku", "=", $sku)
+                ->first()
+            ;
+            if($product === null){
+                if($debug){
+                    $info["product_null_count"]++;
+                }
+                continue;
+            }
+
+            if($debug){
+                $info["product_found_count"]++;
+            }
+
+
+            // Update price
+            $price = (int)str_replace([",", " "], "", $row[7]);
+            $product->price = $price;
+            $product->save();
+
+            foreach ($shops as $shop){
+                // Get Availability value
+                $shop_row_index = $shop_row_indexes[$shop->id];
+                $avail_value = $row[$shop_row_index] ?? null;
+                if($avail_value === null){
+                    continue;
+                }
+                if($avail_value === "Да"){
+                    $avail_value = 1;
+                }else{
+                    $avail_value = 0;
+                }
+
+                // Get Availability
+                $avail = ProductAvailability::query()
+                    ->in_shop($shop->id)
+                    ->in_product($product->id)
+                    ->first()
+                ;
+
+                // Create
+                if($avail === null){
+                    $avail = new ProductAvailability();
+                    $avail->product_id = $product->id;
+                    $avail->shop_location_id = $shop->id;
+                    $avail->available = $avail_value;
+                    $avail->save();
+                    if($debug){
+                        $info["availability_created_count"]++;
+                    }
+                }
+                // Update
+                else{
+                    if($avail->available !== $avail_value){
+                        $avail->available = $avail_value;
+                        $avail->save();
+                        if($debug){
+                            $info["availability_updated_count"]++;
+                        }
+                    }else{
+                        if($debug){
+                            $info["availability_same_count"]++;
+                        }
+                    }
+                }
+            }
         }
 
-        echo "</pre>";
+        if($debug){
+            dd($info);
+        }
+        //echo "</pre>";
 
     }
 
-    public function process_availability_row($row){
-        $product = [];
-        $product["sku"] = $row[1];      // int
-        $product["price"] = $row[7];    // float possible!
+    public static function products_accordance(){
+        $info = [];
+        $info["full_matches"] = [];
+        $info["products_index"] = 0;
 
-        // Shop list
-        // Need
-        for ($i = 8; ; $i++){
 
+//        $products_old = Product::on("mysql_old")
+//            ->get()
+//        ;
+
+        $products = Product::query()
+            //->limit(1000)
+            //->offset(0)
+            //->where("id", 2760)
+            ->get()
+        ;
+
+        echo "TOTAL PRODUCTS: ". $products->count() . PHP_EOL;
+
+        foreach ($products as $pindex => $product){
+
+            $product_title = $product->title;
+
+            // Normalize
+            $product_title = str_replace([".", ",", ":"], " ", $product_title);
+            $product_title_parts = explode(" ", $product_title);
+            foreach ($product_title_parts as $index => $value){
+                if(mb_strlen($value) < 4){
+                    unset($product_title_parts[$index]);
+                }
+            }
+
+            $products_old = Product::on("mysql_old");
+            foreach ($product_title_parts as $search_part){
+                $products_old = $products_old->where("title", "LIKE", "%".$search_part."%");
+            }
+            $products_old = $products_old->get();
+
+            if($products_old->count() === 1){
+                $info["full_matches"][] = [
+                    "old_id" => $products_old[0]->id,
+                    "old_title" => $products_old[0]->title,
+                    "new_id" => $product->id,
+                    "new_title" => $product->title,
+                ];
+                //dd($product_title, $product_title_parts, $products_old);
+            }
+
+            if($pindex % 100 === 0){
+                echo "PASSED INDEX: ".$pindex . PHP_EOL;
+                echo "FOUND: ". count($info["full_matches"]) . PHP_EOL;
+            }
         }
 
-
-    }
-
-    // Set and return site shops sorted by $ids
-    public function get_shops_site($ids){
-        if($this->shops_site === null){
-            $this->shops_site = []; // TODO: Get shops and sort by array
-        }
-
-        return $this->shops_site;
-    }
-
-    // Set and return shops map
-    public function get_shops_map(){
-        // xml shop index => site shop model
-        if($this->shops_map === null){
-            $this->shops_map = [
-                8 => 1,
-            ];
-        }
-
-        return $this->shops_map;
+        //Log::info("[ACCORD] ".json_encode($info));
+        dd(count($info["full_matches"]), $info);
     }
 
     // =====================================================
@@ -272,7 +445,18 @@ class SynchronizerController
     }
 
     public function test_availability(){
-        echo "<pre>";
+        //echo "<pre>";
+        $info = [];
+        $info["rows"] = [];
+        $info["not_founds"] = [];
+        $info["product_null_count"] = 0;
+        $info["product_found_count"] = 0;
+        $info["lowest_sku_found"] = 999999;
+        $info["highest_sku_found"] = 0;
+        $info["lowest_sku_not_found"] = 999999;
+        $info["highest_sku_not_found"] = 0;
+
+
 
         // Define paths and other vars
         $product_list["filename"] = "_availability.xls";
@@ -284,17 +468,60 @@ class SynchronizerController
         // Get first list rows
         $rows = $lists[0];
 
+        $info["total_rows"] = count($rows);
+
         // Iterate
         foreach ($rows as $row_index => $row){
-            if($row_index > 20){
+//            if($row_index > 20){
+//                break;
+//            }
+
+            if($row_index < 3000){
+                continue;
+            }
+            if($row_index > 3500){
                 break;
             }
 
-            var_dump($row);
-            echo "\n\n";
+            $sku = $row[1];
+            if($sku === null){
+                $info["sku_null_count"]++;
+                continue;
+            }
+
+
+            // Get product
+            $product = Product::query()
+                ->where("sku", "=", $sku)
+                ->first()
+            ;
+            if($product === null){
+                $info["product_null_count"]++;
+                $info["not_founds"][] = [
+                    "av_sku" => $sku,
+                    "av_title" => $row[2],
+                ];
+                if($sku < $info["lowest_sku_not_found"]){
+                    $info["lowest_sku_not_found"] = $sku;
+                }
+                if($sku > $info["highest_sku_not_found"]){
+                    $info["highest_sku_not_found"] = $sku;
+                }
+                continue;
+            }
+
+            $info["product_found_count"]++;
+            if($sku < $info["lowest_sku_found"]){
+                $info["lowest_sku_found"] = $sku;
+            }
+            if($sku > $info["highest_sku_found"]){
+                $info["highest_sku_found"] = $sku;
+            }
         }
 
-        echo "</pre>";
+        dd($info);
+
+        //echo "</pre>";
     }
 
 }
