@@ -62,6 +62,7 @@ class HomeController extends Controller
             ->limit(10)
             ->with("category")
             ->featured()
+            ->published()
             ->get();
 
         // Products - Top sells
@@ -69,6 +70,7 @@ class HomeController extends Controller
             ->orderBy('selled_amount', 'desc')
             ->limit(10)
             ->with("category")
+            ->published()
             ->get();
 
         $actions_ids = setting('page-home.sell-home-grid');

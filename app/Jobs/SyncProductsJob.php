@@ -38,7 +38,7 @@ class SyncProductsJob implements ShouldQueue
      */
     public function handle()
     {
-        SynchronizerController::products_sync();
+        SynchronizerController::products_sync_mode2();
 
         //Log::channel("jobs")->info("[ProcessSyncLogJob] FINISH " . $this->id);
     }

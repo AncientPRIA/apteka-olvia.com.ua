@@ -38,7 +38,7 @@
 			@endfor
 		</ul>
 	</li>
-@else
+@elseif(isset($menu["link"]))
 	<li class="menu-sub-item menu-sub-item__not-sub menu-sub-item-{{$lvl}}" data-lvl = "{{$index_lvl}}">
 		<a href="{{$menu["link"]}}">{{$menu["title"]}}</a>
 	</li>

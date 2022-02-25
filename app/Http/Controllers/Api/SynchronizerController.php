@@ -40,7 +40,6 @@ class SynchronizerController
     // =====================================================
     // =    INIT
     // =====================================================
-
     public $shops_map = null;
     public $shops_site = null;
 
@@ -402,6 +401,297 @@ class SynchronizerController
         //Log::info("[ACCORD] ".json_encode($info));
         dd(count($info["full_matches"]), $info);
     }
+
+    // === Version 2 === //
+    public static function availability_sync_mode2(){
+        //echo "<pre>";
+
+        $debug = true;
+        if($debug){
+            $info = [];
+            $info["row_index"] = 0;
+            $info["product_sku_found"] = 0;
+            $info["product_sku_not_found"] = 0;
+            $info["sku_null_count"] = 0;
+            $info["product_null_count"] = 0;
+            $info["product_found_count"] = 0;
+            $info["availability_created_count"] = 0;
+            $info["availability_updated_count"] = 0;
+            $info["availability_same_count"] = 0;
+        }
+
+        // Define paths and other vars
+        $product_list["filename"] = "_availability.xls";
+        $product_list["filepath"] = base_path('data/import').'/'.$product_list["filename"];
+
+        // Get shops
+        $shops = ShopLocation::query()
+            ->get()
+        ;
+
+        $shop_row_indexes = [
+            1 => 10,
+            2 => 44,
+            3 => 24,
+            4 => 28,
+            5 => 40,
+            6 => 18,
+            7 => 46,
+            8 => 22,
+            9 => 38,
+            10 => 20,
+            11 => 14,
+            12 => 36,
+            13 => 16,
+            14 => 12,
+            15 => 48,
+            16 => 8,
+            17 => 26,
+            18 => 30,
+            19 => 32,
+            20 => 34,
+            21 => 42,
+            22 => 50,
+        ];
+
+
+        //self::get_shops_site();
+
+        // Get lists
+        $lists = Excel::toArray(new UniImport(), $product_list["filepath"]);
+
+        // Get first list rows
+        $rows = $lists[0];
+
+        // Skip indexes (null if none)
+        $skip_indexes = [0, 1, 2, 3];
+
+        // Iterate
+        foreach ($rows as $row_index => $row){
+            // Skips
+            if($skip_indexes !== null){
+                if(array_search($row_index, $skip_indexes) !== false){
+                    continue;
+                }
+            }
+
+            if($row_index % 100 === 0){
+                print_r($info);
+            }
+
+            if($debug){
+                $info["last_row_index"] = $row_index;
+                $info["last_row"] = $row;
+            }
+
+
+
+            /*
+            1 => sku
+            7 => price
+            8 => 16 Аптека №18 (Шахтостроителей)
+            10 => 1
+            12 => 14
+            14 => 11
+            16 => 13
+            18 => 6
+            20 => 10
+            22 => 8
+            24 => 3
+            26 => 17 Аптека №16 (Ленинский 47г)
+            28 => 4
+            30 => 18 Аптека №14 (пл.Победы, 31)
+            32 => 19 Аптека №17 (к-л,Железнодорожный,37)
+            34 => 20 Аптека №21 (Щетинина) (точный адрес)
+            36 => 12
+            38 => 9
+            40 => 5
+            42 => 21 Аптека №19 (ОсвобождениеДонбасса)
+            44 => 2
+            46 => 7
+            48 => 15
+            50 => 22 Подразд.ФЛП Тимченко А.Г. Пушкина,7б
+            */
+
+            $sku = $row[1];
+
+            if($sku === null){
+                if($debug){
+                    $info["sku_null_count"]++;
+                }
+                continue;
+            }
+
+            $price = (int)str_replace([",", " "], "", $row[7]);
+
+            // Get product
+            $product = Product::query()
+                ->where("sku", "=", $sku)
+                ->first()
+            ;
+
+
+
+            // Create or Update Product
+            if($product === null){
+                $product = new Product();
+                $product->sku = $sku;
+                $product->title = $row[2];
+                $product->price = $price;
+                //$object->title = $row[1];
+                //$object->release_form = $row[2];
+                //$object->count_in_package = $row[3];
+                //$object->brand = $row[4];
+                //$object->trade_title = $row[5];
+                $product->save();
+            }else{
+                $product->price = $price;
+                $product->save();
+            }
+
+
+            foreach ($shops as $shop){
+                // Get Availability value
+                $shop_row_index = $shop_row_indexes[$shop->id];
+                $avail_value = $row[$shop_row_index] ?? null;
+                if($avail_value === null){
+                    continue;
+                }
+                if($avail_value === "Да"){
+                    $avail_value = 1;
+                }else{
+                    $avail_value = 0;
+                }
+
+                // Get Availability
+                $avail = ProductAvailability::query()
+                    ->in_shop($shop->id)
+                    ->in_product($product->id)
+                    ->first()
+                ;
+
+                // Create
+                if($avail === null){
+                    $avail = new ProductAvailability();
+                    $avail->product_id = $product->id;
+                    $avail->shop_location_id = $shop->id;
+                    $avail->available = $avail_value;
+                    $avail->save();
+                    if($debug){
+                        $info["availability_created_count"]++;
+                    }
+                }
+                // Update
+                else{
+                    if($avail->available !== $avail_value){
+                        $avail->available = $avail_value;
+                        $avail->save();
+                        if($debug){
+                            $info["availability_updated_count"]++;
+                        }
+                    }else{
+                        if($debug){
+                            $info["availability_same_count"]++;
+                        }
+                    }
+                }
+            }
+        }
+
+        if($debug){
+            dd($info);
+        }
+        //echo "</pre>";
+
+    }
+
+    public static function products_sync_mode2(){
+        //echo "<pre>";
+        $info = [];
+        $info["products_updated"] = 0;
+        $info["products_not_found"] = 0;
+        $info["last_row_index"] = 0;
+
+        // Define paths and other vars
+        $product_list["filename"] = "product_list.xls";
+        $product_list["filepath"] = base_path('data/import').'/'.$product_list["filename"];
+
+        // Get lists
+        $lists = Excel::toArray(new UniImport(), $product_list["filepath"]);
+
+        // Get first list rows
+        $rows = $lists[0];
+
+        // Skip indexes (null if none)
+        $skip_indexes = [0];
+
+        // Iterate
+        foreach ($rows as $row_index => $row){
+            // Skips
+            if($skip_indexes !== null){
+                if(array_search($row_index, $skip_indexes) !== false){
+                    continue;
+                }
+            }
+
+            // Normalize
+            $row[1] = trim(preg_replace("/\s{2,}/", " ", $row[1]));
+            $row[5] = trim(preg_replace("/\s{2,}/", " ", $row[5]));
+
+            // Create or Update
+            $sku = $row[0];
+            $object = Product::query()
+                ->where("sku", "=", $sku)
+                ->first()
+            ;
+
+            /*
+            0 => sku
+            1 => title
+            2 => release_form
+            3 => count_in_package
+            4 => brand
+            5 => trade_title
+            */
+
+            // Update
+            if($object !== null) {
+                $object->title = $row[1];
+                $object->release_form = $row[2];
+                $object->count_in_package = $row[3];
+                $object->brand = $row[4];
+                $object->trade_title = $row[5];
+                $object->status = Product::SYNCED_CATALOG;
+                $object->save();
+
+                $info["products_updated"]++;
+            }
+            // Create
+            else{
+                $info["products_not_found"]++;
+                continue; // Skip
+//                $object = new Product();
+//                $object->sku = $sku;
+//                $object->title = $row[1];
+//                $object->release_form = $row[2];
+//                $object->count_in_package = $row[3];
+//                $object->brand = $row[4];
+//                $object->trade_title = $row[5];
+//                $object->save();
+            }
+
+            $info["last_row_index"] = $row_index;
+
+            if($row_index % 100 === 0){
+                dd($info);
+            }
+        }
+
+        //echo "</pre>";
+
+        dd("FINISHED", $info);
+    }
+
 
     // =====================================================
     // =    TESTS

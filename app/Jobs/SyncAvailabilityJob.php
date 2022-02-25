@@ -45,7 +45,7 @@ class SyncAvailabilityJob implements ShouldQueue
             return;
         }
 
-        SynchronizerController::availability_sync();
+        SynchronizerController::availability_sync_mode2();
 
         //Log::channel("jobs")->info("[ProcessSyncLogJob] FINISH " . $this->id);
     }

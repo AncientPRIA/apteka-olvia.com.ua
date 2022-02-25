@@ -27,6 +27,8 @@ class Product extends Model
 
     public $timestamps = true;
     const PUBLISHED = 'PUBLISHED';
+    const SYNCED_CATALOG = 'SYNCED_CATALOG';
+
     const FEATURED = 1;
 
     public $no_image = "products/no-image.png";
