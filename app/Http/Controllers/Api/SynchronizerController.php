@@ -409,12 +409,9 @@ class SynchronizerController
         $debug = true;
         if($debug){
             $info = [];
-            $info["row_index"] = 0;
-            $info["product_sku_found"] = 0;
-            $info["product_sku_not_found"] = 0;
             $info["sku_null_count"] = 0;
-            $info["product_null_count"] = 0;
-            $info["product_found_count"] = 0;
+            $info["product_created_count"] = 0;
+            $info["product_updated_count"] = 0;
             $info["availability_created_count"] = 0;
             $info["availability_updated_count"] = 0;
             $info["availability_same_count"] = 0;
@@ -473,6 +470,10 @@ class SynchronizerController
                 if(array_search($row_index, $skip_indexes) !== false){
                     continue;
                 }
+            }
+
+            if($row_index < 15000){
+                continue;
             }
 
             if($row_index % 100 === 0){
@@ -544,9 +545,11 @@ class SynchronizerController
                 //$object->brand = $row[4];
                 //$object->trade_title = $row[5];
                 $product->save();
+                $info["product_created_count"]++;
             }else{
                 $product->price = $price;
                 $product->save();
+                $info["product_updated_count"]++;
             }
 
 

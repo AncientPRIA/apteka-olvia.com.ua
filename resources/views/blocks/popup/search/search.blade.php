@@ -1,7 +1,8 @@
 <div class="Popup Search">
 
     <div class="Popup_content search__container">
-        <div class="search__content-wrapper">
+
+        <div class="search__content-wrapper no-category">
             <form action="/search"  class="search__form-search">
                 <div class="search__form-group-search form-group-search">
                     <svg class="search__search-icon" width="26" height="27">

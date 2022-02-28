@@ -1,6 +1,6 @@
-@import "~flickity"
-.flickity-viewport
-	width: 100%
+//@import "~flickity"
+//.flickity-viewport
+//	width: 100%
 	
 .Popup
 	&.Search
@@ -399,4 +399,17 @@
 	
 .d-none
 	display: none!important
+	
+	
+.no-category
+	.search
+		&__col
+			flex-grow: 1
+			&-catalog
+				display: none
+		&-result-category
+			&__head
+				display: none
+			&__item
+				max-width: 33%
 			

@@ -26,16 +26,15 @@ const isProd = !isDev;
 console.log(isProd);
 
 let file_obj = {
-    "js/_inventarization": "./resources/js/inventarization.js",
-    "css/_inventarization": "./resources/styles/sass/inventarization.sass",
+    // "js/_inventarization": "./resources/js/inventarization.js",
+    // "css/_inventarization": "./resources/styles/sass/inventarization.sass",
 
     // "js/profile": "./resources/js/profile.js",
     // "css/profile.min": "./resources/styles/sass/profile.sass",
 
-    // "js/index": "./resources/js/index.js",
-    // "css/home.min": "./resources/styles/sass/home.sass",
-    // "css/home_critical.min": "./resources/styles/sass/home_critical.sass",
-    //'css/critical_home.min': "./resources/styles/sass/criticla_home_page.sass",
+    "js/index": "./resources/js/index.js",
+    "css/home.min": "./resources/styles/sass/home.sass",
+    "css/home_critical.min": "./resources/styles/sass/home_critical.sass",
 
     // "js/user_active": "./resources/js/user_active.js",
 

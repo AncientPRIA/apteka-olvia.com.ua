@@ -111,4 +111,120 @@ class SearchController extends Controller
         return json_encode($response,JSON_UNESCAPED_UNICODE);
     }
 
+    public function multi_search(){
+        $request = request();
+
+        $search = $request->get("search", "");
+
+        if(mb_strlen($search) < 3){
+            $response['status'] = "0";
+            $response['content'] = "";
+            return;
+        }
+
+        $search = mb_strtolower($search, 'UTF-8');
+        $search_arr = explode(" ", $search);
+        $search_query = [];
+        foreach ($search_arr as $word){
+            $len = mb_strlen($word, 'UTF-8');
+
+            switch (true)
+            {
+                case ($len <= 3):
+                    {
+                        $search_query[] = $word . "*";
+                        break;
+                    }
+                case ($len > 3 && $len <= 6):
+                    {
+                        $search_query[] = mb_substr($word, 0, -1, 'UTF-8') . "*";
+                        break;
+                    }
+                case ($len > 6 && $len <= 9):
+                    {
+                        $search_query[] = mb_substr($word, 0, -2, 'UTF-8') . "*";
+                        break;
+                    }
+                case ($len > 9):
+                    {
+                        $search_query[] = mb_substr($word, 0, -3, 'UTF-8') . "*";
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
+
+        $search_query = array_unique($search_query, SORT_STRING);
+        $search_normalized = implode(" ", $search_query);
+
+
+        $results = Product::query()
+            ->whereRaw(
+            "MATCH( title ) AGAINST(? IN BOOLEAN MODE)",  // MATCH( x, y ) - allows multiple fields
+            $search_normalized
+        )->paginate();
+
+        $response['status'] = "1";
+        $response['content'] = "";
+    }
+
+    public function test_multi_search(){
+        $request = request();
+
+        $search = $request->get("search", "");
+
+        if(mb_strlen($search) < 3){
+            return;
+        }
+
+        $search = mb_strtolower($search, 'UTF-8');
+        $search_arr = explode(" ", $search);
+        $search_query = [];
+        foreach ($search_arr as $word){
+            $len = mb_strlen($word, 'UTF-8');
+
+            switch (true)
+            {
+                case ($len <= 3):
+                    {
+                        $search_query[] = $word . "*";
+                        break;
+                    }
+                case ($len > 3 && $len <= 6):
+                    {
+                        $search_query[] = mb_substr($word, 0, -1, 'UTF-8') . "*";
+                        break;
+                    }
+                case ($len > 6 && $len <= 9):
+                    {
+                        $search_query[] = mb_substr($word, 0, -2, 'UTF-8') . "*";
+                        break;
+                    }
+                case ($len > 9):
+                    {
+                        $search_query[] = mb_substr($word, 0, -3, 'UTF-8') . "*";
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
+
+        $search_query = array_unique($search_query, SORT_STRING);
+        $search_normalized = implode(" ", $search_query);
+
+
+        $results = Product::query()
+            ->whereRaw(
+                "MATCH( title ) AGAINST(? IN BOOLEAN MODE)",  // MATCH( x, y ) - allows multiple fields
+                $search_normalized
+            )->paginate();
+
+        dd($results);
+    }
 }
