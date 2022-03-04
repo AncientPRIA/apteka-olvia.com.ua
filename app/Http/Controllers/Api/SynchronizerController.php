@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\ProductAvailability;
 use App\Models\ShopLocation;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -349,6 +350,9 @@ class SynchronizerController
         $info["full_matches"] = [];
         $info["products_index"] = 0;
 
+        $old_base_path = "/var/www/olv_site/data/www/apteka-olvia.com.ua";
+        $current_base_path = base_path();
+
 
 //        $products_old = Product::on("mysql_old")
 //            ->get()
@@ -358,6 +362,7 @@ class SynchronizerController
             //->limit(1000)
             //->offset(0)
             //->where("id", 2760)
+            //->whereNotNull("compared_old_id")
             ->get()
         ;
 
@@ -390,10 +395,74 @@ class SynchronizerController
                     "new_title" => $product->title,
                 ];
                 //dd($product_title, $product_title_parts, $products_old);
+
+                // Update
+                $product->compared_old_id = $products_old[0]->id;
+                $product->meta_title = $products_old[0]->meta_title;
+                $product->meta_description = $products_old[0]->meta_description;
+                $product->meta_h1 = $products_old[0]->meta_h1;
+                $product->excerpt = $products_old[0]->excerpt;
+                $product->body = $products_old[0]->body;
+//                $product->image = $products_old[0]->image;
+//                $product->image_thumb = $products_old[0]->image_thumb;
+                $product->category_id = $products_old[0]->category_id;
+                $product->title_short = $products_old[0]->title_short;
+                $product->administration = $products_old[0]->administration;
+                $product->food_interaction = $products_old[0]->food_interaction;
+                $product->light_sensitivity = $products_old[0]->light_sensitivity;
+                $product->conditions_of_supply = $products_old[0]->conditions_of_supply;
+                $product->expiration_date = $products_old[0]->expiration_date;
+                $product->storage_temperature = $products_old[0]->storage_temperature;
+                $product->manufacturer = $products_old[0]->manufacturer;
+                $product->country_license_holder = $products_old[0]->country_license_holder;
+                $product->atc_code = $products_old[0]->atc_code;
+                $product->parsed_source = $products_old[0]->parsed_source;
+                $product->allowed_adult = $products_old[0]->allowed_adult;
+                $product->allowed_child = $products_old[0]->allowed_child;
+                $product->allowed_pregnant = $products_old[0]->allowed_pregnant;
+                $product->allowed_nursing = $products_old[0]->allowed_nursing;
+                $product->allowed_allergic = $products_old[0]->allowed_allergic;
+                $product->allowed_diabetic = $products_old[0]->allowed_diabetic;
+                $product->allowed_driver = $products_old[0]->allowed_driver;
+                $product->packing = $products_old[0]->packing;
+                $product->save();
+
+                // Copy images
+                // -- Full
+                $images = json_decode($products_old[0]->image_thumb) ?? $products_old[0]->image_thumb;
+                if(!empty($images)){
+                    if(!is_array($images)){
+                        $images = [$images];
+                    }
+
+                    //$product_old_path = $old_base_path . '/public/uploads/products/' . split_folders_by_id($products_old[0]->id, true) . '/prod_'.$products_old[0]->id;
+                    //$product_old_path = $images
+                    //$product_current_path = $current_base_path . '/public/uploads/products/' . split_folders_by_id($products_old[0]->id, true).'/'.$products_old[0]->id;
+
+                    foreach ($images as $image_index => $image){
+                        //$product_old_path = $old_base_path . '/public/uploads/' . split_folders_by_id($products_old[0]->id, true) . '/prod_'.$products_old[0]->id;
+                        $image_old_pathname = $old_base_path . '/public/uploads/' . $image;
+                        $image_pathinfo = pathinfo($image_old_pathname);
+
+                        $image_current_uploads_pathname = 'products/' . split_folders_by_id($product->id, true).'/'.$product->id . '/' . $image_index.".".strtolower($image_pathinfo["extension"]);
+                        $image_current_full_pathname = $current_base_path . '/public/uploads/' . $image_current_uploads_pathname;
+
+                        $image_current_full_pathinfo = pathinfo($image_current_full_pathname);
+                        if(!File::exists($image_current_full_pathinfo["dirname"])){
+                            File::makeDirectory($image_current_full_pathinfo["dirname"], 0755, true);
+                        }
+                        File::copy($image_old_pathname, $image_current_full_pathname);
+                    }
+
+                    // Update images
+                    $product->image = json_encode([$image_current_uploads_pathname], JSON_UNESCAPED_SLASHES);
+                    $product->image_thumb = $image_current_uploads_pathname;
+                    $product->save();
+                }
             }
 
             if($pindex % 100 === 0){
-                echo "PASSED INDEX: ".$pindex . PHP_EOL;
+                echo "LAST FINISHED INDEX: ".$pindex . PHP_EOL;
                 echo "FOUND: ". count($info["full_matches"]) . PHP_EOL;
             }
         }
@@ -637,6 +706,10 @@ class SynchronizerController
                 }
             }
 
+            if($row_index % 100 === 0){
+                print_r($info);
+            }
+
             // Normalize
             $row[1] = trim(preg_replace("/\s{2,}/", " ", $row[1]));
             $row[5] = trim(preg_replace("/\s{2,}/", " ", $row[5]));
@@ -672,7 +745,7 @@ class SynchronizerController
             // Create
             else{
                 $info["products_not_found"]++;
-                continue; // Skip
+                //continue; // Skip
 //                $object = new Product();
 //                $object->sku = $sku;
 //                $object->title = $row[1];
@@ -684,10 +757,6 @@ class SynchronizerController
             }
 
             $info["last_row_index"] = $row_index;
-
-            if($row_index % 100 === 0){
-                dd($info);
-            }
         }
 
         //echo "</pre>";

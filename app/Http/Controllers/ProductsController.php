@@ -54,8 +54,6 @@ class ProductsController extends Controller
         $category = ProductCategory::find_by_path($segments)->first();
         //dd($tmp->toSql(), $tmp->getBindings(), $tmp->get());
 
-
-
         if($category !== null){
             // Category found -> Success 200
             //dd('Category found -> Success 200');

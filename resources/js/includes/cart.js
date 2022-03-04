@@ -26,7 +26,10 @@ let window_width = $(window).width();
 
 	// добавление товара. op1 - классы кнопок для добавления, op2 - класс карточки товара
 	let addCart = (class_btn_add=".btn_add_product",card_item_product=".Product_Item_Fn",callback_fn) =>{
-		$("body").on("click",`${class_btn_add}`,function(){
+		$("body").on("click",`${class_btn_add}`,function(e){
+
+			e.preventDefault();
+            e.stopPropagation();
 
 			var id = $(this).data("productId"); // получаем id товара для поска в дом
 			var price = $(`${card_item_product}[data-product-id='${id}'] .price-item-product_fn`).eq(0).text() // получаем цену

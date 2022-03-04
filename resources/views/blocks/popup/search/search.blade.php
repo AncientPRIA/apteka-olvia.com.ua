@@ -152,10 +152,335 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-result-category__item">
+                                    <div class="search-result-category__item-button-buy">
+                                        <svg class="search-result-category__item-button-buy-icon" width="19" height="12">
+                                            <use xlink:href="/public/img/svg/sprite-search.svg#buy-icon"></use>
+                                        </svg>
+                                    </div>
+
+                                    <div class="search-result-category__item-img-wrap">
+                                        <div class="search-result-category__item-img-container">
+                                            @php
+                                                $sizes = array(
+                                                                '1' => ['width' => 59, 'relative_path' => 'uploads/products/product-img.png', 'q'=> 60],
+                                                                'id' => 'search-result-category__product-img',
+
+                                                              );
+                                                $mappings = array(
+                                                                '>320' => '1',
+                                                                'default' => '1'
+                                                              );
+                                                $sizes = Img::img($sizes);
+                                                $picture = Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+                                            @endphp
+                                            {!! $picture !!}
+
+                                            <img class="search-result-category__item-img-watermark" src="/public/img/svg/logo.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="search-result-category__item-info">
+                                        <div class="search-result-category__item-title">
+                                            Дезодорант для тела DRYDRY (Драй драй) 35 мл.
+                                        </div>
+                                        <div class="search-result-category__item-price-wrap">
+                                            <div class="search-result-category__item-old-price">
+                                                800 руб.
+                                            </div>
+                                            <div class="search-result-category__item-price">
+                                                300 руб.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="search__col">
+
+                    <div class="search__col" style="display:none;" >
                         <div class="search-result-category">
                             <div class="search-result-category__head">
                     <span class="search-result-category__head-title">
@@ -343,7 +668,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="search__col">
+                    <div class="search__col" style="display:none;">
                         <div class="search-result-category">
                             <div class="search-result-category__head">
                     <span class="search-result-category__head-title">
@@ -530,7 +855,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="search__col">
+                    <div class="search__col" style="display:none;">
                         <div class="search-result-category">
                             <div class="search-result-category__head">
                     <span class="search-result-category__head-title">
@@ -722,6 +1047,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="search__btns d-none">
                         <div class="search__btn-prev search__btn-prev_hidden">
                             <svg class="search__btn-prev-icon" width="26" height="12">
@@ -740,6 +1066,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="search__pagination-container"></div>
             </div>
         </div>
     </div>

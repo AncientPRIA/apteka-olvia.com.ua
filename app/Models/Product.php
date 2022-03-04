@@ -31,7 +31,9 @@ class Product extends Model
 
     const FEATURED = 1;
 
-    public $no_image = "products/no-image.png";
+    const PICTURE_BASE_KEY = "product";
+
+    public $no_image = "product_image_placeholder.png";
 
     protected $dispatchesEvents = [
         'created' => Product_Created::class,
@@ -56,7 +58,8 @@ class Product extends Model
     // Scope - Published
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', '=', static::PUBLISHED);
+        return $query;
+        //return $query->whereIn('status', [static::PUBLISHED, static::SYNCED_CATALOG]);
     }
 
     // Scope - Featured
@@ -261,6 +264,144 @@ Player::whereHas("roleplay", function($q){
             ->with("categories")
             ->paginate(null, $columns = ['*'], $pageName = 'page', $page);
         return $products;
+    }
+
+
+    /* ========= IMAGES ========= */
+
+    // Make Picture ID of $type
+    public function picture_id($relative, $type){
+        return self::PICTURE_BASE_KEY . "_" . $type . "_" . $relative;
+    }
+
+    // Get images by type
+    public function get_images($type){
+        switch ($type){
+            case "card":
+            case "thumb":
+                $images = $this->get_images_thumb();
+                break;
+            case "full":
+                $images = $this->get_images_full();
+                break;
+            default:
+                $images = [];
+        }
+        return $images;
+    }
+
+    // Get main images
+    public function get_images_full(){
+        $images = json_decode($this->image, true) ?? $this->image;
+        if(empty($images)){
+            $images = json_decode($this->image_thumb, true) ?? $this->image_thumb;
+        }
+        if(empty($images)){
+            $images = $this->no_image ?? '';
+        }
+        if(!is_array($images)){
+            $images = [$images];
+        }
+        return $images;
+    }
+
+    // Get card images (thumb)
+    public function get_images_thumb(){
+        $images = json_decode($this->image_thumb) ?? $this->image_thumb;
+        if(empty($images)){
+            $images = json_decode($this->image) ?? $this->image;
+        }
+        if(empty($images)){
+            $images = $this->no_image ?? '';
+        }
+        if(!is_array($images)){
+            $images = [$images];
+        }
+        return $images;
+    }
+
+    // Generate image of $type
+    public function picture($uploads_relative, $type){
+        switch ($type){
+            case "card":
+            case "thumb":
+                $picture = $this->picture_card($uploads_relative);
+                break;
+            case "full":
+                $picture = $this->picture_full($uploads_relative);
+                break;
+            case "search":
+                $picture = $this->picture_search($uploads_relative);
+                break;
+            default:
+                $picture = "";
+        }
+        return $picture;
+    }
+
+    // Generate image for single page
+    public function picture_full($uploads_relative){
+        $type = "full";
+
+        $sizes = array(
+            '1' => ['width' => 376, 'relative_path' => 'uploads/'.$uploads_relative, 'q'=> 90, 'watermark' => config('image.watermark.product')],
+            'id' => $this->picture_id($uploads_relative, $type),
+            'get_dimensions' => true
+        );
+        $mappings = array(
+            '>320' => '1',
+            'default' => '1'
+        );
+        $sizes = \Img::img($sizes);
+        $picture = \Img::picture_compose($sizes, $mappings, [
+            'is_hidden' => false,
+            'classes' => '',
+            'alt' => '',
+            'is_lazy' => true,
+            'fullscreen' => true,
+            'placeholder' => [
+                'plain' => asset('uploads/product_image_placeholder.png'),
+            ]
+        ]);
+        return $picture;
+    }
+
+    // Generate image for card
+    public function picture_card($uploads_relative){
+        $type = "card";
+
+        $sizes = array(
+            '1' => ['width' => 320, 'relative_path' => 'uploads/'.$uploads_relative, 'q'=> 60, 'watermark' => config('image.watermark.product')],
+            '2' => ['width' => 540, 'relative_path' => 'uploads/'.$uploads_relative, 'q'=> 60, 'watermark' => config('image.watermark.product')],
+            'id' => $this->picture_id($uploads_relative, $type)
+        );
+        $mappings = array(
+            '>540' => '2',
+            '>320' => '1',
+            'default' => '1'
+        );
+        $sizes = \Img::img($sizes);
+        $picture = \Img::picture_compose($sizes, $mappings, true, '', '', true);
+
+        return $picture;
+    }
+
+    // Generate image for card
+    public function picture_search($uploads_relative){
+        $type = "search";
+
+        $sizes = array(
+            '1' => ['width' => 70, 'relative_path' => 'uploads/'.$uploads_relative, 'q'=> 60, 'watermark' => config('image.watermark.product')],
+            'id' => $this->picture_id($uploads_relative, $type)
+        );
+        $mappings = array(
+            '>320' => '1',
+            'default' => '1'
+        );
+        $sizes = \Img::img($sizes);
+        $picture = \Img::picture_compose($sizes, $mappings, false, 'search-result-category__item-img', '', false);
+
+        return $picture;
     }
 
 }

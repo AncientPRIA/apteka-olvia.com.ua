@@ -176,25 +176,42 @@
 	&__content-wrapper, &__container
 		height: 100%
 	&__row-main
+		position: relative
+		min-height: 436px
 		align-items: initial
 		flex-wrap: nowrap
-		@media(max-width: 767px)
+		@media(max-width: 1260px)
 			margin: 0
 			flex-direction: column
 			padding-bottom: 30px
+		
 	&__search-result-category-row
 		margin: 0
 		width: 100%
 		flex-wrap: wrap
 		align-items: initial
-
+		
+		*
+			user-select: none
+			
+	&__pagination-container
+		margin-left: auto
+		margin-right: auto
 	&__btns
+		position: relative
 		display: flex
 		align-items: center
 		margin: auto
-		@Media(min-width: 768px)
+		@Media(min-width: 1261px)
+			position: absolute
 			margin-right: 0
 			margin-top: 10px
+			right: 30px
+			bottom: 90px
+		@Media(max-width: 1260px)
+			transform: translate(-50%, 0px)
+			left: 50%
+		
 	&__btn
 		&-prev, &-next
 			display: flex
@@ -210,6 +227,7 @@
 			border-radius: 100%
 			transition: transform .25s ease-in-out
 			cursor: pointer
+			user-select: none
 			@media(min-width: 768px)
 				width: 43px
 				height: 43px
@@ -407,9 +425,18 @@
 			flex-grow: 1
 			&-catalog
 				display: none
+		&__search-result-category-row
+			flex-direction: column
 		&-result-category
 			&__head
 				display: none
+			&__body
+				flex-direction: row
+				flex-wrap: wrap
 			&__item
-				max-width: 33%
+				width: 100%
+				@media(min-width: 992px) and (max-width: 1260px)
+					width: 50%
+				@media(min-width: 1261px)
+					width: 33%
 			

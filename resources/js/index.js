@@ -10,6 +10,7 @@ const { detect } = require('detect-browser');
 const browser = detect();
 const WOW = require("./libs/wow/wow.min.js")
 import { TweenLite, TimelineMax, Back } from "gsap/all";
+import MultiSearch from "./includes/multi_search";
 
 // import "@babel/polyfill";
 // import * as Sentry from '@sentry/browser';
@@ -51,6 +52,13 @@ $(document).ready(function(){
 		wow.init();
 
 	/* END wow animation */
+
+    /* ------- Multi search ------- */
+    window.multiSearch = new MultiSearch({
+        CategoriesDisabled: true,
+        rootQuery: ".search__content-wrapper",
+    });
+    window.multiSearch.init();
 
     /*----- flickity wabpack init-----*/
     Flickity.setJQuery( $ );

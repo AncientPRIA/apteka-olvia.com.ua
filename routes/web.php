@@ -287,7 +287,8 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('create_products_accordance_job', 'Api\SynchronizerController@create_products_accordance_job');
     // ### Sync END ###
 
-    // ### Search END ###
+    // ### Search ###
+    Route::post('multi_search', 'SearchController@multi_search');
     Route::get('test_multi_search', 'SearchController@test_multi_search');
     // ### Search END ###
 

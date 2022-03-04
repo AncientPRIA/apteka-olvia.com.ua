@@ -114,7 +114,7 @@ class SearchController extends Controller
     public function multi_search(){
         $request = request();
 
-        $search = $request->get("search", "");
+        $search = $request->get("query", "");
 
         if(mb_strlen($search) < 3){
             $response['status'] = "0";
@@ -165,16 +165,32 @@ class SearchController extends Controller
             ->whereRaw(
             "MATCH( title ) AGAINST(? IN BOOLEAN MODE)",  // MATCH( x, y ) - allows multiple fields
             $search_normalized
-        )->paginate();
+        )->get(["id", "title", "price", "slug"]);
+
+        for($i = 0; $i < $results->count(); $i++){
+            $results[$i]["url"] = route('products') . "/" . $results[$i]->get_path();
+            $images = $results[$i]->get_images("thumb");
+//            if($results[$i]->id === 8957){
+//                dd($images);
+//            }
+            $results[$i]["picture"] = $results[$i]->picture($images[0], "search");
+        }
+
 
         $response['status'] = "1";
-        $response['content'] = "";
+        $response['content'] = $results;
+        return $response;
     }
 
     public function test_multi_search(){
+        $info = [];
+        $et = microtime(true);
+
         $request = request();
 
-        $search = $request->get("search", "");
+        $search = $request->get("query", "");
+
+        $info["search"] = $search;
 
         if(mb_strlen($search) < 3){
             return;
@@ -225,6 +241,9 @@ class SearchController extends Controller
                 $search_normalized
             )->paginate();
 
-        dd($results);
+        $info["found_count"] = $results->count();
+        $info["query_time"] = microtime(true) - $et;
+
+        dd($info, $results);
     }
 }
