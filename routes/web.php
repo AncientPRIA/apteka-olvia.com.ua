@@ -292,6 +292,9 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('test_multi_search', 'SearchController@test_multi_search');
     // ### Search END ###
 
+    // ### Tests ###
+    Route::get('filled_categories', 'Api\TestsController@filled_categories');
+    // ### Tests END ###
 
 });
 /* API END */

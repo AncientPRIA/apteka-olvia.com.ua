@@ -30,29 +30,32 @@
 
 <div class="container product_container">
 
-    @component("blocks.title.section_title",
-        [
-            "data" =>[
-                "section_class" => "section_sidebar",
-                "title" => string($strings, 'products_sidebar_title', "Лекарственные препараты"),
-                "section_class_title" => "title-gen product_title product_title_sidebar"
-            ]
-        ])
+    @if(isset($sidebar_menu))
+        @component("blocks.title.section_title",
+    [
+        "data" =>[
+            "section_class" => "section_sidebar",
+            "title" => string($strings, 'products_sidebar_title', "Лекарственные препараты"),
+            "section_class_title" => "title-gen product_title product_title_sidebar"
+        ]
+    ])
 
-        <div class="section_sp"></div>
+            <div class="section_sp"></div>
 
-        <div class="section_sidebar_mobileBtn">
-            Категории
-        </div>
+            <div class="section_sidebar_mobileBtn">
+                Категории
+            </div>
 
-        <div class="section_sidebar_list">
+            <div class="section_sidebar_list">
 
-			@include("blocks.sidebar.cat.cat-par",[])
+                @include("blocks.sidebar.cat.cat-par",[])
 
-        </div>
+            </div>
 
 
-    @endcomponent
+        @endcomponent
+    @endif
+
 
     @component("blocks.title.section_title",
         [

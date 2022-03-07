@@ -10,16 +10,24 @@ export default class MultiSearch {
     };
 
     data = {
-        content: [],
-        totalItems: 0,
-        page: 1,
-        totalPages: 1,
+        search: "",         // Search string
+        content: [],        // Result items
+        totalItems: 0,      // Total result items count
+        page: 1,            // Current page
+        totalPages: 1,      // Total pages count
+        highlight: {
+            words: [],
+            wordsCount: 0,
+            replaces: [],
+        }
     };
 
     settings = {
         CategoriesDisabled: true,               // Single category mode (No category)
         ServerPagination: false,                // Enable server side pagination (TODO: Not implemented)
         perPage: 11,                            // Number of items per page
+        highlightEnabled: true,                 // Enable searched text highlight in results
+        autocompleteEnabled: true,              // Enable search input autocomplete
     };
 
     elementQueries = {
@@ -155,6 +163,8 @@ export default class MultiSearch {
             return
         }
 
+        _this.data.search = query;
+
         let formData = new FormData();
         //formData.append("_token", window.token);
         formData.append("_token", $('meta[name="csrf-token"]').attr("content"));
@@ -182,6 +192,9 @@ export default class MultiSearch {
                     _this.data.content = response["content"];
                     _this.calculatePages();
                     _this.data.page = 1;
+                    if(_this.settings.highlightEnabled){
+                        _this.getHighlightRegex();
+                    }
                     _this.renderSearchResult();
                 }
             },
@@ -223,6 +236,86 @@ export default class MultiSearch {
         this.renderSearchResult();
     }
 
+    highlight(text){
+        console.log("[MultiSearch] highlight replaces", this.data.highlight);
+        console.log("[MultiSearch] highlight before", text);
+        console.log("[MultiSearch] highlight replaces.length", this.data.highlight.replaces.length);
+        for (let i=0; i<this.data.highlight.replaces.length; i++){
+            text = text.replaceAll(this.data.highlight.replaces[i].regex, this.data.highlight.replaces[i].replace);
+            console.log("[MultiSearch] highlight replace", i, text);
+        }
+        console.log("[MultiSearch] highlight after", text);
+        return text;
+    }
+
+    getHighlightRegex(){
+        let replaces = [];
+        let words = this.data.search.split(" ");
+        let tmp;
+
+        // Make highlight regex
+        for (let i=0; i<words.length; i++){
+            let wordLength = words[i].length;
+
+            console.log("[MultiSearch] highliht word length", words[i], wordLength);
+
+            switch (true){
+                case (wordLength === 2):
+                    if(i > 0){
+                        replaces.push({
+                            regex: RegExp(words[i], "igu"),
+                            replace: `<span class="search-highlight">${words[i]}</span>`,
+                        });
+                    }
+                    break;
+
+                case (wordLength === 3):
+                    replaces.push({
+                        regex: RegExp(words[i], "igu"),
+                        replace: `<span class="search-highlight">${words[i]}</span>`,
+                    });
+                    break;
+
+                case (wordLength > 3 && wordLength <= 6):
+                    tmp = words[i].slice(0, -1);
+                    replaces.push({
+                        regex: RegExp(tmp, "igu"),
+                        replace: `<span class="search-highlight">${tmp}</span>`,
+                    });
+                    break;
+
+                case (wordLength > 6 && wordLength <= 9):
+                    tmp = words[i].slice(0, -2);
+                    replaces.push({
+                        regex: RegExp(tmp, "igu"),
+                        replace: `<span class="search-highlight">${tmp}</span>`,
+                    });
+                    break;
+
+                case (wordLength > 9):
+                    tmp = words[i].slice(0, -3);
+                    replaces.push({
+                        regex: RegExp(tmp, "igu"),
+                        replace: `<span class="search-highlight">${tmp}</span>`,
+                    });
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        this.data.highlight.replaces = replaces;
+    }
+
+    autocomplete(){
+
+    }
+
+    getAutocompleteRegex(){
+        // ибу[^\s]+
+    }
+
     // ================== HELPERS ================== //
     calculatePages(){
         this.data.totalPages = Math.ceil(this.data.content.length / this.settings.perPage);
@@ -248,7 +341,6 @@ export default class MultiSearch {
         searchItems = [],
     } = {})
     {
-        console.log("[MultiSearch] searchItems", searchItems);
         // Generate search result items
         let searchItemsHtml = "";
         for (let i=0; i<searchItems.length; i++){
@@ -295,6 +387,11 @@ export default class MultiSearch {
 
     } = {})
     {
+        if(this.settings.highlightEnabled){
+            title = this.highlight(title);
+        }
+
+
         let oldPriceHtml = "";
         if(oldPrice !== ""){
             oldPriceHtml =
@@ -347,7 +444,7 @@ export default class MultiSearch {
             prevHtml = `
             <div class="search__btn-prev">
                 <svg class="search__btn-prev-icon" width="26" height="12">
-                    <use xlink:href="uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
+                    <use xlink:href="/uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
                 </svg>
             </div>
             `;
@@ -355,7 +452,7 @@ export default class MultiSearch {
             prevHtml = `
             <div class="search__btn-prev" style="opacity: 0;">
                 <svg class="search__btn-prev-icon" width="26" height="12">
-                    <use xlink:href="uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
+                    <use xlink:href="/uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
                 </svg>
             </div>
             `;
@@ -365,7 +462,7 @@ export default class MultiSearch {
             nextHtml = `
             <div class="search__btn-next">
                 <svg class="search__btn-next-icon" width="26" height="12">
-                    <use xlink:href="uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
+                    <use xlink:href="/uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
                 </svg>
                 <div class="search__btn-next-count-wrap">
                     <div class="search__btn-next-count">${this.data.page+1}</div>
@@ -376,7 +473,7 @@ export default class MultiSearch {
             nextHtml = `
             <div class="search__btn-next" style="opacity: 0;">
                 <svg class="search__btn-next-icon" width="26" height="12">
-                    <use xlink:href="uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
+                    <use xlink:href="/uploads/multi-search/sprite-search.svg#carousel-btn-icon"></use>
                 </svg>
                 <div class="search__btn-next-count-wrap">
                     <div class="search__btn-next-count">${this.data.page+1}</div>

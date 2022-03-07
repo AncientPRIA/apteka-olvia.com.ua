@@ -6,8 +6,6 @@ namespace App\Http\Controllers\Api;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\TranslatableString;
-use App\Models\Woman;
-use App\Models\WomanList;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 

@@ -1,5 +1,15 @@
 require("../../views/blocks/menu/menu_bottom/search/search");
-require("../../views/blocks/popup/popup")
+require("../../views/blocks/popup/popup");
+import MultiSearch from "./multi_search";
+
+
+/* ------- Multi search ------- */
+window.multiSearch = new MultiSearch({
+    CategoriesDisabled: true,
+    rootQuery: ".search__content-wrapper",
+});
+window.multiSearch.init();
+
 const Cart = require("./cart");
 const { detect } = require("detect-browser");
 const browser = detect();

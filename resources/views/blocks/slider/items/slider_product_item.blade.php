@@ -16,7 +16,7 @@
     */
     // Image END
 
-    $image = $item["image_thumb"] ?? '';
+    /*$image = $item["image_thumb"] ?? '';
     if(empty($image)){
         $image = $item->no_image ?? '';
     }
@@ -36,7 +36,10 @@
     $picture = Img::picture_compose($sizes, $mappings, true, '', $item["title"].'_photo', true);
         if($item->id === 1227){
           //var_dump($sizes);
-        }
+        }*/
+
+    $images = $item->get_images("thumb");
+    $picture = $item->picture($images[0], "thumb");
 
 @endphp
 @php
@@ -84,9 +87,8 @@
             --}}
        @endif
        <div class="product_item_price">
-           <span class="price-item-product_fn">Стоимость уточняйте</span>
+           {{--<span class="price-item-product_fn">Стоимость уточняйте</span>--}}
 
-           {{--   TODO: PRICE VALUE. UNCOMMENT AFTER SYNC
            <span class="price-item-product_fn">{{$item["price"]}}</span>
 
            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -97,7 +99,6 @@
                    c0.162,0,0.324-0.003,0.484-0.008C210.59,30.262,235,54.834,235,85c0,30.327-24.673,55-55,55h-55V30.01H180z"/>
                                <g>
            </svg>
-           --}}
 
         </div>
 

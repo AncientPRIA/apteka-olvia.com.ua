@@ -302,10 +302,15 @@ if(\Browser::isMobile()){
                     {!! $picture !!}
 
                     <div class="discount">
-                        {{$action_right_1->get_root()->name}}
+                        @php
+                        $rootName = $action_right_1->get_root()->name
+                        @endphp
+                        {{$rootName}}
                     </div>
                     <div class="discount-info">
-                        {!! $action_right_1['name'] !!}
+                        @if($rootName !== $action_right_1['name'])
+                            {!! $action_right_1['name'] !!}
+                        @endif
                     </div>
                 </a>
                 @php
@@ -326,10 +331,15 @@ if(\Browser::isMobile()){
                     {!! $picture !!}
 
                     <div class="discount">
-                        {{$action_right_2->get_root()->name}}
+                        @php
+                            $rootName = $action_right_2->get_root()->name
+                        @endphp
+                        {{$rootName}}
                     </div>
                     <div class="discount-info">
-                        {!! $action_right_2['name'] !!}
+                        @if($rootName !== $action_right_2['name'])
+                            {!! $action_right_2['name'] !!}
+                        @endif
                     </div>
                 </a>
             </div>

@@ -29,8 +29,8 @@ let file_obj = {
     // "js/_inventarization": "./resources/js/inventarization.js",
     // "css/_inventarization": "./resources/styles/sass/inventarization.sass",
 
-    // "js/profile": "./resources/js/profile.js",
-    // "css/profile.min": "./resources/styles/sass/profile.sass",
+    "js/profile": "./resources/js/profile.js",
+    "css/profile.min": "./resources/styles/sass/profile.sass",
 
     "js/index": "./resources/js/index.js",
     "css/home.min": "./resources/styles/sass/home.sass",
@@ -38,32 +38,32 @@ let file_obj = {
 
     // "js/user_active": "./resources/js/user_active.js",
 
-    // "js/products": "./resources/js/products.js",
-    // "css/products.min": "./resources/styles/sass/products.sass",
+    "js/products": "./resources/js/products.js",
+    "css/products.min": "./resources/styles/sass/products.sass",
 
-    // "js/contact": "./resources/js/contact.js",
-    // "css/contact.min": "./resources/styles/sass/contact.sass",
+    "js/contact": "./resources/js/contact.js",
+    "css/contact.min": "./resources/styles/sass/contact.sass",
 
-    // "js/our_pharmacies": "./resources/js/our_pharmacies.js",
-    // "css/our_pharmacies.min": "./resources/styles/sass/our_pharmacies.sass",
+    "js/our_pharmacies": "./resources/js/our_pharmacies.js",
+    "css/our_pharmacies.min": "./resources/styles/sass/our_pharmacies.sass",
 
-    // "js/blog": "./resources/js/blog.js",
-    // "css/blog.min": "./resources/styles/sass/blog.sass",
+    "js/blog": "./resources/js/blog.js",
+    "css/blog.min": "./resources/styles/sass/blog.sass",
 
-    // "js/discount_products": "./resources/js/discount_products.js",
-    // "css/discount_products.min": "./resources/styles/sass/discount_products.sass",
+    "js/discount_products": "./resources/js/discount_products.js",
+    "css/discount_products.min": "./resources/styles/sass/discount_products.sass",
 
-    // "js/cart_single_page": "./resources/js/cart_single_page.js",
-    // "css/cart.min": "./resources/styles/sass/cart.sass",
+    "js/cart_single_page": "./resources/js/cart_single_page.js",
+    "css/cart.min": "./resources/styles/sass/cart.sass",
 
-    // "js/search": "./resources/js/search.js",
-    // "css/search.min": "./resources/styles/sass/search.sass",
+    "js/search": "./resources/js/search.js",
+    "css/search.min": "./resources/styles/sass/search.sass",
 
-    // "js/single_product": "./resources/js/single_product.js",
-    // "css/single_product.min": "./resources/styles/sass/single_product.sass"
+    "js/single_product": "./resources/js/single_product.js",
+    "css/single_product.min": "./resources/styles/sass/single_product.sass",
 
-    // "js/404": "./resources/js/404.js",
-    // "css/404.min": "./resources/styles/sass/404.sass"
+    "js/404": "./resources/js/404.js",
+    "css/404.min": "./resources/styles/sass/404.sass"
 };
 
 const entry_d = false;

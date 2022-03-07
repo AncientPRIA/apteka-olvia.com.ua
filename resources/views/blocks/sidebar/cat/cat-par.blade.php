@@ -356,14 +356,16 @@
 ];
 */
 @endphp
-<div class="menu-cat-aside">
-		<ul class="menu-aside">
-			@for($i=0;$i<count($sidebar_menu);$i++)
-				@include("blocks.sidebar.cat.cat",[
-					"menu" => $sidebar_menu[$i],
-					"index_lvl"=>1,
-					"index"=>$i,
-				])
-			@endfor
-		</ul>
-</div>
+
+
+	<div class="menu-cat-aside">
+			<ul class="menu-aside">
+				@for($i=0;$i<count($sidebar_menu);$i++)
+					@include("blocks.sidebar.cat.cat",[
+						"menu" => $sidebar_menu[$i],
+						"index_lvl"=>1,
+						"index"=>$i,
+					])
+				@endfor
+			</ul>
+	</div>

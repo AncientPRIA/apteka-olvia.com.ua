@@ -129,6 +129,10 @@ class ProductCategory extends Model
         return $breadcrumbs;
     }
 
+    public function scopeNot_empty(\Illuminate\Database\Eloquent\Builder $query){
+
+}
+
     // Find category by slug path
     static function scopeFind_by_path(\Illuminate\Database\Eloquent\Builder $query, $segments){
         $segment = array_pop($segments);

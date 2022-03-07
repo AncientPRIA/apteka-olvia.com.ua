@@ -125,12 +125,19 @@ class SearchController extends Controller
         $search = mb_strtolower($search, 'UTF-8');
         $search_arr = explode(" ", $search);
         $search_query = [];
-        foreach ($search_arr as $word){
+        foreach ($search_arr as $index => $word){
             $len = mb_strlen($word, 'UTF-8');
 
             switch (true)
             {
-                case ($len <= 3):
+                case ($len == 2):
+                    {
+                        if($index > 0){
+                            $search_query[] = $word . "*";
+                        }
+                        break;
+                    }
+                case ($len == 3):
                     {
                         $search_query[] = $word . "*";
                         break;

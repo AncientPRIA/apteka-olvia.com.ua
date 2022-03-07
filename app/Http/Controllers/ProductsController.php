@@ -30,6 +30,7 @@ use Swift_SmtpTransport;
 use Swift_Mailer;
 use Swift_Message;
 use TCG\Voyager\Models\Translation;
+use Jenssegers\Agent\Agent;
 
 class ProductsController extends Controller
 {
@@ -183,7 +184,7 @@ class ProductsController extends Controller
             return $products;
         });
 
-        $sidebar_menu = ProductCategory::menu_tree_simple(null, $category_id);
+        //$sidebar_menu = ProductCategory::menu_tree_simple(null, $category_id);
 
         //head_pagination
         $head_pagination = [];
@@ -287,7 +288,7 @@ class ProductsController extends Controller
             'category_id' => $category_id,
             'category_name' => $category_name,
             'category_description' => $category_description,
-            'sidebar_menu' => $sidebar_menu,
+            //'sidebar_menu' => $sidebar_menu, // Catalog
             'breadcrumbs' => $breadcrumbs,
             'image_header' => $image_header,
 
@@ -479,6 +480,9 @@ class ProductsController extends Controller
             array_push($footer_scripts, ["runtime~js/user_active.js",false],["js/user_active.js",false]);
         }
 
+        $agent = new Agent();
+        $is_phone = $agent->isPhone();
+
         $html = view('page/single_product')->with([
 //            'products' => $products,
 //            'category_id' => $category_id,
@@ -495,6 +499,7 @@ class ProductsController extends Controller
             'user_rating' => $user_rating,
             'rating_average' => $rating_average,
             'user' => $user,
+            'is_phone' => $is_phone,
 
             'css' => $styles,
             'scripts' =>  $footer_scripts,

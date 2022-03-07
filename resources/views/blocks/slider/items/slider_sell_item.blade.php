@@ -20,10 +20,15 @@
 
     </div>
     <div class="discount">
-        {{$item->get_root()->name}}
+        @php
+            $rootName = $item->get_root()->name
+        @endphp
+        {{$rootName}}
     </div>
     <div class="discount-info">
-        {!! $item['name'] !!}
+        @if($rootName !== $item['name'])
+            {!! $item['name'] !!}
+        @endif
     </div>
     @php
         $btn_param=[

@@ -11,7 +11,7 @@
         "php": "^7.1.3",
         "cocur/slugify": "^4.0",
         "fideloper/proxy": "^4.0",
-        "hisorange/browser-detect": "3.*",
+        "hisorange/browser-detect": ">3.0",
         "irazasyed/telegram-bot-sdk": "^2.0",
         "kalnoy/nestedset": "^5.0",
         "laravel/framework": "5.8.*",

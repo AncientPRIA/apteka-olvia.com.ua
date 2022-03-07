@@ -19,6 +19,7 @@ use App\Models\Post;
 use App\Models\Metadata;
 use App\Helpers\Microdata;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -77,6 +78,7 @@ class HomeController extends Controller
         $actions_ids = explode('|', $actions_ids);
         $actions = ProductCategory::query()
             ->whereIn('id', $actions_ids)
+            ->orderByRaw(DB::raw("FIELD(id, ".implode(', ', $actions_ids).")"))
             ->get()
         ;
         /*
@@ -184,7 +186,7 @@ class HomeController extends Controller
             'microdata' => $microdata_result,
             ])->render();
         if(!$user){
-            Cache::put($cache_key, $html, 360);
+            Cache::put($cache_key, $html, 36000000);
         }
         return $html;
     }
