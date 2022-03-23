@@ -250,7 +250,7 @@
     <div class="footer_bottomLine">
         <div class="container footer footer_bottomList">
             <div class="footer_copyright">
-                © 2001 - 2021 All rights reserved.
+                © 2001 - {{date("Y")}} All rights reserved.
             </div>
             <div class="footer_link_list">
                 {{--<a href="" class="footer_link_item">--}}
