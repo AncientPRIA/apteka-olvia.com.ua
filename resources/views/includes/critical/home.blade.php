@@ -1113,7 +1113,6 @@
 
         .phone-list__call {
             color: #f66;
-            font-family: Roboto;
             font-size: 9px;
             font-weight: 700;
             line-height: 13.99px;
